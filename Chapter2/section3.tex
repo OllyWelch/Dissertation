@@ -1,0 +1,84 @@
+\section{Dirichlet's Theorem}
+This section aims to outline the proof of Dirichlet's theorem - the fact that there are infinitely many primes congruent to each $a$ coprime to any modulus $q$, with ``equal density" among each of these residue classes. In order to state this idea rigorously, we must first make an important definition. 
+\begin{definition}
+(Dirichlet Density) Given a set $\mathcal{P}$ of positive prime numbers, we say that $\mathcal{P}$ has \textit{Dirichlet density} if
+\begin{equation}
+   \lim_{s \rightarrow 1}\frac{\sum_{p \in \mathcal{P}}p^{-s}}{\log (s - 1)^{-1}}. \nonumber
+\end{equation}
+exists. We denote the value of the limit by $d(\mathcal{P})$, named the Dirichlet density of $\mathcal{P}$.
+\end{definition}
+It is clear from the definition that if a set of primes has non-zero Dirichlet density, then the set contains infinitely many primes. Moreover, if $\mathcal{P}$ can be written as the disjoint union of two sets, then the Dirichlet density of $\mathcal{P}$ will be equal to the sum of the Dirichlet densities of the disjoint components. It is a fact that if $\mathcal{P}$ contains all but finitely many positive primes, then its Dirichlet density is 1. Indeed, from (\ref{EulerEquation}), we may write the logarithm of $\zeta(s)$ (for real values $s > 1$) as 
+\begin{align}
+\label{logZeta}
+    \log \zeta(s) &= \sum_{p} -\log(1 - p^{-s}) \nonumber \\
+    &= \sum_{p} \sum_{m=1}^{\infty} m^{-1} p^{-ms} \nonumber \\
+    &= \sum_{p} p^{-s} + \sum_{p} \sum_{m=2}^{\infty} m^{-1} p^{-ms}, 
+\end{align}
+where the second step comes from the Taylor expansion of $\log(1 - x)$. Furthermore, we have that 
+\begin{align}
+    \sum_{p}\sum_{m=2}^{\infty}m^{-1}p^{-ms} &< \sum_{p}\sum_{m=2}^{\infty}p^{-ms}
+    = \sum_{p}p^{-2s}(1 - p^{-s})^{-1} \nonumber \\
+    &\leq (1 - 2^{-s})^{-1}\sum_{p}p^{-2s} < 2\zeta(2), \nonumber
+\end{align}
+so $\log \zeta(s) = \sum_{p} p^{-s} + R(s)$ where $R$ is a function which remains bounded as $s \rightarrow 1$. We will also see that $\zeta(s)$ has residue 1 at $s = 1$, so in particular $\lim_{s \rightarrow 1^{+}}(s-1)\zeta(s) = 1$. Letting $\rho(s) = (s-1)\zeta(s)$, we have
+\begin{equation}
+    \frac{\log \zeta(s)}{\log(s - 1)^{-1}} = 1 + \frac{\log\rho(s)}{\log(s - 1)^{-1}}. \nonumber
+\end{equation}
+Since $\rho(s) \rightarrow 1$ as $s \rightarrow 1$, its logarithm goes to zero. In particular
+\begin{align}
+    \lim_{s \rightarrow 1^{+}}\frac{\sum_{p}p^{-s}}{\log(s - 1)^{-1}} = \lim_{s \rightarrow 1^{+}}\frac{\log\zeta(s)}{\log(s-1)^{-1}} = 1.
+\end{align}
+Thus the Dirichlet density of all the primes with the exception of finitely many is 1. In summary, the Dirichlet density is a number between 0 and 1 which measures (in a sense) the ``proportion" of primes which lie in a set. We may now use this to state Dirichlet's theorem.
+\begin{theorem}
+(Dirichlet's Theorem) Suppose $a$ and $q$ are coprime integers. Let $\mathcal{P}(a; q)$ denote the set of all primes $p$ such that $p \equiv a \ (q)$. Then
+\begin{equation}
+    d\left(\mathcal{P}(a; q)\right) = 1/\phi(q). \nonumber
+\end{equation}
+In particular, the primes have equal Dirichlet density among residue classes coprime to $q$, and there are infinitely many primes in each such residue class.
+\end{theorem}
+This may be proved in a similar manner to proving the Dirichlet density of the set of all primes is 1. Rather than taking the logarithm of $\zeta(s)$, we wish to take the logarithm of $L(s, \chi)$. However, in this case there is the technicality of branch cuts to consider: even when restricting to real $s > 1$, the L-function may still take on complex values. Therefore we must proceed in a more subtle manner. Consider 
+\begin{equation}
+    G(s, \chi) = \sum_{p}\sum_{k=1}^{\infty} k^{-1}\chi(p^{k})p^{-ks}. \nonumber
+\end{equation}
+Notice that this is similar to the infinite series definining $\log\zeta(s)$. Also, since the absolute value of each term of $G$ is bounded by $p^{-ks}$, $G$ is bounded by $\zeta(s)$ which is uniformly convergent on $s > 1$, so the same is true for $G$. Moreover, taking the exponential map, we see that
+\begin{align}
+    \exp(G(s, \chi)) &= \prod_{p} \exp\left(\sum_{k=1}^{\infty}k^{-1}(\chi(p)p^{-s})^{k}\right) \nonumber \\
+    &= \prod_{p} (1 - \chi(p)p^{-s})^{-1} = L(s, \chi), \nonumber
+\end{align}
+where the last step comes from the Taylor series of $\log(1 - \chi(p)p^{-s})$, justified since $\abs{\chi(p)p^{-s}} < 1$. Thus, the infinite series $G$ gives a definition of $\log L(s, \chi)$ without the need to worry about branch cuts until later. We therefore proceed working directly with $G$. In a similar manner to before, we have that 
+\begin{equation}
+    G(s, \chi) = \sum_{p}\chi(p)p^{-s} + \sum_{k=2}^{\infty} k^{-1}\chi(p^{k})p^{-ks}. \nonumber
+\end{equation}
+Since $\abs{\chi(p^{k})} \leq 1$, we may bound the second term in the same way as for $\log\zeta(s)$ by a function $R_{\chi}$ which remains bounded as $s \rightarrow 1$. Also note that $\chi(p) = 0$ when $p$ is a prime dividing $q$. Therefore
+\begin{equation}
+\label{GEquation1}
+    G(s, \chi) = \sum_{p \nmid q}\chi(p)p^{-s} + R_{\chi}(s).
+\end{equation}
+Now, let $a$ be coprime to $q$, multiply both sides of (\ref{GEquation1}) by $\overline{\chi(a)}$, and sum over all Dirichlet characters modulo $q$. This gives 
+\begin{equation}
+\label{GEquation2}
+    \sum_{\chi}\overline{\chi(a)}G(s, \chi) = \sum_{p \nmid q}p^{-s} \sum_{\chi}\chi(p)\overline{\chi(a)} + \sum_{\chi}\overline{\chi(a)}R_{\chi}.
+\end{equation}
+Now, we may apply the second orthogonality relation in Proposition~\ref{OrthogonalityRelations}: the sum over characters in the first term in the right hand side of (\ref{GEquation2}) gives $\phi(q)$ whenever $p \equiv a (q)$, and zero otherwise. Thus
+\begin{equation}
+\label{GEquation3}
+    \sum_{\chi}\overline{\chi(a)}G(s, \chi) = \phi(q)\sum_{p \equiv a (q)}p^{-s} + R_{\chi, a}(s),
+\end{equation}
+where $R_{\chi, a}$ is again a function which is bounded as $s \rightarrow 1^{+}$. We are now very close to proving the theorem: the following proposition will allow us to complete the proof.
+\begin{proposition}
+\label{GDensity}
+If $\chi_0$ denotes the trivial character, then
+\begin{align}
+    \lim_{s \rightarrow 1^{+}}\frac{G(s, \chi)}{\log(s - 1)^{-1}} = \left\{\begin{array}{lr}
+        1, &  \textrm{if} \ \chi = \chi_{0} \\
+        0, &  \textrm{if} \ \chi \neq \chi_{0} \\
+        \end{array}\right\} \nonumber
+\end{align}
+\end{proposition}
+The first case in this proposition is clear from (\ref{LZetaRelation}) - $\zeta(s)$ has a pole of identical residue at $s=1$ to $L(s, \chi_0)$, so this is equivalent to the Dirichlet density of all primes being 1. The latter statement is not so clear, and is equivalent to the fact that $L(s, \chi)$ is non-zero at $s=1$ for non-trivial characters $\chi$ - let us assume this for now, as we will prove a stronger result later. \\
+
+If $L(1, \chi) \neq 0$ for non-trivial characters $\chi$, we may define $\log L(s, \chi)$ on a small interval $(1, 1 + \delta)$. Note that $G(s, \chi)$ and $\log L(s, \chi)$ are both mapped by $\exp$ to $L(s, \chi)$, so that $G(s, \chi) = \log L(s, \chi) + 2k\pi i $. Since as $s \rightarrow 1^{+}$, $\log L(s, \chi)$ tends to a limit, $G(s, \chi)$ must remain bounded. Hence the proposition is proved. Thus, we divide both sides of (\ref{GEquation3}) by $\log (s - 1)^{-1}$ and take the limit as $s \rightarrow 1^{+}$. The limit on the left hand side is $1$ (the only term in the sum without limit zero is the one for the trivial character). On the right hand side, the first term approaches $\phi(q) d\left(\mathcal{P}(a; q)\right)$, while the second term goes to zero since the function $R_{\chi, a}$ remains bounded as $s \rightarrow 1^{+}$. We therefore divide both sides by $\phi(q)$, which gives Dirichlet's Theorem: 
+\begin{equation}
+    d\left(\mathcal{P}(a; q)\right) = 1/\phi(q). \nonumber
+\end{equation}
+We have therefore proved a deep theorem about primes using the properties of L-functions and their Dirichlet characters, assuming the key step that L-functions of non-trivial character are finite and non-zero at 1. The study of where the zeros of L-functions occur and do not occur is key to the study of the distribution of primes - this theorem provides a taste of this. \\

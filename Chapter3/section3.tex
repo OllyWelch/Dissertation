@@ -1,0 +1,139 @@
+\section{The Functional Equations for $\zeta(s)$ and $L(s, \chi)$}
+Throughout this section, we assume that $\chi$ is a primitive character of modulus $q$. Euler's Gamma function is defined for $\sigma > 0$ as 
+\begin{equation}
+    \Gamma(s) \coloneqq \int_{0}^{\infty}x^{s - 1} e^{-x} \mathrm{d} x. \nonumber
+\end{equation}
+The Gamma function is a generalisation of the factorial function to a continuous analytic function - one may prove by integration by parts that $\Gamma(s + 1) = s\Gamma(s)$ and $\Gamma(1) = 1$, so that $\Gamma(n) = (n - 1)! \ $ for positive integers $n$. Furthermore, repeated use of this relation allows us to give the analytic continuation of $\Gamma(s)$ to $\mathbb{C}$. Further properties include that the function is never zero, and has poles at the non-positive integers. Now, for $\sigma > 1$,
+\begin{align}
+    \label{FirstIdentity}
+    \pi^{-s/2} q^{s/2} \Gamma(s/2) n^{-s} &= \left(\frac{q}{n^2 \pi}\right)^{s/2} \int_{0}^{\infty} y^{s/2 - 1} e^{-y} \mathrm{d} y \nonumber \\
+    &= \int_{0}^{\infty} x^{s/2 - 1} e^{-n^{2} \pi x / q} \mathrm{d} x \quad (\textrm{set} \ y = n^{2}\pi x /q).
+\end{align}
+There are two main cases to consider depending on the value of $\chi(-1)$: note that since $\chi(-1)^{2} = \chi(1) = 1$, we have $\chi(-1) = \pm 1$. First, suppose $\chi(-1) = 1$. Multiplying both sides by $\chi(n)$ and summing over all positive integers $n$ gives
+\begin{align}
+    \pi^{-s/2} q^{s/2} \Gamma(s/2) L(s, \chi) &= \int_{0}^{\infty} x^{s/2 - 1} \left(\sum_{n=1}^{\infty}\chi(n) e^{-n^{2} \pi x / q} \right) \mathrm{d} x \nonumber \\
+    &= \frac12 \int_{0}^{\infty} x^{s/2 - 1} \psi(x, \chi) \mathrm{d} x, \nonumber
+\end{align}
+where the interchange of summation and integration is justified by the absolute convergence of the left hand side on $\sigma > 1$, and the function $\psi$ is defined as
+\begin{equation}
+    \psi(x, \chi) \coloneqq \sum_{n=-\infty}^{\infty}\chi(n) e^{-n^{2}\pi x/q} = 2\sum_{n=1}^{\infty}\chi(n) e^{-n^{2}\pi x/q}. \nonumber
+\end{equation}
+Note that the last equality here relies on the fact that $\chi(n) = \chi(-1)\chi(n) = \chi(-n)$ and $\chi(0) = 0$. We now appeal to the properties of Gauss sums and the relation (\ref{ModularRelation}). Indeed,
+\begin{align}
+    \tau(\overline{\chi}) \psi(x, \chi) &= \sum_{n=-\infty}^{\infty} \tau(\overline{\chi}) \chi(n) e^{-n^2 \pi x / q} \nonumber \\
+    &= \sum_{m=1}^{q} \overline{\chi}(m) \sum_{n=-\infty}^{\infty} e^{-n^{2} \pi x/q + 2\pi i m n / q} \quad (\textrm{by Lemma~\ref{GaussRelation}}). \nonumber
+\end{align}
+Replacing $x$ by $x/q$ and $\alpha$ by $m/q$ in (\ref{ModularRelation}), we therefore have
+\begin{align}
+\label{psiEquation1}
+    \tau(\overline{\chi}) \psi(x, \chi) &= \sum_{m=1}^{q} \overline{\chi}(m) (q/x)^{1/2}\sum_{n=-\infty}^{\infty} e^{-(n + m/q)^{2}\pi q x^{-1}} \nonumber \\
+    &= \left(\frac{q}{x}\right)^{1/2} \sum_{m=1}^{q}\overline{\chi}(m) \sum_{n=-\infty}^{\infty}e^{-(nq + m)^{2}\pi x^{-1}/ q} \nonumber \\
+    &= \left(\frac{q}{x}\right)^{1/2} \sum_{k=-\infty}^{\infty} \overline{\chi}(k) e^{-k^{2} \pi x^{-1}/q} \nonumber \\
+    &= \left(\frac{q}{x}\right)^{1/2} \psi(x^{-1}, \overline{\chi}).
+\end{align}
+Now, applying this relation gives
+\begin{align}
+\label{FirstIntegralEquation}
+    \pi^{-s/2}q^{s/2}\Gamma(s/2)L(s, \chi) &= \int_{0}^{\infty} x^{s/2 - 1} \psi(x, \chi)\mathrm{d} x \nonumber \\
+    &= \frac12 \int_{1}^{\infty} x^{s/2 - 1} \psi(x, \chi)\mathrm{d} x + \frac12 \int_{0}^{1} x^{s/2 - 1} \psi(x, \chi)\mathrm{d} x \nonumber \\
+    &= \frac12 \int_{1}^{\infty} x^{s/2 - 1} \psi(x, \chi)\mathrm{d} x + \frac12 \int_{1}^{\infty} x^{-s/2 - 1} \psi(x^{-1}, \chi)\mathrm{d} x \nonumber \\
+    &= \frac12 \int_{1}^{\infty} x^{s/2 - 1} \psi(x, \chi)\mathrm{d} x + \frac12\frac{q^{1/2}}{\tau(\overline{\chi})} \int_{1}^{\infty} x^{(1-s)/2 - 1} \psi(x, \overline{\chi})\mathrm{d} x.
+\end{align}
+Here, the penultimate step changes variables from $x$ to $x^{-1}$, while the last step appeals to (\ref{psiEquation1}). We now claim that the right hand side defines an analytic function on $\mathbb{C}$.  Indeed, 
+\begin{align}
+\abs{\int_{1}^{\infty} \psi(x, \chi) x^{s/2 - 1} \mathrm{d}x} &\ll \int_{1}^{\infty} \sum_{n=1}^{\infty} e^{-\pi n^{2} x} x^{\sigma/2 - 1} \mathrm{d}x \nonumber \\
+& \ll \int_{1}^{\infty} \sum_{n=1}^{\infty} \frac{1}{n^2}  e^{-\frac{\pi x}{2}} x^{\sigma/2 - 1} \mathrm{d} x \nonumber \\
+& \ll \int_{1}^{\infty} e^{-\frac{\pi x}{2}} x^{\sigma/2 - 1} \mathrm{d} x. \nonumber
+\end{align}
+There are two cases. If $\sigma \leq 2$, we have 
+\begin{align}
+\int_{1}^{\infty} e^{-\frac{\pi x}{2}} x^{\sigma/2 - 1} \mathrm{d} x \ll \int_{1}^{\infty} e^{-\frac{\pi x}{2}}\mathrm{d}x < \infty, \nonumber
+\end{align}
+and if $\sigma > 2$, 
+\begin{align}
+\int_{1}^{\infty} e^{-\frac{\pi x}{2}} x^{\sigma/2 - 1} \mathrm{d} x \ll \Gamma(\frac{\sigma}{2} - 1) < \infty \nonumber
+\end{align}
+by a change of variables. Thus each integral in (\ref{FirstIntegralEquation}) is analytic for all $s \in \mathbb{C}$, so their linear combination is also. Moreover, note that switching $s$ to $1 - s$, and $\chi$ to $\overline{\chi}$, we have
+\begin{align}
+  \frac12\frac{q^{1/2}}{\tau(\chi)} \int_{1}^{\infty} x^{s/2 - 1} \psi(x, \chi)\mathrm{d} x + \frac12 \int_{1}^{\infty} x^{(1-s)/2 - 1} \psi(x, \overline{\chi})\mathrm{d} x, \nonumber
+\end{align}
+which is the expression in (\ref{FirstIntegralEquation}) multiplied by $q^{1/2}/\tau(\chi)$. Indeed, since $\chi(n) = \chi(-n)$, we have
+\begin{align}
+    \overline{\tau(\chi)} &= \sum_{1}^{q} \overline{\chi}(m) e^{-2\pi i m/q} \nonumber \\
+    &= \sum_{1}^{q} \overline{\chi}(m) e^{2\pi i m/q} \quad (\textrm{using} \ \chi(m) = \chi(-m)) \nonumber \\
+    &= \tau(\overline{\chi}), \nonumber
+\end{align}
+so that $q = \abs{\tau(\chi)}^{2} = \tau(\chi) \tau(\overline{\chi})$, and the claim follows. Thus, we have obtained a functional equation in the case of a primitive character $\chi$ with $\chi(-1) = 1$. Defining 
+\begin{equation}
+    \xi_1(s, \chi) = \pi^{-s/2} q^{s/2} \Gamma(s/2) L(s, \chi), \nonumber
+\end{equation}
+therefore gives the relation
+\begin{equation}
+    \xi_1(1-s, \overline{\chi}) = \frac{q^{1/2}}{\tau(\chi)} \xi_{1}(s, \chi). \nonumber
+\end{equation}
+In the case where $\chi(-1) = -1$, we must proceed differently, as in this case the function $\psi(x, \chi)$ is zero! Shifting $s$ to $s + 1$, and multiplying by another factor of $n$ gives
+\begin{align}
+\label{xi2Integral}
+    \xi_{2}(s, \chi) &\coloneqq \pi^{-(s + 1)/2}q^{(s + 1)/2} \Gamma\left(\frac12(s + 1)\right) L(s, \chi) \nonumber \\
+    &= \frac12 \int_{0}^{\infty} \psi_{1}(x, \chi) x^{\frac{s}{2} - \frac12}\mathrm{d} x,
+\end{align}
+where we define 
+\begin{equation}
+    \psi_1(x, \chi) = \sum_{n=-\infty}^{\infty} n \chi(n) e^{-n^{2} \pi x / q}. \nonumber
+\end{equation}
+Using the same bounds in proving that $\xi_1(s, \chi)$ was analytic, both sides of (\ref{ModularRelation}) are uniformly convergent, allowing termwise differentiation with respect to $\alpha$. This gives
+\begin{equation}
+    \sum_{n=-\infty}^{\infty} n e^{-n^{2}\pi x + 2\pi i n \alpha} = i x^{-3/2} \sum_{n=-\infty}^{\infty}(n + \alpha) e^{-(n + \alpha)^{2}\pi/x}. \nonumber
+\end{equation}
+Setting $x$ to $x/q$ and $\alpha$ to $m/q$ as before, we obtain
+\begin{align}
+    \sum_{n=-\infty}^{\infty} n e^{\frac{-n^{2}\pi x}{q} + \frac{2\pi i n m}{q}} = i\left( \frac{q}{x} \right)^{3/2} \sum_{n=-\infty}^{\infty} (n + m/q) e^{-(n + m/q)^{2}\pi x^{-1} q}. \nonumber
+\end{align}
+Therefore following the exact same procedure as in the case of $\psi(x, \chi)$ gives
+\begin{equation}
+    \tau(\overline{\chi}) \psi_1(x, \chi) = i q^{1/2} x^{-3/2} \psi_{1}(x^{-1}, \overline{\chi}). \nonumber
+\end{equation}
+We then apply a similar splitting of the integral in (\ref{xi2Integral}) to obtain
+\begin{align}
+\label{SecondIntegralEquation}
+    \xi_2(s, \chi) &= \frac12 \int_{1}^{\infty}\psi_1(x, \chi) x^{-(1 - s)/2} \mathrm{d} x + \frac12 \frac{i q^{1/2}}{\tau(\overline{\chi})}\int_{1}^{\infty} \psi_1(x, \overline{\chi})x^{-s/2} \mathrm{d} x.  
+\end{align}
+This is again analytic on $\mathbb{C}$. By an analogous argument to the previous case, we have $\overline{\tau(\chi)} = -\tau(\overline{\chi})$, so that $\tau(\chi)\tau(\overline{\chi}) = -q$. Thus, replacing $s$ by $1-s$ and $\chi$ by $\overline{\chi}$ in (\ref{SecondIntegralEquation}) yields
+\begin{equation}
+    \frac12 \frac{i q^{1/2}}{\tau(\chi)}\int_{1}^{\infty}\psi_1(s, \chi) x^{-(1 - s)/2} \mathrm{d} x + \frac12 \int_{1}^{\infty} \psi_1(x, \overline{\chi})x^{-s/2} \mathrm{d} x, \nonumber
+\end{equation}
+which is precisely (\ref{SecondIntegralEquation}) multiplied by $i q^{1/2}/\tau(\chi)$. We conclude that
+\begin{equation}
+    \xi_{2}(1-s, \overline{\chi}) = \frac{i q^{1/2}}{\tau(\chi)} \xi_{2}(s, \chi). \nonumber
+\end{equation}
+The two functional equations for $\xi_1$ and $\xi_2$ may be combined as follows. Define 
+\begin{align}
+a(\chi) = \left\{
+    \begin{array}{ll}
+         &  0 \ \textrm{if} \ \chi(-1) = 1\\
+         &  1 \ \textrm{if} \ \chi(-1) = -1
+    \end{array}
+    \right\}.
+    \nonumber
+\end{align}
+Then define 
+\begin{equation}
+    \xi(s, \chi) = (q/\pi)^{\frac12(s + a)} \Gamma\left(\frac12 (s + a) \right) L(s, \chi), \nonumber
+\end{equation}
+so that $\xi$ coincides with both $\xi_1$ and $\xi_2$, depending on the value of $a$. The two previous relations are then written compactly as
+\begin{equation}
+    \xi(1-s, \overline{\chi}) =  \frac{i^{a}q^{1/2}}{\tau(\chi)} \xi(s, \chi). \nonumber
+\end{equation}
+This completes the analytic continuation of L-functions of primitive characters to $\mathbb{C}$. Indeed, given a value $s$ on the left half plane, we have that $1-\sigma \geq 1$, on which region $L(1-s, \overline{\chi})$ is analytic. Since everything is therefore analytic, it is possible to rearrange to write $L(s, \chi)$ as a product of analytic functions on the left half plane. Note that dividing by the Gamma-function is valid as it is nowhere zero. \\
+
+This argument is easily adapted to the case of $\zeta(s)$. Setting $q = 1$, we note that the trivial character is (trivially) primitive, so defining
+\begin{equation}
+    \xi(s) = \pi^{-s/2}\Gamma(s/2)\zeta(s), \nonumber
+\end{equation}
+we have the corresponding functional equation
+\begin{equation}
+    \xi(s) = \xi(1-s). \nonumber
+\end{equation}
+Again, since $\zeta(s)$ is analytic on the right half plane, this relation implies the analytic continuation of $\zeta(s)$ to $\mathbb{C}$. Now we have the continuations of $\zeta(s)$ and L-functions of primitive characters to the complex plane, we study their zeros. It is immediate from the functional equation that there are ``trivial zeros" of L-functions either at the negative even integers (and zero) or at the negative odd integers, depending on the value of $a$. These correspond to the poles of $\Gamma(s/2 + a/2)$, cancelling them to make an analytic function. \\
+
+Furthermore, since L-functions are non-zero on $\sigma > 1$ (by the product formula), it follows that they are also non-zero on $\sigma < 0$ (if not coinciding with a trivial zero). Thus, any other zeros must lie in the \textit{critical strip} $0 \leq \sigma \leq 1$, and such zeros are deemed non-trivial. The exact same arguments hold for $\zeta(s)$. Having already mentioned the duality between the non-trivial zeros of L-functions and the primes, we now study both their frequency and positioning in the critical strip.

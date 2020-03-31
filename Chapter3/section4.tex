@@ -1,0 +1,67 @@
+\section{The Functional Equation for $\zeta(s)$}
+We start in the simplest case, $\zeta(s)$. Recall the definition of Euler's Gamma function, defined for real $s > 0$ as 
+\begin{equation}
+    \Gamma(s) \coloneqq \int_{0}^{\infty}x^{s - 1} e^{-x} \mathrm{d} x. \nonumber
+\end{equation}
+The Gamma function is a generalisation of the factorial function to a continuous analytic function - one may prove by integration by parts that $\Gamma(s) = s\Gamma(s - 1)$ and $\Gamma(1) = 1$, so that $\Gamma(n) = (n - 1)! \ $. Furthermore, repeated use of this relation allows us to give the analytic continuation of $\Gamma(s)$ to $\mathbb{C}$. Further properties include that the function is never zero, and has poles at 0 and the negative integers. We use the Gamma-function to define another convenient function, 
+\begin{equation}
+    \xi(s) \coloneqq \pi^{-s/2} \Gamma(s/2) \zeta(s). \nonumber
+\end{equation}
+We aim to show that $\xi(s)$ defines a meromorphic function on $\mathbb{C}$ with poles at $s=0$ and $s=1$. By the aforementioned properties of $\Gamma(s)$, this implies the analytic continuation of $\zeta(s)$ to $\mathbb{C}$. First, note that setting $\alpha = 0$ and $v = x^{-1}$ in (\ref{ModularRelation}), we get that 
+\begin{equation}
+    \sum_{n=-\infty}^{\infty} e^{-n^{2} \pi v} = v^{-1/2} \sum_{n=-\infty}^{\infty}e^{-n^{2}\pi v^{-1}} \nonumber
+\end{equation}
+The left hand side here is known as Jacobi's theta function, $\theta(v)$, so in other words we have $\theta(v) = v^{-1/2}\theta(v^{-1})$. We define the function $\psi(v) = \sum_{n=1}^{\infty}e^{-n^{2}\pi v} = (\theta(v) - 1)/2$. Thus the above relation is equivalent to
+\begin{equation}
+\label{psiRelation}
+   2\psi(v) + 1 = v^{-1/2}\left(2\psi(v^{-1}) + 1 \right).
+\end{equation}
+Now, we have for $\sigma > 1$ that
+\begin{align}
+    \xi(s) &= \pi^{-s/2} \Gamma(s/2) \zeta(s) \nonumber \\
+    &= \sum_{n=1}^{\infty} \frac{1}{(n^{2}\pi)^{s/2}} \Gamma(s/2) \nonumber \\
+    &= \sum_{n=1}^{\infty} \frac{1}{(n^{2}\pi)^{s/2}} \int_{0}^{\infty} y^{s/2 - 1} e^{-y} \mathrm{d} y \nonumber \\
+    &= \sum_{n=1}^{\infty} \int_{0}^{\infty} x^{s/2 - 1} e^{-n^{2} \pi x} \mathrm{d} x \quad (y = n^{2}\pi x) \nonumber \\
+    &= \int_{0}^{\infty} x^{s/2 - 1} \psi(x) \mathrm{d}x, \nonumber
+\end{align}
+where the final interchange of summation and integration is justified by the absolute convergence of $\zeta(s)$ and $\Gamma(s/2)$ on $\sigma > 1$. We therefore have for $\sigma > 1$ that
+\begin{align}
+\xi(s) &= \int_{0}^{1}x^{s/2 - 1} \psi(x) \mathrm{d} x + \int_{1}^{\infty} x^{s/2 - 1}\psi(x) \mathrm{d} x \nonumber \\
+&= \int_{1}^{\infty}x^{-s/2 - 1}\psi(x^{-1}) \mathrm{d} x + \int_{1}^{\infty} x^{s/2 - 1}\psi(x) \mathrm{d} x \quad (\textrm{substituting} \ x \rightarrow x^{-1})\nonumber \\
+&= \int_{1}^{\infty} x^{-s/2 - 1} \left(x^{1/2}\psi(x) + \frac12 x^{1/2} - \frac12 \right) \mathrm{d} x + \int_{1}^{\infty} x^{s/2 - 1}\psi(x) \mathrm{d} x \quad (\textrm{by \ref{psiRelation}}) \nonumber \\
+&= \int_{1}^{\infty}\psi(x) \left(x^{s/2 - 1} + x^{(1-s)/2 - 1} \right) \mathrm{d} x + \frac{1}{s - 1} - \frac{1}{s}, \nonumber
+\end{align}
+so finally
+\begin{equation}
+\label{xiMeromorphic}
+    \xi(s) + \frac{1}{s(1-s)} = \int_{1}^{\infty}\psi(x) \left(x^{s/2 - 1} + x^{(1-s)/2 - 1} \right) \mathrm{d} x \quad (\sigma > 1) \nonumber
+\end{equation}
+We now claim that the right hand side defines an analytic function on $\mathbb{C}$. Indeed, 
+\begin{align}
+\abs{\int_{1}^{\infty} \psi(x) x^{s/2 - 1} \mathrm{d}x} &= \abs{\int_{1}^{\infty} \sum_{n=1}^{\infty} e^{-\pi n^{2} x} x^{s/2} \frac{\mathrm{d}x}{x}} \nonumber \\
+&\leq \int_{1}^{\infty} \sum_{n=1}^{\infty} e^{-\pi n^{2} x} x^{\sigma/2} \frac{\mathrm{d}x}{x} \nonumber \\
+& \ll \int_{1}^{\infty} \sum_{n=1}^{\infty} \frac{1}{n^2}  e^{-\frac{\pi x}{2}} x^{\sigma/2} \frac{\mathrm{d} x}{x} \nonumber \\
+& \ll \int_{1}^{\infty} e^{-\frac{\pi x}{2}} x^{\sigma/2} \frac{\mathrm{d} x}{x}. \nonumber
+\end{align}
+There are two cases. If $\sigma \leq 2$, we have 
+\begin{align}
+\abs{\int_{1}^{\infty} \psi(x) x^{s/2 - 1} \mathrm{d}x} &\ll \int_{1}^{\infty} e^{-\frac{\pi x}{2}} x^{\sigma/2 - 1} \mathrm{d} x \nonumber \\ 
+& \ll \int_{1}^{\infty} e^{-\frac{\pi x}{2}}\mathrm{d}x < \infty, \nonumber
+\end{align}
+and if $\sigma > 2$, 
+\begin{align}
+\int_{1}^{\infty} e^{-\frac{\pi x}{2}} x^{\sigma/2 - 1} \mathrm{d} x \ll \Gamma(\frac{\sigma}{2} - 1) < \infty \nonumber
+\end{align}
+by a change of variables. It therefore follows that the integral on the right hand side of (\ref{xiMeromorphic}) is analytic for all $s \in \mathbb{C}$. Moreover, it is invariant upon exchanging $s$ and $1 - s$, so we conclude with the following. 
+\begin{theorem}
+$\xi(s)$ defines a meromorphic function on $\mathbb{C}$ with poles at $s=1$ and $s=0$, and satisfies the relation
+\begin{equation}
+    \xi(s) = \xi(1-s). \nonumber
+\end{equation}
+This implies 
+\begin{equation}
+    \zeta(1-s) = \pi^{\frac{1}{2} - s}\frac{\Gamma(s/2)}{\Gamma\left(\frac{1-s}{2}\right)}\zeta(s), \nonumber
+\end{equation}
+which gives the analytic continuation for $\zeta(s)$ to the complex plane.
+\end{theorem}
+Note that dividing by the Gamma-function is valid, since it is never zero. Also notice that at $s=1$, the pole of $\zeta(s)$ is cancelled by the zero of $1/\Gamma(0)$, so that the function is regular at this point. This functional equation for $\zeta(s)$ will be crucial later, and we now turn our focus to the more general case of L-functions.

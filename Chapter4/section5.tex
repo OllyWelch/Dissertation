@@ -1,0 +1,135 @@
+\section{A Zero-Free Region for $L(s, \chi)$}
+We now consider L-functions of a non-trivial character, since by (\ref{LZetaRelation}) a zero-free region for those of trivial character follows immediately from that of $\zeta(s)$. An added complication in this case is the value of $q$, as such regions will depend on the size of this modulus. Suppose $\chi$ is a non-trivial character of modulus $q \geq 3$, and that $t \geq 0$. It is enough to consider non-negative $t$, since any zero of $L(s, \chi)$ with $t < 0$ is a zero of $L(s, \overline{\chi})$ with $t > 0$. Logarithmic differentiation of the product formula gives 
+\begin{equation}
+    \frac{L'(s, \chi)}{L(s, \chi)} = \sum_{n=1}^{\infty}\Lambda(n) n^{-\sigma}\chi(n)e^{-i t \log n}, \nonumber
+\end{equation}
+which is obtained in the same way as for $\zeta(s)$, but with an added factor of $\chi(n)$. Owing to the fact that $\chi(n)$ is a $\phi(q)$-th root of unity (as long as $n$ and $q$ are coprime), we may write $\mathfrak{R}\chi(n)e^{-i t \log n}$ as $\cos\theta$, for some $\theta$. Replacing $\chi$ by $\chi^{2}$ doubles the contribution to the argument from $\chi$ (as it is a root of unity). Therefore $\mathfrak{R}\chi^{2}(n)e^{-2 i t \log n} = \cos 2\theta$. Moreover, replacing $\chi$ by $\chi_0$ and $t$ by zero produces $\cos 0 = 1$, so we may write an analogous inequality to (\ref{LinCombZetaInequality}) involving L-functions: namely
+\begin{equation}
+\label{LinCombLRelation}
+    3\left[-\frac{L'(\sigma, \chi_0)}{L(\sigma, \chi_0)} \right] + 4\left[-\mathfrak{R} \frac{L'(\sigma + i t, \chi)}{L(\sigma + i t, \chi)} \right] + \left[-\mathfrak{R} \frac{L'(\sigma + 2i t, \chi^{2})}{L(\sigma + 2i t, \chi^{2})} \right] \geq 0.
+\end{equation}
+Notice that if $\chi$ is a real character, $\chi^{2} = \chi_0$, and this can cause serious problems. For now, we shall assume that $\chi$ is complex so that this issue is avoided. Recall (\ref{LPartialFraction}), which implies that 
+\begin{equation}
+\label{RealLogDiffL}
+    -\mathfrak{R}\frac{L'(s, \chi)}{L(s, \chi)} = \frac12 \log\frac{q}{\pi} + \frac12 \mathfrak{R}\frac{\Gamma'(s/2 + a/2)}{\Gamma(s/2 + a/2)} - \mathfrak{R}B(\chi) - \mathfrak{R}\sum_{\rho} \left( \frac{1}{s - \rho} + \frac{1}{\rho} \right). \nonumber
+\end{equation}
+By logarithmic differentiation of the Hadamard product for $\xi(s, \chi)$, followed by application of the functional equation, we have
+\begin{equation}
+    B(\chi) = \frac{\xi'(0, \chi)}{\xi(0, \chi)} = -\frac{\xi'(1, \overline{\chi})}{\xi(1, \overline{\chi})} = -B(\overline{\chi}) - \sum_{\overline{\rho}}(\frac{1}{1-\overline{\rho}} + \frac{1}{\overline{\rho}}), \nonumber
+\end{equation}
+where $\overline{\rho}$ are the non-trivial zeros of $L(s, \overline{\chi})$. Moreover, it is clear that $B(\overline{\chi}) = \overline{B(\chi)}$, so 
+\begin{equation}
+    2\mathfrak{R}B(\chi) = -\sum_{\overline{\rho}}(\mathfrak{R}\frac{1}{1-\overline{\rho}} + \mathfrak{R}\frac{1}{\overline{\rho}}). \nonumber
+\end{equation}
+Since the zeros of L-functions are symmetrically distributed around the critical line, we may change $1-\overline{\rho}$ to $\rho$ without changing the sum, as this is simply a permutation of the terms. Therefore
+\begin{equation}
+    \mathfrak{R}B(\chi) = -\frac12 \sum_{\rho}(\mathfrak{R}\frac{1}{\rho} + \mathfrak{R}\frac{1}{\overline{\rho}}) = -\sum_{\rho}\mathfrak{R}\frac{1}{\rho}. \nonumber
+\end{equation}
+Substituting this into (\ref{RealLogDiffL}), combined with the fact that the $\Gamma'/\Gamma$ term is $O\left(\log(2 + t)\right)$ as in the previous section, we have
+\begin{equation}
+\label{LOverLBound}
+    -\mathfrak{R}\frac{L'(s, \chi)}{L(s, \chi)} < c_1 \mathcal{L} - \sum_{\rho}\mathfrak{R}\frac{1}{s - \rho}, \quad \textrm{where} \quad  \mathcal{L} \coloneqq \log q + \log (t + 2), 
+\end{equation}
+which holds for any $\sigma > 1$ and any primitive character $\chi$ (we have not yet used the assumption that $\chi$ is complex). Since
+\begin{equation}
+    \mathfrak{R}\frac{1}{s-\rho} = \frac{\sigma - \beta}{\abs{s-\rho}^{2}} \geq 0, \quad (\sigma > 1), \nonumber
+\end{equation}
+we may as before throw away any number of the terms in the sum without changing the inequality. It is not immediately obvious that the inequality (\ref{LOverLBound}) holds for $L(s, \chi^{2})$, since $\chi^{2}$ is non-trivial, but not necessarily primitive. However, suppose $\chi^{2}$ is induced by a character $\chi_1$. Then by (\ref{InducedCharacterRelation}), we have
+\begin{equation}
+    \log L(s, \chi^{2}) = \log L(s, \chi) + \sum_{p \rvert q} \log(1 - \chi_1(p)p^{-s}), \nonumber
+\end{equation}
+which implies
+\begin{equation}
+    \frac{L'(s, \chi^{2})}{L(s, \chi^{2})} = \frac{L'(s, \chi_1)}{L(s, \chi_1)} + \sum_{p \rvert q} \frac{-\chi_1(p)p^{-s}\log p}{1 - \chi_1(p)p^{-s}}. \nonumber
+\end{equation}
+Therefore
+\begin{equation}
+    \abs{\frac{L'(s, \chi^{2})}{L(s, \chi^{2})} - \frac{L'(s, \chi_1)}{L(s, \chi_1)}} \leq \sum_{p \rvert q} \frac{p^{-\sigma}\log p}{1 - p^{-\sigma}} \leq \sum_{p \rvert q} \log p \leq \log q. \nonumber
+\end{equation}
+The first inequality is just the triangle inequality, the second inequality may be shown by the fact that $\abs{x(1-x)^{-1}} \leq 1$ for all $x \in [0, 1/2]$ (just check the derivative), while the third is since the sum of logarithms is the logarithm of the product. Thus, the inequality (\ref{LOverLBound}) also holds for $L'(s, \chi^{2})/L(s, \chi^{2})$. We proceed as in the previous section, omitting the entire series in (\ref{LOverLBound}) for $L'(\sigma + 2it, \chi^{2})/L(\sigma + 2it, \chi^{2})$. We choose $t$ to coincide with the imaginary part of a non-trivial zero of $L(s, \chi)$, and keep only the term in the series corresponding to this zero, which gives
+\begin{equation}
+    -\mathfrak{R}\frac{L'(\sigma + it, \chi)}{L(\sigma + it, \chi)} < c_1 \mathcal{L} - \frac{1}{\sigma - \beta}. \nonumber
+\end{equation}
+Finally, the term for the trivial character has the same bound as in the previous section for $\zeta(\sigma)$, say $(\sigma - 1)^{-1} + c_2$. It follows from (\ref{RealLogDiffL}) that
+\begin{equation}
+    \frac{4}{\sigma - \beta} < \frac{3}{\sigma - 1} + c_3 \mathcal{L}. \nonumber
+\end{equation}
+Setting $\sigma = 1 + c_4\mathcal{L}^{-1}$, we have as in the previous section (choosing an appropriate $c_4$)
+\begin{equation}
+\label{InitialLZeroFreeRegion}
+    \beta < 1 - \frac{c_5}{\mathcal{L}}
+\end{equation}
+for an absolute constant $c_5$. This inequality is also true for complex non-primitive characters. Indeed, if the character $\chi$ is induced by a primitive $\chi_1$, then any zeros of $L(s, \chi)$ are either zeros of $L(s, \chi_1)$ or any of the terms $(1 - \chi_1(p)p^{-s})$ in the product part of (\ref{InducedCharacterRelation}). Any zero of those terms must lie on $\sigma = 0$, so the relation (\ref{InitialLZeroFreeRegion}) still holds for the zeros of $L(s, \chi)$. \\
+
+Suppose now that $\chi$ is a real primitive character. We now have the issue that $\chi^{2} = \chi_0$. Note that this is the same as having $\chi^{2}$ induced by the trivial character of modulus 1, so we may refer to our previous argument, which implies that
+\begin{equation}
+    \abs{\frac{L'(s, \chi_0)}{L(s, \chi_0)} - \frac{\zeta'(s)}{\zeta(s)}} \leq \log q \nonumber
+\end{equation}
+for $\sigma > 1$. With regard to $\zeta'/\zeta$, we refer to (\ref{ZetaPartialFraction}), which with our usual estimates, and not assuming that $t$ is large, gives
+\begin{equation}
+    -\mathfrak{R}\frac{\zeta'(s)}{\zeta(s)} < \mathfrak{R}\frac{1}{s-1} + c_6\log t. \nonumber
+\end{equation}
+Thus, combining the previous two inequalities using the triangle inequality gives
+\begin{equation}
+    -\mathfrak{R}\frac{L'(\sigma + 2it, \chi_0)}{L(\sigma + 2it, \chi_0)} < \mathfrak{R}\frac{1}{\sigma - 1 + 2 i t} + c_7 \mathcal{L}, \nonumber 
+\end{equation}
+with $\mathcal{L}$ as before. We therefore replace the inequality used for complex $\chi$ by this one, and by (\ref{LinCombLRelation}) we have
+\begin{equation}
+    \frac{4}{\sigma - \beta} < \frac{3}{\sigma - 1} + \mathfrak{R}\left(\frac{1}{\sigma - 1 + 2it}\right) + c_8\mathcal{L}, \nonumber
+\end{equation}
+where in this case $t=\gamma$ so as to coincide with the imaginary part of a non-trivial zero of $L(s, \chi)$. Take $\sigma = 1 + \delta/\mathcal{L}$, and require that $\delta/\mathcal{L} < \gamma$, so that
+\begin{equation}
+    \frac{4}{\sigma - \beta} < \frac{3\mathcal{L}}{\delta} + \frac{\mathcal{L}}{5\delta} + c_8\mathcal{L}. \nonumber
+\end{equation}
+Therefore, with some rearranging we have
+\begin{equation}
+    \beta < 1 - \frac{4 - 5c_8\delta}{16 + 5c_8\delta}\frac{\delta}{\mathcal{L}}. \nonumber
+\end{equation}
+This gives the same type of bound for a complex character $\chi$, subject to the condition that $\gamma \geq \delta/\mathcal{L}$, which is certainly satisfied when $\gamma \geq \delta/\log q$. As before, $\chi$ need not be primitive. It now remains to consider when $\abs{t} < \delta/\log q$. 
+\begin{proposition}
+There is at most one zero of $L(s, \chi)$ for a real non-trivial character $\chi$ satisfying $\beta > 1 - \delta/\log q$. 
+\end{proposition}
+It is a consequence of this proposition that any such zero must be real. Indeed, for a real character $\chi$, we have $\overline{\chi} = \chi$, so zeros of $L(s, \chi)$ are consequently symmetric about the real axis. Thus, existence of a complex zero in this region guarantees the existence of at least two - a contradiction. Therefore, assume that $L(s, \chi)$ has zeros at $\beta \pm i\gamma$ for $\gamma \neq 0$. Now, (\ref{LOverLBound}) may be adapted for the case of $s = \sigma > 1$ to give
+\begin{equation}
+    -\frac{L'(\sigma, \chi)}{L(\sigma, \chi)} < c_{10} \log q - \sum_{\rho}\frac{1}{\sigma-\rho}, \nonumber
+\end{equation}
+where the sum is real since each zero occurs in a conjugate pair (or is itself real). Note that this inequality also requires $\chi$ to be primitive. We may assume this, since we may adapt our argument as previously to induced characters. Keeping only the terms corresponding to the zeros $\beta \pm i\gamma$, we have
+\begin{equation}
+    -\frac{L'(\sigma, \chi)}{L(\sigma, \chi)} < c_{10} \log q - \frac{2(\sigma - \beta)}{(\sigma - \beta)^{2} + \gamma^{2}}. \nonumber
+\end{equation}
+For the left hand side, we may bound by
+\begin{equation}
+    -\frac{L'(\sigma, \chi)}{L(\sigma, \chi)} = \sum_{n=1}^{\infty}\chi(n)\Lambda(n)n^{-\sigma} \geq -\sum_{n=1}^{\infty}\Lambda(n)n^{-\sigma} = \frac{\zeta'(\sigma)}{\zeta(\sigma)} > \frac{-1}{\sigma -1} - c_{11}, \nonumber
+\end{equation}
+so that
+\begin{equation}
+    -\frac{1}{\sigma - 1} < c_{12}\log q - \frac{2(\sigma - \beta)}{(\sigma - \beta)^{2} + \gamma^{2}}. \nonumber
+\end{equation}
+Taking $\sigma = 1 + 2\delta/\log q$, we have by assumption on $\gamma$ that
+\begin{equation}
+    \abs{\gamma} < \frac{\delta}{\log q} = \frac12 (\sigma - 1) < \frac12 (\sigma - \beta). \nonumber
+\end{equation}
+Substituting into the previous inequality, we have
+\begin{equation}
+    -\frac{\log q}{2\delta} = -\frac{1}{\sigma - 1} < c_{12}\log q - \frac{8}{5(\sigma - \beta)}. \nonumber
+\end{equation}
+Rearranging this gives
+\begin{equation}
+    \beta < 1 - \frac{2(8 - 5(1 + 2\delta c_{12}))}{5(1 + 2\delta c_{12})}\frac{\delta}{\log q}. \nonumber
+\end{equation}
+Choosing $\delta$ well in relation to $c_{12}$ therefore implies $\beta < 1 - \delta/\log q$ (it is important to note that this is the $\delta$ of the previous result). It suffices therefore to consider the case that we have 2 real zeros (or a double real zero). The argument for this case is essentially the same, with $\gamma = 0$. Therefore, we have proved that the only zero satisfying
+\begin{equation}
+    \beta > 1 - \delta/\log q, \quad \abs{\gamma} < \frac{\delta}{\log q}, \nonumber
+\end{equation}
+is a single real zero. In essence, we have now proved an (almost) zero free region for all L-functions, which may be stated in the following theorem. 
+\begin{theorem}
+There exists a positive constant $c$ such that if $\chi$ is a complex character modulo $q$, there is no zero in the region
+\begin{align}
+    \sigma \geq \left\{\begin{array}{ll}
+         & 1 - c/\log q\abs{t} \quad \textrm{if} \ \abs{t} \geq 1, \\
+         & 1 - c/\log q \quad \textrm{if} \ \abs{t} \leq 1.
+    \end{array}\right\}. \nonumber
+\end{align}
+Moreover, if $\chi$ is a real non-trivial character, there is at most one zero in this region, in which case it is a single real zero.
+\end{theorem}
+The possible existence of real zeros close to $s=1$ is a real issue, and bounding the distance they must lie from $s=1$ is difficult. We shall defer this until later. Once this is proved, the key step in Dirichlet's theorem immediately follows; namely that all L-functions of non-trivial character are non-zero at $s=1$. This is absolutely not the most direct way of proving this fact, but our aim is to prove an even stronger result about primes in arithmetic progressions than Dirichlet's theorem.

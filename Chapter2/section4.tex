@@ -1,0 +1,71 @@
+\section{Introduction to the Prime Number Theorem}
+We now turn our attention to the growth of the prime numbers, and in particular the prime counting function, defined as
+\begin{equation}
+    \pi(x) \coloneqq \# \{p \leq x \ : \ p \ \textrm{prime}\}. \nonumber
+\end{equation}
+The aim of the Prime Number Theorem is to find the \textit{asymptotic distribution} of $\pi(x)$ - meaning a function which essentially approximates $\pi(x)$ well. Or, more precisely, one whose ratio with $\pi(x)$ tends to $1$ as $x$ becomes large. It turns out that it is more natural to study the function $\psi(x)$, defined as 
+\begin{equation}
+    \psi(x) \coloneqq \sum_{p^{k} \leq x} \log p = \sum_{n \leq x} \Lambda(n), \nonumber
+\end{equation}
+where $\Lambda(n)$ is the von Mangoldt function, defined as $\log p$ whenever $n$ is a power of a prime $p$, and zero otherwise. These two functions are related by the following lemma.
+\begin{lemma}
+For $x \geq 2$, 
+\begin{equation}
+\pi(x) = \frac{\psi(x)}{\log x} + \int_{2}^{x} \frac{\psi(t)}{t \log^{2} t} \mathrm{d} t + O(x^{1/2})
+\end{equation}
+\end{lemma}
+\begin{proof}
+First, set 
+\begin{equation}
+\theta(x) = \sum_{p \leq x} \log p. \nonumber
+\end{equation}
+Then we have
+\begin{align}
+\int_{2}^{x} \frac{\theta(t)}{t \log^{2} t} \mathrm{d} t &= \int_{2}^{x} \sum_{p \leq t} \frac{\log p}{t \log^{2} t} \mathrm{d} t \nonumber \\
+&= \sum_{p \leq x} \int_{p}^{x}  \frac{\log p}{t \log^{2} t} \mathrm{d} t \nonumber \\
+&= \sum_{p \leq x} \left[-\frac{\log p}{\log t} \right]_{p}^{x} \nonumber \\
+&= \pi(x) - \frac{\theta(x)}{\log x}. \nonumber
+\end{align}
+Thus 
+\begin{equation}
+\label{piThetaRelation}
+\pi(x) = \frac{\theta(x)}{\log x} + \int_{2}^{x} \frac{\theta(t)}{t \log^{2} t} \mathrm{d} t.
+\end{equation}
+Now consider the relationship between $\theta$ and $\psi$. We have that
+\begin{equation}
+\psi(x) = \theta(x) + \sum_{k \geq 2}\sum_{p^{k} \leq x} \log p. \nonumber
+\end{equation}
+In the double sum, the primes are at most $x^{1/2}$, so there are at most $x^{1/2}$ such terms, since the exponent is at least 2. Furthermore, having $p^{k} \leq x$ implies $k \leq \frac{\log x}{\log p}$. Therefore
+\begin{align}
+\psi(x) &\leq \theta(x) + \frac{\log x}{\log p} \sum_{p^{k} \leq x} \log p \leq \theta(x) + x^{1/2} \log x. \nonumber
+\end{align}
+So
+\begin{equation}
+\psi(x) = \theta(x) + O\left(x^{1/2} \log x \right). \nonumber
+\end{equation}
+Inserting this into (\ref{piThetaRelation}), we obtain the required result.
+\end{proof}
+For $a$ coprime to $q$, there is an analogous prime counting function for the residue class $a$ modulo $q$, defined as 
+\begin{equation}
+    \pi(x; q, a) \coloneqq \# \{p \leq x \ : \ p \equiv a \ (q), \ p \ \textrm{prime} \}, \nonumber
+\end{equation}
+as well as a corresponding $\psi$ function,
+\begin{equation}
+    \psi(x; q, a) \coloneqq \sum_{\substack{n \leq x \\ n \equiv a (q)}} \Lambda(n). \nonumber
+\end{equation}
+Lemma~{\ref{piThetaRelation}} also holds for $\pi(x; q, a)$ and $\psi(x; q, a)$, simply by restricting the sums to the relevant residue class. Remarkably, $\psi(x)$ and $\psi(x; q, a)$ are intimately connected with the Riemann zeta-function and Dirichlet L-functions respectively - in particular their zeros. Instead of studying these functions on a restricted region where they converge, we will use analytic continuation to study them on the whole of $\mathbb{C}$. In the case of $\psi(x)$, we shall see that it can be written explicitly for any $T \geq x \geq 1$ as
+\begin{equation}
+\label{ExpicitPsiFormula}
+    \psi(x) = x - \sum_{\rho: \abs{\gamma} < T} \frac{x^{\rho}}{\rho} + O(\frac{x\log^{2}x}{T}),
+\end{equation}
+where the $\rho$ represent the (infinitely many) so-called non-trivial zeros of the analytically continued zeta-function. Standard notation for the $\rho$ is $\beta + i\gamma$, which we will use throughout. We shall see in the next section that these all lie in the  \textit{critical strip}, $0 \leq \sigma \leq 1$. The problem of estimating $\psi(x)$ and hence $\pi(x)$ is then essentially a question of estimating the contribution to this formula of the zeros as well as possible. A similar formula holds for the function
+\begin{equation}
+  \psi(x, \chi) \coloneqq \sum_{n \leq x}\chi(n)\Lambda(n),
+\end{equation}
+but this time over the non-trivial zeros of L-functions, which also lie in the critical strip. For $a$ coprime to $q$ we have
+\begin{equation}
+    \frac{1}{\phi(q)}\sum_{\chi} \overline{\chi}(a) \psi(x, \chi) = \frac{1}{\phi(q)}\sum_{n \leq x} \Lambda(n) \left(\sum_{\chi}\overline{\chi}(a) \chi(n) \right) = \sum_{\substack{n \leq x \\ n \equiv a (q)}} \Lambda(n) = \psi(x; q, a). \nonumber
+\end{equation}
+So, the analogous explicit formula for $\psi(x, \chi)$ reveals the relationship of the zeros of L-functions to $\psi(x; q, a)$, and hence the growth of primes in different residue classes. We will study the derivation of these formulae later. \\
+
+To proceed, we first study the analytic continuation of L-functions and the zeta-function to $\mathbb{C}$. Using this, we study both the frequency of these (analytically continued) functions' zeros and their position in the critical strip, which will lead to asymptotic distributions for the prime counting functions.

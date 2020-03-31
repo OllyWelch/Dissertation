@@ -1,0 +1,42 @@
+\section{Infinite Product Representation of $\xi(s)$ and $\xi(s, \chi)$}
+
+The formula (\ref{hadamard}) turns out to be very useful indeed. It allows us to write the $\xi$ functions, and hence L-functions, in terms of their zeros. This is key to studying their distribution, and hence vital in proof of the prime number theorem. Owing to the pole of $\zeta(s)$ at $s=1$, we must treat $\xi(s)$ and $\xi(s, \chi)$ separately. It is convenient in this section to define $\xi(s)$ as
+\begin{equation}
+    \xi(s) = \frac12 s(s-1) \pi^{-s/2} \Gamma(s/2) \zeta(s), \nonumber
+\end{equation}
+so that $\xi(s)$ is entire. Note that the relation $\xi(s) = \xi(1-s)$ holds as before. Therefore,
+\begin{equation}
+    \xi(0) = \xi(1) = \frac12 \pi^{-1/2} \Gamma(1/2) \{ \textrm{Res}_{s=1} \zeta(s) \} = \frac12. \nonumber
+\end{equation}
+Furthermore, the trivial zeros of $\zeta(s)$ are cancelled by the poles of $\Gamma(s/2)$, so the only zeros of $\xi(s)$ are the non-trivial zeros of $\zeta(s)$. Now, when $\frac12 < \sigma < 2$, it is clear that $\xi(s)$ is bounded, since the only pole of any of its components is of $\zeta(s)$ at $s=1$, at which point $\xi(s)$ is finite anyway. When $\sigma \geq 2$, by definition we have $\zeta(s) = O(1)$, while Stirling's approximation (see appendix) gives $\Gamma(s/2) = O(\exp{\abs{s}\log\abs{s}})$. Therefore
+\begin{equation}
+    \xi(s) = O(\exp{(\abs{s}\log\abs{s})}). \nonumber
+\end{equation}
+This implies that $\xi(s)$ is of order at most 1, with zeros at the non-trivial zeros of the Zeta-function. Applying (\ref{hadamard}), we have
+\begin{equation}
+    \xi(s) = e^{A + B z} \prod_{\rho}(1 - s/\rho) e^{s/\rho}, \nonumber
+\end{equation}
+where the $\rho$ are the non-trivial zeros of $\zeta(s)$, and $A, B$ are constants. Now, we can take appropriate branches of logarithm which yields
+\begin{equation}
+    \log \xi(s) = A + B z + \sum_{\rho} \left( \log(1 - s/\rho) + s/\rho \right). \nonumber
+\end{equation}
+We already proved in generality that the logarithm of the infinite product representation is uniformly convergent for integral functions of order 1 in compact sets containing no zeros $\rho$, so we can differentiate termwise to give 
+\begin{equation}
+    \frac{\xi'(s)}{\xi(s)} = B + \sum_{\rho} \left( \frac{1}{s-\rho} + \frac{1}{\rho} \right). \nonumber
+\end{equation}
+On the other hand, logarithmic differentiation from the definition of $\xi(s)$ gives
+\begin{align}
+    \frac{\xi'(s)}{\xi(s)} &= \frac{\mathrm{d}}{\mathrm{d}s} \left( - \frac{s}{2}\log \pi + \log (s-1) + \log \Gamma(s/2 + 1) + \log \zeta(s) \right) \nonumber \\
+    &= -\frac12 \log \pi + \frac{1}{s-1} + \frac12 \frac{\Gamma'(s/2 + 1)}{\Gamma(s/2 + 1)} + \frac{\zeta'(s)}{\zeta(s)}, \nonumber
+\end{align}
+where we absorb the factor of $s/2$ into the $\Gamma$-function. This implies that
+\begin{equation}
+\label{ZetaPartialFraction}
+    \frac{\zeta'(s)}{\zeta(s)} = -\frac{1}{s-1} + B + \frac12 \log \pi - \frac12 \frac{\Gamma'(s/2 + 1)}{\Gamma(s/2 + 1)} + \sum_{\rho} \left( \frac{1}{s-\rho} + \frac{1}{\rho} \right).
+\end{equation}
+In the case of $\xi(s, \chi)$ for a primitive character $\chi$ modulo $q$, the function is already entire, so there is no need to cancel any poles. Thus, there is an analogous formula for L-functions derived in exactly the same way, namely
+\begin{equation}
+\label{LPartialFraction}
+    \frac{L'(s, \chi)}{L(s, \chi)} = -\frac12 \log \frac{q}{\pi} + B(\chi) - \frac12 \frac{\Gamma'(s/2 + a/2)}{\Gamma(s/2 + a/2)} + \sum_{\rho} \left( \frac{1}{s-\rho} + \frac{1}{\rho} \right), 
+\end{equation}
+where $\rho$ are the non-trivial zeros of $L(s, \chi)$. It is through these formulae where we begin to see the relevance of their zeros to the primes: we may write L-functions as infinite products over the primes, which consequently through logarithmic differentiation yields an expression directly involving their non-trivial zeros.

@@ -1,0 +1,65 @@
+\section{Definition and Connection to Primes}
+To study the distribution of primes, we must first define a very important class of functions, known as Dirichlet L-functions. These are defined for a complex variable, whose standard notation is $s = \sigma + i t$. 
+\begin{definition}
+\label{LFunctionDefinition}
+For $\sigma > 1$, we define the L-function
+\begin{equation}
+    L(s, \chi) \coloneqq \sum_{n=1}^{\infty} \chi(n) n^{-s}, \nonumber
+\end{equation}
+where $\chi(n)$ is a so-called Dirichlet character of modulus $q \in \mathbb{N}$.
+\end{definition}
+The Dirichlet characters modulo $q$ are another special class of functions which are interesting in their own right. They are defined as follows.
+\begin{definition}
+\label{DirichletCharacterDefinition}
+For a given $q \in \mathbb{N}$, a Dirichlet character $\chi$ of modulus $q$ is a complex function from the integers satisfying:
+\begin{itemize}
+    \item $\chi(n + q) = \chi(n)$ for all $n \in \mathbb{Z}$ ($q$-periodicity).
+    \item $\chi(m n) = \chi(m) \chi(n)$ (Multiplicativity).
+    \item $\chi(n) \neq 0$ if and only if $n$ is coprime to $q$.
+\end{itemize}
+\end{definition}
+For the time being, we will not concern ourselves with why these characters are so important, but simply use their properties to exhibit an interesting connection of L-functions to the primes. L-functions are generalisations of the famous \textit{Riemann Zeta-Function},
+\begin{equation}
+    \zeta(s) \coloneqq \sum_{n=1}^{\infty} n^{-s}, \quad (\sigma > 1).
+\end{equation}
+First note that $\zeta(s)$ is uniformly convergent to an analytic function on $\sigma > 1$. For we can bound the absolute value of each term in the infinite sum by $n^{-1 - \varepsilon}$, for some $\varepsilon > 0$. Then since
+\begin{equation}
+    \int_{1}^{\infty} x^{-1 - \varepsilon} \mathrm{d}x < \infty, \nonumber 
+\end{equation}
+the integral test implies convergence of $\sum_{n} n^{-1-\varepsilon}$. We may therefore bound the absolute value of $\zeta(s)$ on $\sigma > 1$ by this convergent sum independent of $s$, so by Weierstrass's M-test we have uniform convergence. It is then an  obvious consequence of Morera's theorem that $\zeta(s)$ is holomorphic: clearly the partial sums are holomorphic, so their integral on any closed contour is zero, which implies their uniform limit also evaluates to zero when integrated on any closed contour. Moreover, L-functions are also holomorphic on this region. We may use the same bound as for $\zeta(s)$, following easily the fact that $\abs{\chi(n)} \leq 1$ for all integers $n$, which will be shown in the next section. We may now elucidate the connection of these functions to the primes via the following theorem.
+\begin{theorem}\label{sumsAndProducts}
+Let $f : \mathbb{N} \rightarrow \mathbb{C}$ be a multiplicative function. That is, for every coprime $m, n \in \mathbb{N}$, we have $f(mn) = f(m)f(n)$. Suppose that $\sum_{n=1}^{\infty}\abs{f(n)} < \infty$. Then
+\begin{equation}
+\sum_{n=1}^{\infty} f(n) = \prod_{p \hspace{1mm} \mathrm{prime}} \left(\sum_{n=0}^{\infty} f(p^{n}) \right), \nonumber
+\end{equation} 
+where the infinite product is over every prime number $p$.
+\end{theorem}
+\begin{proof}
+Using the fact that $\sum_{n=1}^{\infty}\abs{f(n)} < \infty$, we may expand the brackets of terms in the product over finitely many primes. This gives
+\begin{equation}
+\prod_{p \leq x} \left(1 + f(p) + \dots \right) = \sum_{n \in S_x} f(n). \nonumber
+\end{equation} 
+where $S_x$ denotes the subset of natural numbers whose prime factors are all less than or equal to $x$. This follows from the multiplicativity of $f$ and the fundamental theorem of arithmetic, so that each term in the expansion of the finite product is covered once and only once on the right hand side. Then let 
+\begin{equation}
+\sum_{n \in S_x} f(n) = \sum_{n \leq x} f(n) + R(x).\nonumber
+\end{equation} 
+Here, $R(x)$ is the sum of $f(n)$ for all the numbers greater than $x$ with prime factors less than or equal to $x$, so that each term in the left hand side is covered exactly once. Therefore
+\begin{equation}
+\abs{R(x)} \leq \sum_{n > x} \abs{f(n)} \rightarrow 0 \hspace{1mm} \textrm{as} \hspace{1mm} x \rightarrow \infty, \nonumber
+\end{equation} 
+since the tails of a convergent sum tend to zero. Hence, we let $x \rightarrow \infty$, to give
+\begin{equation}
+\prod_{p \hspace{1mm} \textrm{prime}} \left(1 + f(p) + \dots \right) = \sum_{n =1}^{\infty} f(n). \nonumber
+\end{equation} 
+\end{proof}
+In the case of L-functions, the hypothesis of the theorem is satisfied: the terms in the series are multiplicative (owing to the properties of Dirichlet characters) and absolutely convergent on $\sigma > 1$. Therefore we have
+\begin{align}
+    L(s, \chi) &= \prod_{p \ \mathrm{prime}} \left(\sum_{n=0}^{\infty} \chi(p^{n})p^{-ns} \right) \nonumber \\
+    &= \prod_{p \ \mathrm{prime}} \left(\frac{1}{1 - \chi(p)p^{-s}} \right), \quad (\sigma > 1)
+\end{align}
+where the last step applies the formula for the sum of a geometric series, which is justified as the absolute value of each term is less than 1. In the case of the Zeta-function, we recover the famous product formula first discovered by Euler:
+\begin{equation}
+    \label{EulerEquation}
+    \zeta(s) = \prod_{p \ \mathrm{prime}} \left(\frac{1}{1 - p^{-s}} \right), \quad (\sigma > 1) 
+\end{equation}
+These products are the key in answering questions on the distribution of prime numbers. One immediate consequence of (\ref{EulerEquation}) is that there are infinitely many primes: as $s \rightarrow 1$, the Zeta-function becomes the harmonic series and diverges. The infinite product therefore never terminates, as otherwise its value would be finite, implying the infinitude of primes. We will see that studying the behaviour of L-functions at $s=1$ will allow us to prove a similar result for primes in arithmetic progressions. Before doing so, we need more knowledge on the properties of Dirichlet characters.\\

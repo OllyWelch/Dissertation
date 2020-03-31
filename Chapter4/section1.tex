@@ -1,0 +1,98 @@
+\section{Entire Functions of Finite Order}
+The aim of the first part of this chapter is to write the functions $\xi(s)$ and $\xi(s, \chi)$ as infinite products in terms of their zeros. This will allow us to make conclusions with regard to their distribution, and ultimately the distribution of primes. We begin by introducing a special class of function (the conditions for which the $\xi$ functions satisfy!).
+\begin{definition}
+An entire function $f(z)$ is of \textit{finite order} if it satisfies
+\begin{equation}
+f(z) = O( e^{\abs{z}^{\alpha} } ) \hspace{1mm} \textrm{as} \hspace{1mm} \abs{z} \rightarrow \infty
+\end{equation} 
+for some number $\alpha$. 
+\end{definition}
+
+Note that $\alpha > 0$ for all non-constant functions, so we can define the order of an entire function to be the infimum of such $\alpha$. We have the following elementary fact for entire functions of finite order which are nowhere zero.
+
+\begin{proposition}
+\label{no_zeros}
+If $f(z)$ is an entire function of finite order, and $f(z) \neq 0$ for all $z \in \mathbb{C}$, then $f$ is necessarily of the form $e^{g(z)}$, where $g(z)$ is a polynomial. The order of $f$ is thus the degree of $g$.
+\end{proposition}
+
+\begin{proof}
+We begin by defining $g(z) = \log f(z)$, and noting that $g(z)$ is also an entire function since $f$ is non-zero. On any large enough circle $\abs{z} = R$, we have the bound
+\begin{equation}
+\mathfrak{R}g(z) = \log \abs{f(z)} < 2R^{\alpha}, \nonumber
+\end{equation}
+where $\alpha$ is the order of the integral function $f$, using the property that $f(z) = O(e^{\abs{z}^{\alpha}})$. Away from the branch cut, $g(z)$ can be defined by a power series, written
+\begin{equation}
+g(z) = \sum_{n=0}^{\infty} (a_n + i b_n)z^n.  \nonumber
+\end{equation}
+Now for $z = R e^{i\theta}$, we have
+\begin{equation}
+\mathfrak{R}g(R e^{i\theta}) = \sum_{n=0}^{\infty} a_{n} R^{n} \cos(n\theta) - \sum_{n=1}^{\infty} b_{n} R^{n} \sin(n\theta). \nonumber
+\end{equation}
+This is a Fourier series for $\mathfrak{R}g(R e^{i\theta})$ as a function of $\theta$, so bounding its Fourier coefficients:
+\begin{align}
+\pi \abs{a_n} R^n &= \pi \abs{\frac{1}{2\pi} \int_{0}^{2\pi} \mathfrak{R}g(Re^{i\theta})\cos(n\theta) \mathrm{d} \theta }\nonumber \\ 
+&\leq \int_{0}^{2\pi} \abs{\mathfrak{R} g(Re^{i\theta})} \mathrm{d} \theta \nonumber \\ 
+&=  \int_{0}^{2\pi} \abs{\mathfrak{R} g(Re^{i\theta})} + \mathfrak{R} g(Re^{i\theta}) \mathrm{d} \theta - 2\pi a_0\nonumber \\ 
+&\leq C\pi R^{\alpha}, \nonumber
+\end{align}
+where $C$ is some absolute constant independent of $R$. Therefore
+\begin{equation}
+\abs{a_n} < CR^{\alpha - n}, \nonumber
+\end{equation}
+so we can let $R \rightarrow \infty$ to conclude $a_{n} = 0$ for $n > \alpha$. We can bound the $b_{n}$ similarly, so we conclude that $g(z)$ is a polynomial of degree less than or equal to $\alpha$. Hence the order of $f$ is simply the degree of $g$.
+\end{proof}
+
+We now consider the case where an entire function $f(z)$ has zeros at $z_1, z_2, \dots $ and we wish to relate the distribution of its zeros to its order, say $\rho$. It will be important when writing $f$ as an infinite product that its zeros are sufficiently far apart. The easiest way to answer the question of the distribution of its zeros is by a formula due to Jensen. 
+\begin{proposition}
+\label{Jensen}
+(Jensen's Formula) If $f$ is an entire function with $f(0) \neq 0$ and zeros at $z_1, z_2, \dots$, none of which are on $\abs{z} = R$, then
+\begin{equation}
+\frac{1}{2\pi} \int_{0}^{2\pi} \log\abs{f(Re^{i\theta})}\mathrm{d}\theta = \int_{0}^{R} r^{-1} n(r) \mathrm{d} r, \nonumber
+\end{equation}
+where $n(r)$ is the number of zeros of $f$ with radius less than $r$. 
+\end{proposition}
+\begin{proof}
+Firstly, using the assumption that $f(0) \neq 0$,
+\begin{align}
+\frac{1}{2\pi} \int_{0}^{2\pi} \log\abs{f(Re^{i\theta})}\mathrm{d}\theta - \log \abs{f(0)} &= \frac{1}{2\pi} \int_{0}^{2\pi} \mathfrak{R}\log f(Re^{i\theta})\mathrm{d}\theta - \log \abs{f(0)} \nonumber \\
+&= \frac{1}{2\pi} \int_{0}^{2\pi} \left(\mathfrak{R}\int_{0}^{R}\frac{\mathrm{d}}{\mathrm{d}r}\log f(re^{i\theta}) \mathrm{d} r \right)\mathrm{d}\theta \nonumber \\
+&= \frac{1}{2\pi}\mathfrak{R} \int_{0}^{2\pi} \int_{0}^{R}\frac{f'(re^{i\theta}) e^{i\theta}}{f(re^{i\theta})} \mathrm{d} r \mathrm{d}\theta \nonumber \\
+&= \mathfrak{R}\int_{0}^{R}\frac{1}{2\pi i r}  \int_{0}^{2\pi}\frac{f'(re^{i\theta}) i r e^{i\theta}}{f(re^{i\theta})} \mathrm{d}\theta \mathrm{d}r  \nonumber \\
+&= \mathfrak{R} \int_{0}^{R} r^{-1} \left( \frac{1}{2\pi i} \oint_{\abs{z}=r} \frac{f'(z)}{f(z)} \mathrm{d} z \right)\mathrm{d}r. \nonumber
+\end{align}
+Now, by the argument principle and the fact that $f$ is entire so has no poles,
+\begin{equation}
+\frac{1}{2\pi i} \oint_{\abs{z}=r} \frac{f'(z)}{f(z)} \mathrm{d} z  = n(r), \nonumber
+\end{equation}
+where $n(r)$ represents the number of zeros of $f$ inside the ball of radius $r$ centred at zero. We therefore conclude that
+\begin{equation}
+\frac{1}{2\pi} \int_{0}^{2\pi} \log\abs{f(Re^{i\theta})}\mathrm{d}\theta - \log \abs{f(0)}= \int_{0}^{R} r^{-1} n(r) \mathrm{d}r \nonumber
+\end{equation}
+\end{proof}
+We now put this formula to immediate use. Suppose as before that $f$ is an entire function of order $\rho$ with $f(0) \neq 0$. By the bound in the proof of Proposition~\ref{no_zeros}, we have $\log\abs{ f(Re^{i\theta})} < R^{\alpha}$ on some large enough $R$ for any $\alpha > \rho$. Invoking Jensen's formula gives
+\begin{align}
+\int_{0}^{R} r^{-1} n(r) \mathrm{d}r \ll \frac{1}{2\pi} \int_{0}^{2\pi} \log\abs{f(Re^{i\theta})}\mathrm{d}\theta
+&< 2R^{\alpha}. \nonumber
+\end{align}
+Since $n(r)$ is an increasing function of $r$, we have
+\begin{equation}
+\int_{R}^{2R} r^{-1} n(r) \mathrm{d} r \geq n(R) \int_{R}^{2R} r^{-1} \mathrm{d} r = n(R) \log 2. \nonumber
+\end{equation}
+From this, it follows that 
+\begin{align}
+n(R) \leq \frac{1}{\log 2} \int_{R}^{2R} r^{-1} n(r) \mathrm{d} r &\leq \frac{1}{\log 2} \int_{0}^{2R} r^{-1} n(r) \mathrm{d} r \ll R^{\alpha}, \nonumber
+\end{align}
+so we conclude that
+\begin{equation}
+\label{zeros_bound}
+n(R) = O(R^{\alpha})
+\end{equation}
+for any $\alpha > \rho$. This tells us that an entire function $f(z)$ must have its zeros sufficiently far apart. Consequently, if each zero $z_n$ has radius $r_n$, we know that for any $\beta > \alpha$, $\sum_{n=1}^{\infty} r_{n}^{-\beta}$ converges. To see this, we split the sum into different annuli:
+\begin{align}
+\sum_{n=1}^{\infty} r_{n}^{-\beta} &= \sum_{k=0}^{\infty} \left(\sum_{2^{k} \leq r_{n} < 2^{k + 1}} r_{n}^{-\beta}\right) \leq \sum_{k=0}^{\infty} \left(\sum_{2^{k} \leq r_{n} < 2^{k + 1}} 2^{-\beta k}\right) \nonumber
+\end{align}
+The number of terms in each of the sums is $O(2^{\alpha k })$ by (\ref{zeros_bound}). Thus
+\begin{equation}
+\sum_{n=1}^{\infty} r_{n}^{-\beta} \ll \sum_{k=0}^{\infty} 2^{k(\alpha - \beta)} < \infty, \nonumber
+\end{equation}
+since we assumed $\beta > \alpha$. This therefore holds for any $\beta > \rho$, since $\alpha$ can be made arbitrarily close to $\rho$. 

@@ -1,0 +1,100 @@
+\section{The Hadamard Product Formula}
+We will now be chiefly concerned with entire functions $f(z)$ of order $\rho = 1$, and zeros at points $z_1, z_2, \dots$. By the results of the previous section, we know that $\sum_{n=1}^{\infty} r_{n}^{-1-\varepsilon}$ converges for any $\varepsilon > 0$, so in particular $\sum_{n=1}^{\infty} r_{n}^{-2}$ converges. We prove the following:
+\begin{theorem}
+(The Hadamard Product Formula) For an entire function $f(z)$ of order 1, with zeros at $z_1, z_2, \dots$, there exist constants $A, B$ such that
+\begin{equation}
+    f(z) = e^{A + B z} \prod_{n=1}^{\infty} (1 - z/z_n) e^{z/z_n}, \nonumber 
+\end{equation}
+\end{theorem}
+Before proceeding, we must first check that the infinite product term has nice properties. Firstly, the infinite product 
+\begin{equation}
+P(z) = \prod_{n=1}^{\infty} (1-z/z_n)e^{z/z_n}
+\end{equation}
+is absolutely convergent, and is uniformly convergent in compact sets containing no $z_n$. To show this, note that if $\log P(z)$ is convergent, then so is $P(z)$. We have
+\begin{equation}
+\log P(z) = \sum_{n=1}^{\infty} \log (1 - z/z_n) + z/z_n \nonumber, 
+\end{equation}
+so by the Taylor expansion of $\log(1-z)$, we have 
+\begin{align}
+\log P(z) &= \sum_{n=1}^{\infty} z/z_n + \left( -(z/z_n) - \frac{(z/z_n)^{2}}{2} - \dots \right) \nonumber \\
+&=  \sum_{n=1}^{\infty} \sum_{k=2}^{\infty} \frac{-(z/z_n)^{k}}{k}. \nonumber \\
+&= z^{-2}\sum_{n=1}^{\infty} z_n^{-2} \sum_{k=0}^{\infty} \frac{-(z/z_n)^{k}}{k+2}
+\end{align}
+The absolute value of the second infinite sum is always bounded by $\log\abs{1-z/z_n}$, so we have 
+\begin{align}
+\abs{\log P(z)} \leq \abs{z}^{-2} \sum_{n=1}^{\infty} r_n^{-2} \log\abs{1-z/z_n} < \infty, \nonumber
+\end{align}
+whenever $z$ is not equal to any of the $z_n$. Therefore $\log P(z)$ is absolutely convergent which implies $P(z)$ is convergent as required. We have therefore found an entire function $P(z)$ with exactly the same zeros (with multiplicity) as $f(z)$. Now, write
+\begin{equation}
+\label{f_product}
+    f(z) = F(z)P(z).
+\end{equation}
+We have that $F(z)$ is also an entire function, and crucially one without zeros. In order to invoke Proposition~\ref{no_zeros}, we must prove that $F(z)$ is finite order. We proceed by finding a lower bound for $\abs{P(z)}$, and hence an upper bound for $\abs{F(z)}$ on a sequence of circles $\abs{z}=R$. \\
+
+We must keep the values of $R$ away from the zeros $r_n$. Since $\sum r_n^{-2}$ converges, the total length of all the intervals $(r_n - r_n^{-2}, \hspace{1mm} r_n + r_n^{-2})$ is finite. Hence it cannot cover any infinite part of the real line. In particular, for each $r > 0$, there is an $R > r$ such that $R$ does not lie in one of the intervals. In other words, there are arbitrarily large values of $R$ such that 
+\begin{equation}
+    \abs{R - r_n} > r_n^{-2}. \nonumber
+\end{equation}
+for every $n \in \mathbb{N}$. We proceed by fixing a large value $R$, and splitting the infinite product $P(z)$ into subproducts, depending on the radius of each zero. Define
+\begin{equation}
+    P(z) = P_{1}(z)P_{2}(z)P_{3}(z), \nonumber
+\end{equation}
+where each $P_{i}$ is the product over the following sets of $z_n$:
+\begin{align}
+    P_1(z): & \hspace{5mm} \abs{z_n} < \frac{1}{2}R, \nonumber \\
+    P_2(z): & \hspace{5mm} \frac{1}{2}R \leq \abs{z_n} \leq 2R, \nonumber \\
+    P_3(z): & \hspace{5mm} \abs{z_n} > 2R. \nonumber
+\end{align}
+For the terms of $P_1(z)$, on $\abs{z} = R$ we have 
+\begin{align}
+    \abs{(1-z/z_n)e^{z/z_n}} &\geq (\abs{z/z_n} - 1) e^{\mathfrak{R}(z/z_n)}
+    \geq (\abs{z/z_n} - 1) e^{-\abs{z/z_n}}
+    > e^{-R/r_n} \nonumber,
+\end{align}
+using the fact that $\abs{z/z_n} > 2$, so that the multiplying factor of the exponential term is greater than 1. We also have that
+\begin{align}
+    \sum_{r_n < R/2} r_n^{-1} &= \sum_{r_n < R/2} r_{n}^{-1-\varepsilon} \ r_n^{\varepsilon} < \left( \frac12 R \right)^{\varepsilon} \sum_{r_n < R/2} r_n^{-1-\varepsilon}
+    = C \left( \frac12 R \right)^{\varepsilon}, \nonumber 
+\end{align}
+for some constant $C$, since the (possibly infinite) sum will always converge for any $\varepsilon > 0$. Therefore, 
+\begin{align}
+    \abs{P_1(z)} = \prod_{r_n < R/2} \abs{(1 - z/z_n) e^{z/z_n}} 
+    > \exp{\left(-R\left( \sum_{r_n < R/2} r_n^{-1} \right)\right)}
+    > \exp{(-R^{1 + 2\varepsilon})}, \nonumber
+\end{align}
+for $\varepsilon$ small enough. Now, for the terms in $P_2(z)$, we have
+\begin{align}
+    \abs{(1-z/z_n)e^{z/z_n}} &= \frac{\abs{z_n - z}}{\abs{z_n}} e^{\mathfrak{R}(z/z_n)} \geq \frac{e^{-2} \abs{z_n - z}}{2R} > CR^{-3}, \nonumber
+\end{align}
+for some constant $C>0$, where the last inequality uses the fact that we chose our $z$ to be greater than $r_n^{-2}$ in distance away from every $z_n$. Therefore the least distance between any $z_n$ and $z$ is proportional to $\abs{z}^{-2} = R^{-2}$. Using (\ref{zeros_bound}), we have that the number of zeros between $R/2$ and $2R$, and hence the number of terms in the product $P_2(z)$, is $O(R^{1 + \varepsilon})$. Therefore
+\begin{align}
+    \abs{P_2(z)} > \exp{\left( -R^{1 + \varepsilon}(\log CR^3) \right)} > \exp{\left( -R^{1 + 2\varepsilon} \right)}, \nonumber
+\end{align}
+for $R$ large enough. Finally, for the terms of $P_3(z)$, we have 
+\begin{align}
+    \abs{(1 - z/z_n) e^{z/z_n}} &\geq \abs{1 - \abs{z/z_n}} e^{\mathfrak{R}(z/z_n)} > \frac12 e^{\mathfrak{R}(z/z_n)} > e^{-c\left( R/r_n \right)^{2}}, \nonumber
+\end{align}
+for some $c > 0$ which absorbs the factor of $\frac12$, and the extra factor of $R/r_n$ in the exponent, which is bounded above by $\frac12$. We also have
+\begin{align}
+    \sum_{r_n > 2R} r_n^{-2} = \sum_{r_n > 2R} r_n^{-1-\varepsilon} r_n^{-1+\varepsilon} &< \left( 2R \right)^{-1+\varepsilon} \sum_{r_n > 2R} r_n^{-1-\varepsilon} = C(2R)^{-1+\varepsilon}, \nonumber
+\end{align}
+for some constant $C>0$, which finally gives
+\begin{align}
+    \abs{P_3(z)} &> \prod_{r_n > 2R} e^{-c\left( R/r_n \right)^{2}} \nonumber \\
+    &= \exp{\left( -c R^{2} \sum_{r_n > 2R} r_n^{-2} \right)} \nonumber \\
+    &> \exp{\left( -C' R^{2} (2R)^{-1 + \varepsilon} \right)} \nonumber \\
+    &> \exp{\left( -R^{1 + 2\varepsilon} \right)}, \nonumber
+\end{align}
+for $R$ sufficiently large. Therefore we can conclude that 
+\begin{align}
+    \abs{P(z)} &= \abs{P_1(z)}\abs{P_2(z)}\abs{P_3(z)} > \exp{(-3R^{1 + 2\varepsilon})} > \exp{(-R^{1 + 3\varepsilon})}, \nonumber
+\end{align}
+again for $R$ large enough. Since $f(z)$ was order 1 by assumption, we have $f(z) < \exp{(R^{1 + \varepsilon})}$ for each $\varepsilon > 0$, $R$ sufficiently large. Then we have that
+\begin{equation}
+    \abs{F(z)} = \abs{f(z)}\abs{P(z)}^{-1} < \exp{(R^{1 + 4\varepsilon})}. \nonumber
+\end{equation}
+Since $\varepsilon$ can be made arbitrarily small, we conclude that $F(z)$ is in fact entire of order 1 with no zeros. Invoking Proposition~\ref{no_zeros}, we have that $F(z) = e^{A + B z}$ for some constants $A, B$, leading us to Hadamard's formula,
+\begin{equation}
+\label{hadamard}
+    f(z) = e^{A + B z} \prod_{n=1}^{\infty} (1 - z/z_n) e^{z/z_n}.
+\end{equation}
