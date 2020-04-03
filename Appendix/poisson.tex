@@ -1,0 +1,51 @@
+\section{The Poisson Summation Formula}
+This section follows results and proofs in \cite{HarmonicAnalysis}. 
+\begin{definition}
+A smooth function is \textit{Schwartz} if for every $c \in \mathbb{R}$, $n \in \mathbb{N}\cup\{0\}$:
+\begin{equation}
+\abs{f^{(n)}(x)} = o(\abs{x}^{c}), \nonumber
+\end{equation} 
+where $f^{(n)}$ denotes the nth derivative of $f$. In other words, every derivative of the function essentially decays exponentially.
+\end{definition}
+\begin{theorem}
+(Poisson Summation Formula) Let $f : \mathbb{R} \rightarrow \mathbb{C}$ be a Schwartz function, and let $\hat{f}$ be its Fourier transform:
+\begin{equation}
+\hat{f}(y) = \int_{-\infty}^{\infty} e^{2 \pi i x y} f(x) \mathrm{d} y. \nonumber
+\end{equation}
+Then
+\begin{equation}
+\sum_{m \in \mathbb{Z}} f(m) = \sum_{n \in \mathbb{Z}} \hat{f}(n), \nonumber 
+\end{equation}
+with the sums converging absolutely.
+\end{theorem}
+\begin{proof}
+Define $F(x) = \sum_{m \in \mathbb{Z}} f(x + m)$, and note that since $f$ is Schwartz, we have uniform convergence of the sum to a continuous function. To see this, we can bound each term by some arbitrarily large reciprocal power of $\abs{m}$ multiplied by some large constant, since $f(x+m) = o(\abs{x+m}^c)$ for all real numbers $c$. F is 1-periodic, so consider the Fourier coefficients of $F$:
+\begin{align}
+\int_{0}^{1} e^{-2 \pi i n x} F(x) \mathrm{d} x &= \int_{0}^{1} e^{-2 \pi i n x} \left( \sum_{m \in \mathbb{Z}} f(x + m) \right) \mathrm{d} x \nonumber \\
+&= \sum_{m \in \mathbb{Z}} \int_{0}^{1} e^{-2 \pi i n x} f(x + m) \mathrm{d} x \hspace{1cm} \textrm{(By uniform convergence)} \nonumber \\
+&= \sum_{m \in \mathbb{Z}} \int_{m}^{m+1} e^{-2\pi i n(y - m)}f(y) \mathrm{d} y \hspace{1cm} \textrm{(Substitute $x = y - m$)} \nonumber\\
+&= \sum_{m \in \mathbb{Z}} \int_{m}^{m+1} e^{-2\pi i ny}f(y) \mathrm{d} y \hspace{1cm} \textrm{($e^{-2 \pi i n(y-m)} = e^{-2 \pi i ny}$)} \nonumber \\
+&= \int_{-\infty}^{\infty} e^{-2 \pi i n y} f(y) \mathrm{d} y = \hat{f}(n).  \nonumber
+\end{align}
+So we have
+\begin{equation}
+F(x) = \sum_{n \in \mathbb{Z}} \hat{f}(n) e^{i n x}. \nonumber
+\end{equation}
+Now note that $F(0) = \sum_{m \in \mathbb{Z}} f(m)$ by definition. Therefore
+\begin{equation}
+\sum_{m \in \mathbb{Z}} f(m) = F(0) = \sum_{n \in \mathbb{Z}} \hat{f}(n). \nonumber
+\end{equation}
+\end{proof}
+This theorem may be applied to $f(n) = e^{-(n + \alpha)^{2} \pi/x}$ as in \cite{davenport}. Indeed, each derivative is dominated by an exponentially decaying function, so is clearly Schwartz. We have
+\begin{align}
+    \hat{f}(n) &= \int_{-\infty}^{\infty} e^{2\pi i n t} f(t) \mathrm{d} t \nonumber \\
+    &= \int_{-\infty}^{\infty} e^{2\pi i n t - (t + \alpha)^{2} \frac{\pi}{x}} \mathrm{d} t \nonumber \\
+    &= e^{-n^{2} \pi x - 2 \pi i n \alpha} \int_{-\infty}^{\infty} e^{-\frac{\pi}{x}(t - i n x + \alpha)^2} \mathrm{d} t \nonumber \\
+    &= \left(\frac{x}{\pi} \right)^{1/2} e^{-n^{2} \pi x - 2\pi i n \alpha}  \int_{-\infty}^{\infty} e^{-v^{2}} \mathrm{d} v \quad \left(\textrm{sub.} \ v = (x / \pi)^{1/2} (t - inx + \alpha) \ \right) \nonumber \\
+    &= x^{1/2} e^{-n^{2} \pi x - 2\pi i n \alpha} \nonumber
+\end{align}
+By the Poisson summation formula, we therefore have the relation
+\begin{equation}
+\label{ModularRelation}
+    \sum_{n=-\infty}^{\infty} e^{-(n + \alpha)^{2} \pi/x} = x^{1/2} \sum_{n=-\infty}^{\infty} e^{-n^{2} \pi x + 2\pi i n \alpha}.  
+\end{equation}

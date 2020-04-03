@@ -1,0 +1,27 @@
+\section{Tests for Convergence}
+The following convergence tests show uniform convergence of functions defined either by an infinite series or improper integral. 
+\begin{theorem}
+\label{SeriesMTest}
+(Weierstrass M-test) Let $f(z) = \sum_{n}f_n(z)$ be a series of complex valued functions on a domain $D \subset \mathbb{C}$. If $\abs{f_n(z)} \leq M_n$ for all $z \in D$ and a series of constants $M_n$ with $\sum_n M_n < \infty$, then  $f(z)$ is uniformly convergent on $D$.  
+\end{theorem}
+\begin{theorem}
+\label{IntegralMTest}
+(M-test for integrals) Suppose $f(z, t)$ is integrable on $[a, \infty)$, and for each $z \in D \subset \mathbb{C}$. Suppose $\abs{f(z, t)} \leq M(t)$ for all $t \in [a, \infty)$, $z \in D$. Then if
+\begin{equation}
+    \int_{a}^{\infty}M(t) \mathrm{d} t < \infty, \nonumber
+\end{equation}
+$F(z) = \int_{a}^{\infty}f(z, t) \mathrm{d}t$ is absolutely and uniformly convergent on $D$.
+\end{theorem}
+The former result is well-known from any introductory course in complex analysis. The latter is perhaps less familiar, and is adapted from the result in \cite{analysis2}. Both shall be used extensively. A key consequence of uniform convergence is the following.
+\begin{proposition}
+\label{UniformLimitHolo}
+If $f(z)$ is defined by a uniformly convergent series or improper integral, where the summands or integrand is holomorphic on a domain $D \subset \mathbb{C}$, then $f$ is holomorphic on $D$. 
+\end{proposition}
+\begin{proof}
+We consider the case where $f(z) = \sum_{n}f_n(z)$, with each $f_n$ holomorphic on some domain $D$. Choose any closed contour $\gamma \subset D$. Then by Cauchy's theorem, we have $\oint_{\gamma} f_n(z)\mathrm{d}z = 0$ for all $n$. Then by uniform convergence,
+\begin{equation}
+    \oint_{\gamma}f(z)\mathrm{d}z = \sum_{n}\oint_{\gamma}f_n(z)\mathrm{d}z = 0, \nonumber
+\end{equation}
+so by Morera's theorem, $f(z)$ is holomorphic on $D$. The case where $f$ is defined by an improper integral is analogous, where we change the order of integration instead of interchanging summation and integration (all justified by uniform convergence). 
+\end{proof}
+In a nutshell: uniform limits of holomorphic functions are holomorphic.

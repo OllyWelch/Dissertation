@@ -1,16 +1,6 @@
-% !TEX TS-program = pdflatex
-% !TEX encoding = UTF-8 Unicode
-
-% This is a simple template for a LaTeX document using the "article" class.
-% See "book", "report", "letter" for other types of document.
-
 \documentclass[11pt]{report} % use larger type; default would be 10pt
 
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
-
-%%% Examples of Article customizations
-% These packages are optional, depending whether you want the features they provide.
-% See the LaTeX Companion or other references for full information.
 
 %%% PAGE DIMENSIONS
 \usepackage{geometry} % to change the page dimensions
@@ -30,6 +20,15 @@
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
 % These packages are all incorporated in the memoir class to one degree or another...
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage[titletoc,toc,page]{appendix}
+\usepackage{chngcntr}
+\usepackage{url}
+\usepackage[intoc]{nomencl}
 
 %%% HEADERS & FOOTERS
 \usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
@@ -38,41 +37,29 @@
 \lhead{}\chead{}\rhead{}
 \lfoot{}\cfoot{\thepage}\rfoot{}
 
-%%% SECTION TITLE APPEARANCE
-%\usepackage{sectsty}
-%\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
-% (This matches ConTeXt defaults)
-
 %%% ToC (table of contents) APPEARANCE
 \usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
 \usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
 \renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
 \renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
 
-%%% END Article customizations
+% Appendices options
+\renewcommand{\appendixpagename}{\appendixname}
+\renewcommand{\appendixtocname}{\appendixname}
+\noappendicestocpagenum
 
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{mathtools}
-\usepackage{float}
-\usepackage{appendix}
+% Add links to sections and chapters
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
 
-\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pddiff}[2]{\frac{\partial^2 #1}{\partial #2^2}}
-\numberwithin{equation}{chapter}
 
-
-%%% The "real" document content comes below...
-
-\title{The Distribution of Prime Numbers in Arithmetic Progressions}
-\author{Olly Welch}
-%\date{} % Activate to display a given date or no date (if empty),
-         % otherwise the current date is printed 
-
-\begin{document}
-\maketitle
-
+% absolute value command
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
 \makeatletter
@@ -82,6 +69,8 @@
 \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
 \makeatother
 
+%Theorems and equation numbering
+\numberwithin{equation}{chapter}
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -91,24 +80,54 @@
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 
+
+\title{The Distribution of Prime Numbers in Arithmetic Progressions}
+\author{Olly Welch}
+
+\begin{document}
+
+% TITLE PAGE
+
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.35\textwidth]{University_of_Durham_logo.png}\par\vspace{1cm}
+	\vspace{1cm}
+	{\LARGE The Distribution of Prime Numbers in Arithmetic Progressions\par}
+	\vspace{1.5cm}
+	{\Large Olly Welch\par}
+		\vspace{0.5cm}
+	{\large Supervisor:
+	Dr.~Pankaj Vishe}
+
+	\vfill
+
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
 %TABLE OF CONTENTS
 \tableofcontents
+\addtocontents{toc}{\vspace{-2\baselineskip}}
 
-%NEW CHAPTER INTRODUCTION
+% NOTATION
+\input{notation}
+
+% INTRODUCTION
 \chapter{Introduction}
 
-%NEW CHAPTER DIRICHLET L-FUNCTIONS
+% DIRICHLET L-FUNCTIONS
 \chapter{Dirichlet L-Functions}
 \input{Chapter2/section1}
 \input{Chapter2/section2}
 \input{Chapter2/section3}
 \input{Chapter2/section4}
-%NEW CHAPTER ANALYTIC CONTINUATION
+
+% ANALYTIC CONTINUATION
 \chapter{Analytic Continuation and the Functional Equations}
 \input{Chapter3/section1}
-\input{Chapter3/section2}
 \input{Chapter3/section3}
 
+% ZEROS OF ZETA AND L
 \chapter{The Zeros of $\zeta(s)$ and $L(s, \chi)$}
 \input{Chapter4/section1}
 \input{Chapter4/section2}
@@ -117,15 +136,34 @@
 \input{Chapter4/section5}
 \input{Chapter4/section6}
 
+% THE PRIME NUMBER THEOREM
 \chapter{The Prime Number Theorem}
 \input{Chapter5/section1}
 \input{Chapter5/section2}
 \input{Chapter5/section3}
 
+% CONCLUSIONS
 \chapter{Conclusions}
-\appendix
-\appendixpage
-\addappheadtotoc
+
+% APPENDICES %
+\begin{appendices}
+
+% OPTIONS FOR EQUATION NUMBERING WITHIN APPENDIX
+% \numberwithin{equation}{section}
+% \numberwithin{theorem}{section}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\theequation}{A\arabic{equation}}
+\renewcommand{\thetheorem}{A\arabic{theorem}}
+
+\input{Appendix/convergence_tests}
+\input{Appendix/gamma_function}
+\input{Appendix/gauss_sums}
+\input{Appendix/poisson}
+
+\end{appendices}
+
+% BIBLIOGRAPHY
+\bibliographystyle{plain}
+\bibliography{bibliography}
+
 \end{document}
-
-

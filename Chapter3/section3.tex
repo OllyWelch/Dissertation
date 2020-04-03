@@ -1,9 +1,9 @@
 \section{The Functional Equations for $\zeta(s)$ and $L(s, \chi)$}
-Throughout this section, we assume that $\chi$ is a primitive character of modulus $q$. Euler's Gamma function is defined for $\sigma > 0$ as 
+This section follows the derivation in \cite{davenport}, chapter 9. Throughout, we assume that $\chi$ is a primitive character of modulus $q$. Euler's Gamma function is defined for $\sigma > 0$ as 
 \begin{equation}
     \Gamma(s) \coloneqq \int_{0}^{\infty}x^{s - 1} e^{-x} \mathrm{d} x. \nonumber
 \end{equation}
-The Gamma function is a generalisation of the factorial function to a continuous analytic function - one may prove by integration by parts that $\Gamma(s + 1) = s\Gamma(s)$ and $\Gamma(1) = 1$, so that $\Gamma(n) = (n - 1)! \ $ for positive integers $n$. Furthermore, repeated use of this relation allows us to give the analytic continuation of $\Gamma(s)$ to $\mathbb{C}$. Further properties include that the function is never zero, and has poles at the non-positive integers. Now, for $\sigma > 1$,
+For properties of $\Gamma(s)$, the reader is referred to the appendix. Also contained there are properties of Gauss sums and a particular application of the Poisson summation formula, which we shall call upon throughout. Now, for $\sigma > 1$,
 \begin{align}
     \label{FirstIdentity}
     \pi^{-s/2} q^{s/2} \Gamma(s/2) n^{-s} &= \left(\frac{q}{n^2 \pi}\right)^{s/2} \int_{0}^{\infty} y^{s/2 - 1} e^{-y} \mathrm{d} y \nonumber \\
@@ -42,7 +42,6 @@ Now, applying this relation gives
 Here, the penultimate step changes variables from $x$ to $x^{-1}$, while the last step appeals to (\ref{psiEquation1}). We now claim that the right hand side defines an analytic function on $\mathbb{C}$.  Indeed, 
 \begin{align}
 \abs{\int_{1}^{\infty} \psi(x, \chi) x^{s/2 - 1} \mathrm{d}x} &\ll \int_{1}^{\infty} \sum_{n=1}^{\infty} e^{-\pi n^{2} x} x^{\sigma/2 - 1} \mathrm{d}x \nonumber \\
-& \ll \int_{1}^{\infty} \sum_{n=1}^{\infty} \frac{1}{n^2}  e^{-\frac{\pi x}{2}} x^{\sigma/2 - 1} \mathrm{d} x \nonumber \\
 & \ll \int_{1}^{\infty} e^{-\frac{\pi x}{2}} x^{\sigma/2 - 1} \mathrm{d} x. \nonumber
 \end{align}
 There are two cases. If $\sigma \leq 2$, we have 

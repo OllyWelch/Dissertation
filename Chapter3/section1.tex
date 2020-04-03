@@ -10,7 +10,7 @@ For $\sigma > 0$,
 which gives the analytic continuation to the right half-plane.
 \end{proposition}
 \begin{proof}
-The first part of the proof is to establish equality when $\sigma > 1$. First, note that 
+We follow \cite{introduction-to-analytic-number-theory_2020}. The first part is to establish equality when $\sigma > 1$. First, note that 
 \begin{align}
 \sum_{n=1}^{k} \int_{n}^{n+1} x^{-s} \mathrm{d}x &= \frac{1}{1-s} \sum_{n=1}^{k} \left( (n+1)^{1-s} - n^{1-s} \right) \nonumber \\
 &= \frac{1}{1-s} \left( -1^{1-s} + (2^{1-s} - 2^{1-s}) + \dots + (k^{1-s} - k^{1-s}) + (k+1)^{1-s} \right) \nonumber \\
@@ -36,7 +36,7 @@ since $n \leq x \leq n+1$. Therefore,
 \end{equation}
 when $\sigma > 0$. Thus, the right hand side of (\ref{righthalfplanecontinuation}) defines an analytic function on the right half-plane, giving the analytic continuation of $\zeta(s)$ on this region.
 \end{proof}
-We remark that since we have written $\zeta(s)$ as $(s-1)^{-1}$ plus some analytic function on $\sigma > 0$, it follows that $\zeta(s)$ has residue $1$ at $s=1$, which was assumed in the previous chapter to prove facts about Dirichlet densities, and will be used repeatedly later. L-functions of trivial character have a similar extension to the right half plane by the relation (\ref{LZetaRelation}), so we continue to the case of L-functions of non-trivial character (which are to some extent easier to extend than $\zeta(s)$ owing to their lack of a singularity). First, define $S(x) = \sum_{n \leq x}\chi(n)$ for a non-trivial character $\chi$ to modulus $q$. For $\sigma > 1$, 
+We remark that since we have written $\zeta(s)$ as $(s-1)^{-1}$ plus some analytic function on $\sigma > 0$, it follows that $\zeta(s)$ has residue $1$ at $s=1$, which was assumed in the previous chapter to prove facts about Dirichlet densities, and will be used repeatedly later. L-functions of trivial character have a similar extension to the right half plane by the relation (\ref{LZetaRelation}), so we continue to the case of L-functions of non-trivial character (which are to some extent easier to extend than $\zeta(s)$ owing to their lack of a singularity) and refer to \cite{ireland_rosen_1990}. First, define $S(x) = \sum_{n \leq x}\chi(n)$ for a non-trivial character $\chi$ to modulus $q$. For $\sigma > 1$, 
 \begin{align}
     \sum_{n=1}^{N}S(n)\left(n^{-s} - (n + 1)^{-s}\right)
     &= L_{N}(s, \chi) - S(N)(N+1)^{-s} \rightarrow L(s, \chi) \ \textrm{as} \ N \rightarrow \infty \nonumber,

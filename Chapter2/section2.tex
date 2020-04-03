@@ -1,19 +1,19 @@
 \section{Properties of Dirichlet Characters}
 The easiest way to construct the Dirichlet characters modulo $q$ is algebraically. Consider the multiplicative group of units of the integers modulo $q$, $G = (\mathbb{Z}/q\mathbb{Z})^{\times}$. Then, if $\chi'$ is a group homomorphism to $\mathbb{C}^{\times}$, we may construct a character $\chi$ by setting $\chi(n)=0$ for $n$ not coprime to $q$, and $\chi(n) = \chi'(\overline{n})$ otherwise, where $\overline{n}$ is the residue class of $n$ modulo $q$. Clearly all three properties of a Dirichlet character hold for $\chi$, with multiplicativity coming from the homomorphism property of $\chi'$. \\
 
-Conversely, suppose $\chi$ is a Dirichlet character. From the third property in Definition~\ref{DirichletCharacterDefinition}, we must have that $\chi$ is only non-zero at integers coprime to $q$: precisely those whose residue classes are in $G$. Furthermore, $q$-periodicity means that $\chi$ must be single-valued on each residue class modulo $q$, while multiplicativity guarantees that $\chi$ restricted to $G$ is a homomorphism from $G$ to $\mathbb{C}^{\times}$. Therefore, the Dirichlet characters modulo $q$ are precisely those following this construction. Those familiar with representation theory of finite groups may recognise this as the irreducible characters of the abelian group $(\mathbb{Z}/q\mathbb{Z})^{\times}$. The results from this section may then be taken for free from \textit{character theory}. \\
+Conversely, suppose $\chi$ is a Dirichlet character. From the third property in Definition~\ref{DirichletCharacterDefinition}, we must have that $\chi$ is only non-zero at integers coprime to $q$: precisely those whose residue classes are in $G$. Furthermore, $q$-periodicity means that $\chi$ must be single-valued on each residue class modulo $q$, while multiplicativity guarantees that $\chi$ restricted to $G$ is a homomorphism from $G$ to $\mathbb{C}^{\times}$. Therefore, the Dirichlet characters modulo $q$ are precisely those following this construction. \\
 
-First, note that the function $\chi_{0}(n) = 1$ for all $n$ coprime to $q$, $\chi_{0}(n) = 0$ otherwise is always a character - it is called the \textit{trivial character}. Furthermore, since group homomorphisms always map identity to identity, we have $\chi(1) = 1$ for all characters $\chi$. Consequently, all non-zero values of $\chi$ must be $\phi(q)$-th roots of unity, where $\phi$ denotes Euler's phi-function, counting the number of integers less than $q$ to which it is coprime. Indeed, since for all $n$ coprime to $q$ we have $n^{\phi(q)} \equiv 1$ mod $q$, then $1 = \chi(1) = \chi(n^{\phi(q)}) = \chi(n)^{\phi(q)}$, using the periodic and multiplicative properties. It follows that characters always have modulus 1 on values $n$ coprime to $q$, so that $1 = \abs{\chi(n)}^{2} = \chi(n)\overline{\chi(n)}$. Thus, the inverse to each character is its complex conjugate. Note that the complex conjugate also defines a character, denoted $\overline{\chi}$, since for $m, n$ coprime to $q$,
+First, note that the function $\chi_{0}(n) = 1$ for all $n$ coprime to $q$, $\chi_{0}(n) = 0$ otherwise is always a character - we call this the \textit{trivial character}. Furthermore, since group homomorphisms always map identity to identity, we have $\chi(1) = 1$ for all characters $\chi$. Consequently, all non-zero values of $\chi$ must be $\phi(q)$-th roots of unity, where $\phi$ denotes Euler's totient function. Indeed, since for all $n$ coprime to $q$, $n^{\phi(q)} \equiv 1$ $(q)$, we have $1 = \chi(1) = \chi(n^{\phi(q)}) = \chi(n)^{\phi(q)}$, using the periodic and multiplicative properties. It follows that characters always have absolute value 1 on values $n$ coprime to $q$, so that $1 = \abs{\chi(n)}^{2} = \chi(n)\overline{\chi(n)}$. Thus, the inverse to each character is its complex conjugate. Note that the complex conjugate also defines a character, denoted $\overline{\chi}$, since for $m, n$ coprime to $q$,
 \begin{equation}
     \overline{\chi}(m n) = \overline{\chi(m n)} = \overline{\chi(m)} \ \overline{\chi(n)} = \overline{\chi}(m)\overline{\chi}(n). \nonumber
 \end{equation}
-Now, it is a fact that the number of irreducible characters of a group $G$ is the same as the number of conjugacy classes. In the case of Dirichlet characters, the group of units modulo $q$ is abelian, so each element is in its own conjugacy class. Since the size of the group is $\phi(q)$, we conclude the following. 
+We now bring in some facts from representation theory, exposed in \cite{serre-reps}. Since the Dirichlet characters restricted to $G$ are homomorphisms to $\mathbb{C}^{\times}$, they are one-dimensional (and by default irreducible) representations of this group. Conversely, since $G$ is abelian, all such irreducible representations are one-dimensional, hence giving Dirichlet characters. Thus, the group characters (the trace of the irreducible representations) coincide with the Dirichlet characters restricted to $G$. Therefore facts about group characters also hold for Dirichlet characters.
 \begin{proposition}
 \label{isomorphism}
 The number of Dirichlet characters modulo $q$ is $\phi(q)$.
 \end{proposition}
-
-Furthermore, it is a fact that irreducible characters are ``orthogonal", which we may state as following.
+This follows from the fact that the number of group characters is the number of conjugacy classes of the group. Since $G$ is abelian, this number is the size of the group, $\phi(q)$. 
+Furthermore, it is a fact that characters are ``orthogonal", which we may state as following.
 \begin{proposition}
 \label{OrthogonalityRelations}
 If $\chi$ and $\psi$ are Dirichlet characters modulo $q$, and $a, b \in \mathbb{Z}$, then
@@ -23,7 +23,7 @@ If $\chi$ and $\psi$ are Dirichlet characters modulo $q$, and $a, b \in \mathbb{
 \end{enumerate}
 where the sum is over all Dirichlet characters $\chi$ modulo $q$.
 \end{proposition}
-Such relations are well-known results in representation theory. We also note the important notion of \textit{induced} and \textit{primitive} Dirichlet characters: a character $\psi$ to modulus $q$ is said to be \textit{induced} by another character $\chi$ to modulus $m < q$ if $\chi(n) = \psi(n)$ for all $n$ coprime to $q$. For example, consider the character to modulus 4, given as
+We also note the important notion of \textit{induced} and \textit{primitive} Dirichlet characters, following \cite{heath-brown_2005}: a character $\psi$ to modulus $q$ is said to be \textit{induced} by another character $\chi$ to modulus $m < q$ if $\chi(n) = \psi(n)$ for all $n$ coprime to $q$. For example, consider the character to modulus 4, given as
 \begin{center}
     \begin{tabular}{c|c c c c}
         $n$ &  1 & 2 & 3 & 4\\
@@ -49,4 +49,4 @@ In particular, notice that $\zeta(s)$ is the special case when $q = 1$ and the c
 \label{LZetaRelation}
     L(s, \chi_{0}) = \zeta(s) \prod_{p \rvert q}(1 - p^{-s}) \quad (\sigma > 1). 
 \end{equation}
-Now, using these results, we may sum L-functions over all characters modulo $q$, which will yield interesting results concerning primes in arithmetic progressions. The first of which is \textit{Dirichlet's Theorem}, which we study next.
+Now, using the properties of Dirichlet characters, we may sum L-functions over all characters modulo $q$, which will yield interesting results concerning primes in arithmetic progressions. The first of which is \textit{Dirichlet's Theorem}, which we study next.

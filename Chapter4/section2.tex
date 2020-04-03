@@ -1,9 +1,10 @@
 \section{The Hadamard Product Formula}
 We will now be chiefly concerned with entire functions $f(z)$ of order $\rho = 1$, and zeros at points $z_1, z_2, \dots$. By the results of the previous section, we know that $\sum_{n=1}^{\infty} r_{n}^{-1-\varepsilon}$ converges for any $\varepsilon > 0$, so in particular $\sum_{n=1}^{\infty} r_{n}^{-2}$ converges. We prove the following:
 \begin{theorem}
+\label{HadamardTheorem}
 (The Hadamard Product Formula) For an entire function $f(z)$ of order 1, with zeros at $z_1, z_2, \dots$, there exist constants $A, B$ such that
 \begin{equation}
-    f(z) = e^{A + B z} \prod_{n=1}^{\infty} (1 - z/z_n) e^{z/z_n}, \nonumber 
+    f(z) = e^{A + B z} \prod_{n=1}^{\infty} (1 - z/z_n) e^{z/z_n}. \nonumber 
 \end{equation}
 \end{theorem}
 Before proceeding, we must first check that the infinite product term has nice properties. Firstly, the infinite product 
@@ -17,8 +18,8 @@ is absolutely convergent, and is uniformly convergent in compact sets containing
 so by the Taylor expansion of $\log(1-z)$, we have 
 \begin{align}
 \log P(z) &= \sum_{n=1}^{\infty} z/z_n + \left( -(z/z_n) - \frac{(z/z_n)^{2}}{2} - \dots \right) \nonumber \\
-&=  \sum_{n=1}^{\infty} \sum_{k=2}^{\infty} \frac{-(z/z_n)^{k}}{k}. \nonumber \\
-&= z^{-2}\sum_{n=1}^{\infty} z_n^{-2} \sum_{k=0}^{\infty} \frac{-(z/z_n)^{k}}{k+2}
+&=  \sum_{n=1}^{\infty} \sum_{k=2}^{\infty} \frac{-(z/z_n)^{k}}{k} \nonumber \\
+&= z^{-2}\sum_{n=1}^{\infty} z_n^{-2} \sum_{k=0}^{\infty} \frac{-(z/z_n)^{k}}{k+2}.
 \end{align}
 The absolute value of the second infinite sum is always bounded by $\log\abs{1-z/z_n}$, so we have 
 \begin{align}

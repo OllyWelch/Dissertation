@@ -1,5 +1,5 @@
 \section{Definition and Connection to Primes}
-To study the distribution of primes, we must first define a very important class of functions, known as Dirichlet L-functions. These are defined for a complex variable, whose standard notation is $s = \sigma + i t$. 
+To study the distribution of primes, we must first define a very important class of function, known as Dirichlet L-functions. These are defined for a complex variable, whose standard notation is $s = \sigma + i t$. Unless otherwise stated, we follow \cite{ireland_rosen_1990} here.
 \begin{definition}
 \label{LFunctionDefinition}
 For $\sigma > 1$, we define the L-function
@@ -8,7 +8,7 @@ For $\sigma > 1$, we define the L-function
 \end{equation}
 where $\chi(n)$ is a so-called Dirichlet character of modulus $q \in \mathbb{N}$.
 \end{definition}
-The Dirichlet characters modulo $q$ are another special class of functions which are interesting in their own right. They are defined as follows.
+The Dirichlet characters modulo $q$ are another special class of function which are interesting in their own right. They are defined as follows.
 \begin{definition}
 \label{DirichletCharacterDefinition}
 For a given $q \in \mathbb{N}$, a Dirichlet character $\chi$ of modulus $q$ is a complex function from the integers satisfying:
@@ -18,7 +18,7 @@ For a given $q \in \mathbb{N}$, a Dirichlet character $\chi$ of modulus $q$ is a
     \item $\chi(n) \neq 0$ if and only if $n$ is coprime to $q$.
 \end{itemize}
 \end{definition}
-For the time being, we will not concern ourselves with why these characters are so important, but simply use their properties to exhibit an interesting connection of L-functions to the primes. L-functions are generalisations of the famous \textit{Riemann Zeta-Function},
+For the time being, we will not concern ourselves with why these characters are so important, but simply use their properties to exhibit the connection of L-functions to the primes. L-functions are generalisations of the famous \textit{Riemann Zeta-Function},
 \begin{equation}
     \zeta(s) \coloneqq \sum_{n=1}^{\infty} n^{-s}, \quad (\sigma > 1).
 \end{equation}
@@ -26,7 +26,7 @@ First note that $\zeta(s)$ is uniformly convergent to an analytic function on $\
 \begin{equation}
     \int_{1}^{\infty} x^{-1 - \varepsilon} \mathrm{d}x < \infty, \nonumber 
 \end{equation}
-the integral test implies convergence of $\sum_{n} n^{-1-\varepsilon}$. We may therefore bound the absolute value of $\zeta(s)$ on $\sigma > 1$ by this convergent sum independent of $s$, so by Weierstrass's M-test we have uniform convergence. It is then an  obvious consequence of Morera's theorem that $\zeta(s)$ is holomorphic: clearly the partial sums are holomorphic, so their integral on any closed contour is zero, which implies their uniform limit also evaluates to zero when integrated on any closed contour. Moreover, L-functions are also holomorphic on this region. We may use the same bound as for $\zeta(s)$, following easily the fact that $\abs{\chi(n)} \leq 1$ for all integers $n$, which will be shown in the next section. We may now elucidate the connection of these functions to the primes via the following theorem.
+the integral test implies convergence of $\sum_{n} n^{-1-\varepsilon}$. We may therefore bound the absolute value of $\zeta(s)$ on $\sigma > 1$ by this convergent sum independent of $s$, so by Weierstrass's M-test we have uniform convergence. It is then a consequence of Proposition~\ref{UniformLimitHolo} (see appendix - we will use this result implicitly from now) that $\zeta(s)$ is holomorphic on this region. L-functions are also holomorphic on this region: we may use the same bound as for $\zeta(s)$, following easily the fact that $\abs{\chi(n)} \leq 1$ for all integers $n$, which will be shown in the next section. We may now elucidate the connection of these functions to the primes via the following theorem.
 \begin{theorem}\label{sumsAndProducts}
 Let $f : \mathbb{N} \rightarrow \mathbb{C}$ be a multiplicative function. That is, for every coprime $m, n \in \mathbb{N}$, we have $f(mn) = f(m)f(n)$. Suppose that $\sum_{n=1}^{\infty}\abs{f(n)} < \infty$. Then
 \begin{equation}
@@ -35,7 +35,7 @@ Let $f : \mathbb{N} \rightarrow \mathbb{C}$ be a multiplicative function. That i
 where the infinite product is over every prime number $p$.
 \end{theorem}
 \begin{proof}
-Using the fact that $\sum_{n=1}^{\infty}\abs{f(n)} < \infty$, we may expand the brackets of terms in the product over finitely many primes. This gives
+We refer to \cite{ivic_2003}. Using the fact that $\sum_{n=1}^{\infty}\abs{f(n)} < \infty$, we may expand the brackets of terms in the product over finitely many primes. This gives
 \begin{equation}
 \prod_{p \leq x} \left(1 + f(p) + \dots \right) = \sum_{n \in S_x} f(n). \nonumber
 \end{equation} 
