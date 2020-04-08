@@ -1,2 +1,119 @@
-\section{The Numbers $N(T)$ and $N(T, \chi)$}
-We now turn our attention to formulas of the type conjectured by Riemann and proved by von Mangoldt. These concern the number of zeros of L-functions below a given height in the critical strip - essentially estimating how frequently the non-trivial zeros occur. 
+\section{The Numbers \texorpdfstring{$N(T)$}{Lg} and \texorpdfstring{$N(T, \chi)$}{Lg}}
+We now turn our attention to formulas of the type stated by Riemann and proved by von Mangoldt. These concern the number of zeros of L-functions below a given height in the critical strip - essentially estimating how frequently the non-trivial zeros occur. We first study the function $N(T, \chi)$, defined as the number of zeros of $L(s, \chi)$ in the rectangle $0 < \sigma < 1$, $\abs{t} < T$. It suffices to study the case of $\chi$ primitive and for now we shall assume $q > 1$. We proceed by the principle of argument on the function $\xi(s, \chi)$, over the rectangle $R$ with vertices at 
+\begin{equation}
+    5/2 - iT, \quad 5/2 + iT, \quad -3/2 + iT, \quad -3/2 - iT, \nonumber
+\end{equation}
+traversed anti-clockwise. Since $\xi(s, \chi)$ is holomorphic inside this region, its change in argument is precisely the number of zeros of the function (with multiplicity). Moreover, since the only zeros of this function lie at non-trivial zeros of $L(s, \chi)$, we have that
+\begin{equation}
+\label{ArgumentPrinciple}
+    2\pi N(T, \chi) = \Delta_{R}\arg \xi(s, \chi),
+\end{equation}
+where the right hand represents the total change in argument of $\xi(s, \chi)$ over the rectangle $R$. Split the rectangle into two halves along the line $\sigma = 1/2$, and call the right half $L$. By the functional equation, we have
+\begin{equation}
+    \arg \xi(\sigma + it, \chi) = c + \arg \xi(1 - \sigma - it, \overline{\chi}) = c + \arg\overline{\xi(1 - \sigma + it, \chi)}, \nonumber
+\end{equation}
+so that the change in argument along each half of the rectangle is the same ($c$ here is independent of $s$). Thus it suffices to consider $L$. We have
+\begin{equation}
+\label{ArgumentPiTerm}
+    \Delta_{L} \arg \left(\frac{q}{\pi}\right)^{(s + a)/2} = \arg \left(\frac{q}{\pi}\right)^{iT/2} - \arg \left(\frac{q}{\pi}\right)^{-iT/2} = T\log \left(\frac{q}{\pi} \right). \nonumber
+\end{equation}
+In order to estimate the change in argument of the $\Gamma(s/2 + a/2)$ term, we must use Stirling's formula (Theorem~\ref{StirlingFormula}) which states that
+\begin{equation}
+    \log \Gamma(s) = (s - \frac{1}{2}) \log s - s + \frac12 \log2\pi + O(\abs{s}^{-1}). \nonumber
+\end{equation}
+We have that
+\begin{equation}
+    \Delta_{L} \arg \Gamma\left(\frac{1}{2}(s/2 + a/2)\right) = \mathfrak{I}\log \Gamma\left(\frac{\alpha}{2}\right) - \mathfrak{I}\log \Gamma\left(\overline{\frac{\alpha}{2}}\right), \nonumber
+\end{equation}
+upon setting $\alpha = \frac12 + a + iT$, by the properties of complex logarithm. Notice that changing $s$ for $\overline{s}$ in Stirling's formula simply gives its complex conjugate (with the same error term), so that
+\begin{equation}
+    \log \Gamma(z) - \log\Gamma(\overline{z}) = 2i \mathfrak{I} \left( (z - \frac12)\log z - z + \frac12\log2\pi \right) + O(\abs{z}^{-1}). \nonumber 
+\end{equation}
+Setting $z = \alpha/2$ into this expression, we have
+\begin{align}
+\label{ArgumentGamma}
+    \Delta_{L}\arg \Gamma(s/2 + a/2) &= \mathfrak{I}\left[ (\alpha - 1) \log \frac{\alpha}{2} - \alpha + \log 2\pi \right] + O(1) \nonumber \\
+    &= T \log \frac{T}{2} - T + O(1).
+\end{align}
+It therefore remains to estimate $\Delta_{L}\arg L(s, \chi)$ and we aim to prove that it is $O(\log q T)$. It suffices to consider $\arg L(\frac12 + iT, \chi)$. To do this, we will make use of the following useful lemma. 
+\begin{lemma}
+If $\rho = \beta + i\gamma$ are the non-trivial zeros of $L(s, \chi)$ where $\chi$ is primitive, then for all real $t$, we have
+\begin{equation}
+    \sum_{\rho}\frac{1}{1 + (t - \gamma)^{2}} = O(\mathcal{L}) \nonumber
+\end{equation}
+where $\mathcal{L} \coloneqq \log \left(q(\abs{t} + 2)\right)$.
+\end{lemma}
+\begin{proof}
+Recall (\ref{LOverLBound}) of the previous section, where we had
+\begin{equation}
+    -\mathfrak{R}\frac{L'(s, \chi)}{L(s, \chi)} < c_1 \mathcal{L} - \sum_{\rho}\mathfrak{R}\frac{1}{s - \rho}. \nonumber
+\end{equation}
+Set $s = 2 + it$. On this line $\abs{L'/L}$ is bounded by an absolutely convergent sum independent of $t$, so this term may be dispensed of in the equation above to give
+\begin{equation}
+    \sum_{\rho}\mathfrak{R}\frac{1}{(2 + it) - \rho} \ll \mathcal{L}. \nonumber
+\end{equation}
+Moreover, we have
+\begin{equation}
+    \mathfrak{R}\frac{1}{(2 + it) - \rho} = \frac{(2 - \beta)}{(2 - \beta)^{2} + (t - \gamma)^{2}} \gg \frac{1}{1 + (t - \gamma)^{2}}. \nonumber
+\end{equation}
+In conclusion, 
+\begin{equation}
+    \sum_{\rho}\frac{1}{1 + (t - \gamma)^{2}} = O(\mathcal{L}). \nonumber
+\end{equation}
+\end{proof}
+Now, two conclusions are immediate from this lemma. First, the number of terms satisfying $\abs{t - \gamma} < 1$ is of order at most $\mathcal{L}$, since if the terms of the sum are all $O(1)$, the number of terms must be at most $O(\mathcal{L})$. Secondly, the sum over zeros with $\abs{t - \gamma} \geq 1$ is also $O(\mathcal{L})$ for the same reason. Now, it follows that 
+\begin{equation}
+\label{PartialLRestrictedSum}
+    \frac{L'(s, \chi)}{L(s, \chi)} = \sum_{\rho: \ \abs{t - \gamma} < 1} \frac{1}{s - \rho} + O(\mathcal{L}).
+\end{equation}
+To see this, we use the equation (\ref{LPartialFraction}). Setting $s = 2 + it$ and subtracting from the original equation, we have
+\begin{equation}
+    \frac{L'(s, \chi)}{L(s, \chi)} - \frac{L'(2 + it, \chi)}{L(2 + it, \chi)} = F(s) + \sum_{\rho} \left(\frac{1}{s - \rho} - \frac{1}{2 + it - \rho}\right), \nonumber
+\end{equation}
+where $F(s)$ is a term involving $\Gamma'/\Gamma$, which by Stirling's formula is essentially $O(\mathcal{L})$. As in the proof of the previous lemma, $L'(2 + it, \chi)/L(2 + it, \chi)$ is $O(1)$, so we have
+\begin{equation}
+    \frac{L'(s, \chi)}{L(s, \chi)} = \sum_{\rho}\left(\frac{1}{s - \rho} - \frac{1}{2 + it - \rho}\right) + O(\mathcal{L}). \nonumber
+\end{equation}
+It remains to estimate the sum. First, consider the case when $\abs{t - \gamma} \geq 1$. We have
+\begin{equation}
+    \abs{s - \rho}^{2} \geq (t - \gamma)^{2}, \quad \abs{2 + it - \rho}^{2} \geq (t - \gamma)^{2}, \nonumber
+\end{equation}
+and we may take square roots while maintaining the inequality. Thus
+\begin{equation}
+    \abs{\frac{1}{s - \rho} - \frac{1}{2 + it - \rho}} = \frac{2 - \sigma}{\abs{s - \rho}\abs{2 + it - \rho}} \leq \frac{3}{(t - \gamma)^{2}} \ll \frac{1}{1 + (t - \gamma)^{2}}, \nonumber
+\end{equation}
+so by the previous lemma, the sum over these terms is $O(\mathcal{L})$. When $\abs{t - \gamma} < 1$, we have $\abs{2 + it - \rho} \geq 1$, and the number of terms in the sum is $O(\mathcal{L})$ as discussed before. Therefore
+\begin{equation}
+    \sum_{\rho: \abs{t - \gamma} < 1} \left(\frac{1}{s - \rho} - \frac{1}{2 + it - \rho} \right) = \sum_{\rho: \abs{t - \gamma} < 1} \frac{1}{s - \rho} + O(\mathcal{L}). \nonumber
+\end{equation}
+We therefore put everything together to give (\ref{PartialLRestrictedSum}). We may now estimate $\Delta_{L}\arg L(s, \chi)$. For the vertical line from $5/2 - it$ to $5/2 + it$, by (\ref{LoverLExplicit}) we have
+\begin{equation}
+    \Delta \arg L(s, \chi) = \mathfrak{I} \int_{5/2 - it}^{5/2 + it} \frac{L'(s, \chi)}{L(s, \chi)}\mathrm{d}s = \mathfrak{I}\left[\sum_{n=1}^{\infty} \frac{\chi(n)\Lambda(n)}{n^{s} \log n} \right]_{5/2 - it}^{5/2 + it} = O(1). \nonumber
+\end{equation}
+For the remaining line segments, we use (\ref{PartialLRestrictedSum}), giving
+\begin{equation}
+    \Delta\arg L(s, \chi) = \mathfrak{I}\int_{1/2 \pm it}^{5/2 \pm it} \frac{L'(s, \chi)}{L(s, \chi)}\mathrm{d}s = \sum_{\rho: \abs{t - \gamma} < 1} \mathfrak{I} \int_{1/2 \pm it}^{5/2 \pm it} (s - \rho)^{-1} \mathrm{d}s + O(\mathcal{L}). \nonumber 
+\end{equation}
+Each integral inside the sum is given by $\Delta \arg (s - \rho)^{-1}$ along each of the segments, which is $O(1)$ as it is bounded by $\pi$. There are also $O(\mathcal{L})$ terms in the sum by the above, so the change in argument of $L'/L$ over these segments is $O(\mathcal{L})$. Putting everything together, we have
+\begin{equation}
+\label{ArgumentLFunction}
+    \Delta_{L} \arg L(s, \chi) = O(\mathcal{L}).
+\end{equation}
+We now restrict to a fixed $t = T \geq 2$. Then, putting together (\ref{ArgumentPiTerm}), (\ref{ArgumentGamma}), and (\ref{ArgumentLFunction}), we have
+\begin{equation}
+    \Delta_{L}\arg \xi(s, \chi) = T\log \frac{qT}{2\pi} - T + O(\log qT). \nonumber
+\end{equation}
+In conclusion, using (\ref{ArgumentPrinciple}), and the fact that the contribution over $R$ is twice that over $L$, we have
+\begin{equation}
+\label{vonMangoldtLFunction}
+    \frac12 N(T, \chi) = \frac{T}{2\pi} \log \frac{q T}{2 \pi} - \frac{T}{2 \pi} + O(\log qT).
+\end{equation}
+The argument is easily modified for $q = 1$, and the function $N(T)$, defined as the number of zeros of $\zeta(s)$ in the region $0 < \sigma < 1$, $0 \leq t \leq T$. Note that it is sufficient to consider the upper half-plane in this case, as $\zeta(s)$ is symmetric about the real-axis. The only modification required is a multiplicative factor of $s(s - 1)/2$ in the function $\xi(s, \chi)$ so that it is entire, and its change in argument gives only zeros (and not poles). The change of argument of this factor over the right-half of the rectangle is easily calculated to be essentially
+\begin{equation}
+    \pi + O(T^{-1}), \nonumber
+\end{equation}
+so can be ignored, as it is lower order than the error term in (\ref{vonMangoldtLFunction}), with which we recover the famous Riemann von-Mangoldt formula, 
+\begin{equation}
+    N(T) = \frac{T}{2\pi} \log \frac{T}{2 \pi} - \frac{T}{2 \pi} + O(\log T), \nonumber
+\end{equation}
+for $T \geq 2$. Note that the factor of $1/2$ in the more general formula above is for ease of comparison with this well-established formula for $\zeta(s)$. We now have sufficient information with regard to the non-trivial zeros of L-functions (and in particular $\zeta(s)$) in order to proceed, and prove at least one landmark result regarding the distribution of primes. We now prove formulae such as (\ref{ExpicitPsiFormula}), which expose the key relation of these zeros to the distribution of prime numbers. 

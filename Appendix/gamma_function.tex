@@ -106,4 +106,12 @@ and
 \label{asymmetricL}
     L(1-s, \chi) = \varepsilon(\chi) 2^{1 - s} \pi^{-s} q^{s - 1/2} \cos \frac{\pi(s - a)}{2} \Gamma(s) L(s, \overline{\chi}),
 \end{equation}
-where $\abs{\varepsilon(\chi)} = 1$. 
+where $\abs{\varepsilon(\chi)} = 1$. Finally, we have Stirling's approximation to the Gamma function, as given in \cite{davenport}.
+\begin{theorem}
+\label{StirlingFormula}
+(Stirling's Formula) The formula
+\begin{equation}
+    \log\Gamma(s) = (s - \frac12)\log s - s + \frac12 \log 2\pi + O(\abs{s}^{-1}) \nonumber 
+\end{equation}
+is valid as $\abs{s} \rightarrow \infty$, where $-\pi + \delta < \arg s < \pi - \delta$ for some fixed $\delta > 0$. 
+\end{theorem}

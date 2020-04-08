@@ -1,7 +1,8 @@
-\section{A Zero-Free Region for $L(s, \chi)$}
+\section{A Zero-Free Region for \texorpdfstring{$L(s, \chi)$}{Lg}}
 We now consider L-functions of a non-trivial character, since by (\ref{LZetaRelation}) a zero-free region for those of trivial character follows immediately from that of $\zeta(s)$. An added complication in this case is the value of $q$, as such regions will depend on the size of this modulus. Suppose $\chi$ is a non-trivial character of modulus $q \geq 3$, and that $t \geq 0$. It is enough to consider non-negative $t$, since any zero of $L(s, \chi)$ with $t < 0$ is a zero of $L(s, \overline{\chi})$ with $t > 0$. Logarithmic differentiation of the product formula gives 
 \begin{equation}
-    \frac{L'(s, \chi)}{L(s, \chi)} = \sum_{n=1}^{\infty}\Lambda(n) n^{-\sigma}\chi(n)e^{-i t \log n}, \nonumber
+\label{LoverLExplicit}
+    -\frac{L'(s, \chi)}{L(s, \chi)} = \sum_{n=1}^{\infty}\Lambda(n) n^{-\sigma}\chi(n)e^{-i t \log n},
 \end{equation}
 which is obtained in the same way as for $\zeta(s)$, but with an added factor of $\chi(n)$. Owing to the fact that $\chi(n)$ is a $\phi(q)$-th root of unity (as long as $n$ and $q$ are coprime), we may write $\mathfrak{R}\chi(n)e^{-i t \log n}$ as $\cos\theta$, for some $\theta$. Replacing $\chi$ by $\chi^{2}$ doubles the contribution to the argument from $\chi$ (as it is a root of unity). Therefore $\mathfrak{R}\chi^{2}(n)e^{-2 i t \log n} = \cos 2\theta$. Moreover, replacing $\chi$ by $\chi_0$ and $t$ by zero produces $\cos 0 = 1$, so we may write an analogous inequality to (\ref{LinCombZetaInequality}) involving L-functions: namely
 \begin{equation}
