@@ -48,6 +48,8 @@
 \renewcommand{\appendixtocname}{\appendixname}
 \noappendicestocpagenum
 
+
+
 % Add links to sections and chapters
 \usepackage{hyperref}
 \hypersetup{
@@ -69,41 +71,65 @@
 \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
 \makeatother
 
+\setlength{\footnotesep}{\baselineskip}
+
 %Theorems and equation numbering
 \numberwithin{equation}{chapter}
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{Quote}[theorem]{Quote}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 
+\newlength{\drop}
+\newcommand*{\plogo}{\includegraphics[width=0.5\linewidth]{University_of_Durham_logo.png}}
+\newcommand*{\titleUL}{\begingroup% University of Liege
+\drop=0.2\textheight
+\begin{center}
+% University logo
+{\LARGE \plogo}\\[\drop]
+\rule{\textwidth}{2pt}\par
+\vspace{0.5\baselineskip}
+{\huge\bfseries The Distribution of Prime Numbers\\[1.5\baselineskip]
+\huge Oliver Welch}\\[0.5\baselineskip]
+\rule{\textwidth}{2pt}\par
+\vspace{3\baselineskip}
+{\LARGE Supervisor: Dr. Pankaj Vishe}\\[1.5\baselineskip]
+{\LARGE \today}
+\end{center}
+\endgroup}
 
-\title{The Distribution of Prime Numbers in Arithmetic Progressions}
-\author{Olly Welch}
+
+\title{The Distribution of Prime Numbers}
+\author{Oliver Welch}
 
 \begin{document}
 
 % TITLE PAGE
-
 \begin{titlepage}
-	\centering
-	\includegraphics[width=0.35\textwidth]{University_of_Durham_logo.png}\par\vspace{1cm}
-	\vspace{1cm}
-	{\LARGE The Distribution of Prime Numbers in Arithmetic Progressions\par}
-	\vspace{1.5cm}
-	{\Large Olly Welch\par}
-		\vspace{0.5cm}
-	{\large Supervisor:
-	Dr.~Pankaj Vishe}
-
-	\vfill
-
-% Bottom of the page
-	{\large \today\par}
+\titleUL
 \end{titlepage}
+
+% ABSTRACT AND PLAGIARISM DECLARATION
+\clearpage
+\hspace{0pt}
+\vfill
+\begin{center}
+    {\Large \textbf{Abstract}} \\ \vspace{1em}
+\end{center}
+
+We start by motivating the study of prime numbers on a `global scale', introducing various prime-counting problems. We then begin to tackle these problems with analytic methods, proving Dirichlet's theorem using the basic theory of L-functions and Dirichlet characters. With the duality between the zeros of L-functions in the complex plane and the primes as motivation, we move on to finding the analytic continuation of L-functions. This allows us to study the positioning and frequency of zeros in the `critical strip'. Using this knowledge, we prove two more landmark results in number theory: the prime number theorem, and the prime number theorem for arithmetic progressions. Finally, we put our results into perspective by investigating primes in arithmetic progressions on a more local level. We highlight peculiar biases that occur, providing intuitive reasons for this where possible. 
+
+\vspace{1cm}
+
+{\small\textit{This piece of work is a result of my own work except where it forms an assessment based on group project work. In the case of a group project, the work has been prepared in collaboration with other members of the group. Material from the work of others not involved in the project has been acknowledged and quotations and paraphrases suitably indicated.}}
+\vfill
+\hspace{0pt}
 
 %TABLE OF CONTENTS
 \tableofcontents
@@ -114,6 +140,7 @@
 
 % INTRODUCTION
 \chapter{Introduction}
+\input{Chapter1/introduction}
 
 % DIRICHLET L-FUNCTIONS
 \chapter{Dirichlet L-Functions}
@@ -125,6 +152,7 @@
 % ANALYTIC CONTINUATION
 \chapter{Analytic Continuation and the Functional Equations}
 \input{Chapter3/section1}
+\input{Chapter3/section2}
 \input{Chapter3/section3}
 
 % ZEROS OF ZETA AND L
@@ -142,10 +170,10 @@
 \input{Chapter5/section2}
 \input{Chapter5/section3}
 \input{Chapter5/section4}
-\input{Chapter5/section5}
 
 % CONCLUSIONS
 \chapter{Conclusions}
+\input{Chapter6/conclusion}
 
 % APPENDICES %
 \begin{appendices}
@@ -165,7 +193,17 @@
 \end{appendices}
 
 % BIBLIOGRAPHY
-\bibliographystyle{plain}
+\bibliographystyle{ieeetr}
 \bibliography{bibliography}
+
+\clearpage
+\begin{center}\bfseries\Large  COVID19 IMPACT SHEET\\Project 3/4\\Department of Mathematical Sciences\end{center}\vspace{1em}
+\noindent\textbf{Student Name:}  Olly Welch \\[1em]
+\noindent\textbf{Year group (3/4):}  3 \\[1em]
+\noindent\textbf{Project Topic:}  Introduction to Analytic Number Theory \\[1em]
+\noindent\textbf{Project supervisor(s):}  Pankaj Vishe \\[1em]
+\noindent\textbf{Did Covid19 prevent you from completing part of your project report (Yes/No):} No \\[1em]
+\noindent\textbf{If `Yes', please indicate what it prevented you from doing (max 100 words):} N/A \\[1em]
+\noindent\textbf{Please summarise the action taken in response (max 100 words):} N/A
 
 \end{document}

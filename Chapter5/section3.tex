@@ -1,1 +1,68 @@
-\section{Siegel's Theorem}
+\section{The Prime Number Theorem for Arithmetic Progressions}
+We use the equation (\ref{PsiChiContourIntegral}) as a starting point once again, but this time for general L-functions of modulus $q \geq 3$. Let $T \geq 2$ be a fixed value, and let $\mu = 1 - c/\log q T$, such that L-functions of all characters, with the exception of at most one real character, have no zeros in the region $\sigma \geq \mu$. We denote the exceptional real character by $\chi_1$ (if it exists), and such an exceptional real zero as $\beta_1$. For all characters $\chi$ that are not $\chi_1$ or $\chi_0$, the integrand in (\ref{PsiChiContourIntegral}) has no residues inside the rectangle with vertices at $\mu \pm iT$, $\alpha \pm iT$, where $\alpha$ is once again $1 + (\log x)^{-1}$. Therefore, for $\chi$ not equal to $\chi_1$ or $\chi_0$:
+\begin{equation}
+    \psi(x, \chi) = O\left(\int_{\alpha \pm iT}^{\mu \pm iT} \left\{-\frac{L'(s, \chi)}{L(s, \chi)} \right\}\frac{x^{s}}{s} \mathrm{d} s \right) + O\left(\int_{\mu - iT}^{\mu + iT} \left\{-\frac{L'(s, \chi)}{L(s, \chi)} \right\}\frac{x^{s}}{s} \mathrm{d} s \right) + O\left(\frac{x \log^{2}x}{T} \right). \nonumber
+\end{equation}
+In the case of $\chi_0$, we once again pick up a residue of $x$ at $s = 1$ (analogously to the case of $\zeta(s)$) while for $\chi_1$, we pick up a residue of $-x^{\beta_1}/\beta_1$, corresponding to the real zero of $L(s, \chi)$ which lies inside the rectangle given. It then remains to estimate the `over-counted' integrals as in the proof of the prime number theorem. The arguments are completely analogous, with the exception of the slightly different estimate for $L'/L$, given for $-1 < \sigma < 2$ as 
+\begin{equation}
+    -\frac{L'(s, \chi)}{L(s, \chi)} = O(\log^{2} q T), \nonumber
+\end{equation}
+which is deduced from (\ref{PartialLRestrictedSum}) in the same way as the estimate for $\zeta'/\zeta$. Thus, we have the analogous result to previously that
+\begin{equation}
+    \psi(x, \chi) = O(\frac{x \log^{2} x}{T}) + O(\frac{x \log^{2}qT}{T}) + O(x^{\mu} \log^{3} qT), \nonumber
+\end{equation}
+with the addition of any residues where necessary. We now ensure that $q$ is negligible compared to the effect of $T$, by ensuring $q \leq \exp(C\sqrt{\log x})$ for some positive constant $C$, then setting $T = \exp(C\sqrt{\log x})$. It then follows in exactly the same manner as before that
+\begin{align}
+    \psi(x, \chi) = \left\{\begin{array}{cc} 
+        x & \ \textrm{if} \ \chi = \chi_0, \\
+        -\frac{x^{\beta_1}}{\beta_1} & \ \textrm{if} \ \chi = \chi_1, \\
+        0 & \ \textrm{otherwise.}
+    \end{array}\right\} + O(x \exp \{-C' \sqrt{\log x}\} ), \nonumber
+\end{align}
+where $C'$ is an absolute constant depending only on $C$. Now, recall the relation in (\ref{PsiSumRelation}), that for $a$ coprime to $q$,
+\begin{equation}
+    \psi(x; q, a) = \frac{1}{\phi(q)} \sum_{\chi} \overline{\chi}(a) \psi(x, \chi). \nonumber
+\end{equation}
+Substituting the asymptotic formula for $\psi(x, \chi)$, we therefore have
+\begin{equation}
+    \psi(x; q, a) = \frac{x}{\phi(q)} - \frac{\overline{\chi}_1(a) x^{\beta_1}}{\phi(q) \beta_1} + O(x \exp \{-C' \sqrt{\log x}\} ). \nonumber
+\end{equation}
+We now invoke the corollary to Siegel's theorem on the zero $\beta_1$, in order to absorb it into the error term. For a given $\varepsilon > 0$, we have a constant $C(\varepsilon)$ such that
+\begin{equation}
+    \beta_1 < 1 - C(\varepsilon) q^{-\varepsilon}. \nonumber
+\end{equation}
+This gives us that
+\begin{equation}
+\label{SiegelZeroBound}
+    x^{\beta_1} < x x^{-C(\varepsilon) q^{-\varepsilon}} = x \exp \{ -C(\varepsilon) q^{-\varepsilon} (\log x) \}. 
+\end{equation}
+Now, choose a large value of $N$ such that 
+\begin{equation}
+    \label{qCondition}
+    q \leq (\log x)^{N}, 
+\end{equation}
+and take $\varepsilon = (2N)^{-1}$. Then, $-q^{-\varepsilon} \leq -(\log x)^{-1/2}$, which substituted into (\ref{SiegelZeroBound}) gives
+\begin{equation}
+    x^{\beta_1} \ll x \exp \{ -C(N) \sqrt{\log x} \}, \nonumber
+\end{equation}
+where $C$ is a constant depending only on $N$. We therefore may absorb the term involving $x^{\beta}$ into an error term which depends only on $N$, giving the key result
+\begin{equation}
+\label{PsiChiAsymptotic}
+    \psi(x; q, a) = \frac{x}{\phi(q)} + O(x \exp \{-C'(N) \sqrt{\log x} \})
+\end{equation}
+As in the case of $\psi(x)$, we have the relation
+\begin{equation}
+    \pi(x; q, a) = \frac{\psi(x; q, a)}{\log x} + \int_{2}^{x} \frac{\psi(t; q, a)}{t \log^{2} t} \mathrm{d} t + O(x^{1/2}), \nonumber
+\end{equation}
+which upon substituting (\ref{PsiChiAsymptotic}) gives us the following theorem.
+\begin{theorem}
+(The Prime Number Theorem for Arithmetic Progressions) If $a$ is coprime to a given modulus $q$, then subject to the condition (\ref{qCondition}), we have
+\begin{equation}
+    \pi(x; q, a) = \frac{\mathrm{Li}(x)}{\phi(q)} + O(x\exp\{-C(N) \sqrt{\log x} \}), \nonumber
+\end{equation}
+where $C$ is an absolute constant depending only on $N$. In particular,
+\begin{equation}
+    \pi(x; q, a) \sim \frac{\mathrm{Li}(x)}{\phi(q)}. \nonumber
+\end{equation}
+\end{theorem}
+We have therefore completed the main goal of this report, characterising the `global' behaviour of prime numbers in arithmetic progressions in a concrete way. An important thing to notice is that no distinction is made between different residue classes coprime to $q$: asymptotically, they all grow at the same rate, suggesting that the set of all primes is effectively evenly distributed among arithmetic progressions. However, sometimes asymptotic formulas do not tell the whole story and are merely an indication of the global behaviour of these progressions. Indeed, despite the `even-splitting' nature among arithmetic progressions, we will see that further analysis shows a certain bias of primes towards particular progressions over others. 

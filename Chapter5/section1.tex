@@ -1,1 +1,166 @@
-\section{The Explicit Formula for \texorpdfstring{$\psi(x)$}{Lg} and \texorpdfstring{$\psi(x, \chi)$}{Lg}}
+\section{The Prime Number Theorem}
+We now move on to showing the connections of $\psi(x)$ and $\psi(x, \chi)$ to non-trivial zeros of certain L-functions. Then, with the knowledge of these zeros gained in the previous section, we will produce asymptotic formulas for these functions, and hence asymptotic formulas for the prime counting functions. The general idea is to use the following lemma \cite[Lemma~4]{heath-brown_2005}. 
+\begin{lemma}
+\label{IntegralLemma}
+Let $y > 0$, $c > 1$ and $T \geq 1$. Defining
+\begin{equation}
+I(y, T) = \frac{1}{2 \pi i} \int_{c - iT}^{c + iT} \frac{y^{s}}{s} \mathrm{d} s, \nonumber
+\end{equation}
+we have
+\[
+   I(y, T) = \left\{\begin{array}{lr}
+        0, &  0< y< 1\\
+        1, &  y > 1\\
+        \end{array}\right\} + O\left(\frac{y^{c}}{T\abs{\log y}}\right).
+  \]
+\end{lemma}
+\begin{proof}
+We begin with the case $0 < y < 1$. Here, we evaluate the integral using the path $c - iT \rightarrow N-iT \rightarrow N+iT \rightarrow c + iT$, letting $N \rightarrow \infty$. This is equivalent, since the integrand is holomorphic on the right half-plane. Consider the line segment from $N - iT \rightarrow N+iT$ first. Using the estimation lemma, we have
+\begin{align}
+\abs{\int_{N-iT}^{N+iT} \frac{y^{s}}{s} \mathrm{d} s} &\leq 2T \sup_{\theta \in [0,1]} \abs{\frac{y^{N + iT(2\theta - 1)}}{N + iT(2\theta - 1)}} \nonumber \\  
+& \leq 2T \frac{y^N}{N - T} \rightarrow 0 \ \textrm{as} \ N \rightarrow \infty. \nonumber
+\end{align}
+Therefore, it is enough to consider the other two segments as $N \rightarrow \infty$. We have
+\begin{align}
+\abs{\int_{c \pm iT}^{N \pm iT} \frac{y^s}{s} \mathrm{d} s} \ll \int_{c}^{N} \frac{y^{\theta}}{T} \mathrm{d} \theta \ll \frac{y^{c}}{T\abs{\log y}}. \nonumber
+\end{align}
+which implies the first result. Now suppose $y > 1$. Consider the closed contour $\Gamma$, defined to be the rectangle with vertices at $-N-iT, -N+iT, c+iT, c - iT$. By Cauchy's residue theorem, we have that 
+\begin{equation}
+\frac{1}{2\pi i}\oint_{\Gamma} \frac{y^s}{s} \mathrm{d} s = \textrm{Res}_{s = 0}\left(\frac{y^s}{s}\right) = 1. \nonumber
+\end{equation}
+Denote the path $c - iT \rightarrow -N-iT \rightarrow -N+iT \rightarrow c + iT$ by $\gamma$, then rearranging gives
+\begin{equation}
+\frac{1}{2\pi i} \int_{c-iT}^{c+iT} \frac{y^{s}}{s} \mathrm{d} s = 1 + \frac{1}{2\pi i}\int_{\gamma} \frac{y^{s}}{s} \mathrm{d} s. \nonumber
+\end{equation}
+The integral over $\gamma$ when $y > 1$ is completely analagous to the case when $0 < y < 1$, so
+\begin{equation}
+\int_{\gamma} \frac{y^s}{s} \mathrm{d} s = O\left( \frac{y^{c}}{T\abs{\log y}} \right), \nonumber
+\end{equation}
+and this gives the required result.
+\end{proof}
+The idea now is to use a slightly modified function as the integrand and apply this lemma. From now on we assume that $\chi$ is a primitive character modulo $q$. Using (\ref{LoverLExplicit}), we have for $x \notin \mathbb{N}$,
+\begin{align}
+    \frac{1}{2\pi i} \int_{c - iT}^{c + iT} \left\{-\frac{L'(s, \chi)}{L(s, \chi)} \right\} \frac{x^{s}}{s} \mathrm{d} s &= \frac{1}{2\pi i}\int_{c - iT}^{c + iT}\sum_{n=1}^{\infty}\chi(n)\Lambda(n) \frac{(x/n)^{s}}{s} \mathrm{d} s \nonumber \\
+    &= \sum_{n = 1}^{\infty} \chi(n) \Lambda(n) I(x/n, T) \nonumber \\
+    &= \psi(x, \chi) + O\left( \sum_{n=1}^{\infty} \chi(n)\Lambda(n) \frac{(x/n)^{c}}{T\abs{\log x/n}} \right).
+\end{align}
+Termwise integration is justified by the uniform convergence of the infinite sum representation of $L'/L$, and the last step applies the previous lemma: only terms with $n \leq x$ have $x/n > 1$, so the integral evaluates to $1$ on exactly these terms, with the same error for all terms in the sum. We now find a more useful estimate for the error term. Firstly, for $n < x/2$ or $n > 2x$, we have that $\abs{\log x/n} > \log 2$. Moreover, $\chi(n)$ always has modulus at most $1$, so for these terms
+\begin{align}
+\label{FirstErrorEstimate}
+    \sum_{\substack{n < x/2 \\ n > 2x}} \chi(n)\Lambda(n) \frac{(x/n)^{c}}{T\abs{\log x/n}} \ll \frac{x^{c}}{T}\sum_{n=1}^{\infty} \Lambda(n) n^{-c} = -\frac{x^{c}}{T} \frac{\zeta'(c)}{\zeta(c)}.
+\end{align}
+We now set $c = 1 + (\log x)^{-1}$, and use the estimate (\ref{ZetaOverZetaEstimate}). This implies that (\ref{FirstErrorEstimate}) is of order
+\begin{equation}
+    \frac{x^{c}}{T}\frac{1}{c - 1} \ll \frac{x \log x}{T}, \nonumber
+\end{equation}
+where we used that $x^{c} = x^{1 + 1/{\log x}} = e x \ll x$. Now, when $x/2 < n < 2x$, we must find a different estimate for the $\abs{\log x/n}$ term. Consider the function
+\begin{equation}
+    f(y) = \log y + \frac{1}{y} - 1, \nonumber
+\end{equation}
+defined for positive $y$. It is easy to check that its derivative is strictly negative when $0 < y < 1$, and strictly positive for $y > 1$. Thus it attains its minimum at $f(1) = 0$, so is non-negative for all positive $y$. It follows that 
+\begin{equation}
+    \log y \geq 1 - \frac{1}{y} \nonumber
+\end{equation}
+for all $y > 0$. We therefore apply this inequality. When $x/2 < n < x$, we have
+\begin{equation}
+    \abs{\log x/n} = \log x/n \geq 1 - \frac{n}{x} = \frac{x - n}{x} \geq \frac{\abs{x - n}}{2x}. \nonumber
+\end{equation}
+When $x < n < 2x$, we have
+\begin{equation}
+    \abs{\log x/n} = \log n/x \geq 1 - \frac{x}{n} = \frac{n - x}{n} \geq \frac{\abs{x - n}}{2x}. \nonumber
+\end{equation}
+Therefore we have the estimate $\abs{\log x/n} \geq \abs{x - n}/2x$ for all $x/2 < n < 2x$. The error term in this case is therefore of order
+\begin{equation}
+    \sum_{x/2 < n < 2x} \frac{x\Lambda(n)}{T\abs{x - n}} \ll \sum_{x/2 < n < 2x} \frac{x \log x}{T \abs{x - n}} \ll \frac{x \log x}{T} \int_{1}^{x} \frac{\mathrm{d}t}{t} = \frac{x \log^{2}x}{T}, \nonumber
+\end{equation}
+where we use estimation of the sum by an integral of the same type. Thus, putting all these estimates together gives 
+\begin{equation}
+\label{PsiChiContourIntegral}
+    \psi(x, \chi) = \frac{1}{2\pi i} \int_{c - iT}^{c + iT} \left\{ -\frac{L'(s, \chi)}{L(s, \chi)} \right\} \frac{x^{s}}{s} \mathrm{d} s + O\left(\frac{x \log^{2}x}{T} \right), 
+\end{equation}
+where $x \notin \mathbb{N}$, $c = 1 + 1/\log x$, and $T \geq 2$. The strategy to derive a formula such as the one in (\ref{ExpicitPsiFormula}) is to use the residue theorem to estimate this integral by the residues of the integrand, within a rectangle with vertices at
+\begin{equation}
+    c - iT, \quad c + iT, \quad -U + iT, \quad -U -  iT, \nonumber
+\end{equation}
+where $U$ is a large non-integer value. We then `add back' estimates for the integrals we over-counted, namely the integrals along the path $c - iT \rightarrow -U - iT \rightarrow -U + iT \rightarrow c + iT$. It is therefore clear how formulas such as (\ref{ExpicitPsiFormula}) are derived: the over-counted integrals are essentially lower order than $x\log^{2}x/T$, so can be ignored, which just leaves the residues of the integrand inside the rectangle of height $T$. We will not go into the details of this, but rather use a more refined method which leads more directly to the prime number theorem. Instead of extending the path of integration infinitely left, we only extend it the length of the zero-free region of $L(s, \chi)$ past the line $\sigma = 1$. This has the effect of only picking up the residues of the integrand at either $s=1$, or at an `exceptional' real zero of an L-function of real character, as mentioned at the end of section 4.5. To avoid the problem of a pole of this type, we shall only consider $\psi(x)$ for now. We have the analogous formula
+\begin{equation}
+\label{PsiIntegralFormula}
+    \psi(x) = \frac{1}{2\pi i} \int_{\alpha - iT}^{\alpha + iT} \left\{-\frac{\zeta'(s)}{\zeta(s)} \right\} \frac{x^{s}}{s} \mathrm{d} s + O\left(\frac{x \log^{2}x}{T} \right),
+\end{equation}
+for $x \notin \mathbb{N}$, $T \geq 2$ and $\alpha = 1 + (\log x)^{-1}$. Set $\mu = 1 - c/\log T$ as in Theorem~\ref{ZetaZeroFreeRegion}, and integrate anti-clockwise over the rectangle with vertices at $\mu \pm iT$, $\alpha \pm iT$. By virtue of Theorem~\ref{ZetaZeroFreeRegion}, $\zeta(s)$ is never zero inside this rectangle, so the only residue we pick up is at its pole at $s = 1$, which is
+\begin{equation}
+x \ \textrm{Res}_{s = 1}\left\{-\frac{\zeta'(s)}{\zeta(s)}\right\} = x. \nonumber    
+\end{equation}
+Integrating on this closed contour, we `over-count' the integrals over the path $\alpha - iT, \mu - iT, \mu + iT, \alpha + iT$. Therefore by the residue theorem,
+\begin{equation}
+    \psi(x) = x + O\left( \int_{\alpha \pm iT}^{\mu \pm iT}\left\{-\frac{\zeta'(s)}{\zeta(s)}\right\}\frac{x^{s}}{s}\mathrm{d}s \right) + O\left( \int_{\mu - iT}^{\mu + iT}\left\{-\frac{\zeta'(s)}{\zeta(s)}\right\}\frac{x^{s}}{s}\mathrm{d}s \right) + O\left( \frac{x\log^{2}x}{T}\right). \nonumber
+\end{equation}
+It is now a matter of estimating these integrals in terms of $T$ and $x$. The key to doing this effectively is to estimate $-\zeta'/\zeta$ on this region. Recall (\ref{PartialLRestrictedSum}) from the previous chapter. A similar formula holds for $\zeta(s)$ in the rectangle $-1 < \sigma < 2$, as long as $s = \sigma + iT$ does not coincide with a zero of $\zeta(s)$, namely
+\begin{equation}
+    \frac{\zeta'(s)}{\zeta(s)} = \sum_{\rho: \ \abs{T - \gamma} < 1} \frac{1}{s - \rho} + O(\log T). \nonumber
+\end{equation}
+By the results of the previous chapter restricted to the case of $\zeta(s)$, there are $O(\log T)$ terms in the sum. Ensuring that $T$ is chosen such that $\abs{\gamma - T} \gg (\log T)^{-1}$ for each zero $\rho = \beta + i \gamma$, we have that each term is also $O(\log T)$. This gives the useful estimate 
+\begin{equation}
+\label{ZetaOverZetaTEstimate}
+    \frac{\zeta'(s)}{\zeta(s)} = O(\log^{2}T),
+\end{equation}
+for $-1<\sigma<2$. We first apply this to the integrals along the horizontal paths, giving
+\begin{equation}
+    \int_{\alpha \pm iT}^{\mu \pm iT}\left\{-\frac{\zeta'(s)}{\zeta(s)}\right\}\frac{x^{s}}{s}\mathrm{d}s \ll \frac{\log^{2}T}{T} \abs{ \int_{\alpha}^{\mu} x^{\sigma} \mathrm{d}\sigma } \ll \frac{x^{\alpha} \log^{2} T}{T} \ll \frac{x \log^{2}T}{T}. \nonumber
+\end{equation}
+Here, the second inequality uses the fact that the length of the path of integration is certainly less than $1$, while the integrand achieves its maximum value at $x^{\alpha} = O(x)$. For the vertical path, we have
+\begin{equation}
+    \int_{\mu - iT}^{\mu + iT}\left\{-\frac{\zeta'(s)}{\zeta(s)}\right\}\frac{x^{s}}{s}\mathrm{d}s \ll \log^{2}T \int_{-T}^{T} \frac{x^{\mu}}{\abs{\mu + it}} \mathrm{d} t \ll x^{\mu} \log^{3} T. \nonumber
+\end{equation}
+Therefore, putting these estimates together gives
+\begin{align}
+    \psi(x) = x + O(\frac{x\log^{2}x}{T}) + O(\frac{x \log^{2} T}{T}) + O(x^{\mu} \log^{3} T). \nonumber
+\end{align}
+Ensuring that $T \leq x$ as we may allows us to combine the error terms to give
+\begin{equation}
+    \psi(x) = x + O\left(x\log^{3} x \{T^{-1} + x^{\mu - 1}\}\right). \nonumber
+\end{equation}
+We now make a specific choice of $T$: namely $T = \exp(\sqrt{\log x}) < x$. Note that this choice of $T$ gives
+\begin{equation}
+    x^{\mu - 1} = x^{- c/\log T} = \exp\left(-\frac{c \log x}{\log T} \right) = \exp\left( -c \sqrt{\log x} \right), \nonumber
+\end{equation}
+so that we have
+\begin{equation}
+    x \log^{3}x \{T^{-1} + x^{\mu - 1} \} \ll x \exp\{-\min(1, c/2) \sqrt{\log x} + 3\log\log x \} \ll x \exp\{-C\sqrt{\log x} \}, \nonumber
+\end{equation}
+for some constant $C$. We have therefore proved the existence of an absolute constant $C$ such that
+\begin{equation}
+\label{PsiFinalEstimate}
+    \psi(x) = x + O\left(x \exp\{-C\sqrt{\log x} \} \right).
+\end{equation}
+Now, recall Lemma~\ref{PsiPiRelationLemma} from Chapter 2 - the whole reason we aimed to estimate $\psi(x)$. This allows us to relate this estimate of $\psi(x)$ to $\pi(x)$, through
+\begin{equation}
+\label{PiPsiRelation}
+    \pi(x) = \frac{\psi(x)}{\log x} + \int_{2}^{x} \frac{\psi(t)}{t \log^{2} t} \mathrm{d} t + O(x^{1/2}). \nonumber
+\end{equation}
+Define
+\begin{equation}
+    \textrm{Li}(x) = \int_{2}^{x} \frac{\mathrm{d}t}{\log t}, \nonumber
+\end{equation}
+and note that integration by parts gives
+\begin{equation}
+    \int_{2}^{x} \frac{\mathrm{d}t}{\log t} = \frac{x}{\log x} + \int_{2}^{x} \frac{\mathrm{d}t}{\log^{2}t} - \log 2, \nonumber
+\end{equation}
+so that substituting (\ref{PsiFinalEstimate}) into (\ref{PiPsiRelation}) gives 
+\begin{align}
+    \pi(x) &= \frac{x}{\log x} + \int_{2}^{x} \frac{\mathrm{d}t}{\log^{2} t} + O(x \exp\{ -C \sqrt{\log x} \}) \nonumber \\
+    &= \textrm{Li}(x) + O(x \exp\{ -C \sqrt{\log x} \}). \nonumber
+\end{align}
+In conclusion, we have proved the following.
+\begin{theorem}
+(The Prime Number Theorem) The number of primes less than a given value $x$, $\pi(x)$, is given by the asymptotic formula
+\begin{equation}
+    \pi(x) = \mathrm{Li}(x) + O(x \exp\{ -C \sqrt{\log x} \}), \nonumber
+\end{equation}
+where $C$ is an absolute constant. In particular, 
+\begin{equation}
+    \pi(x) \sim \mathrm{Li}(x). \nonumber
+\end{equation}
+\end{theorem}
+We now wish to prove a similar formula as (\ref{PsiFinalEstimate}) for $\psi(x, \chi)$. The method used for $\zeta(s)$ will actually work for almost every function $L(s, \chi)$ of a given modulus - with the exception of at most one function of real character. The possible issue here, is that this L-function of real character may have a real zero arbitrarily close to $s = 1$, so when integrating on a similar rectangle to the case of $\zeta(s)$, we pick up an extra residue corresponding to this problematic zero. It is therefore of vital importance to bound the distance of such a zero away from $s = 1$, so that its contribution is essentially negligible compared to the residue $x$ of the trivial L-function at $s = 1$. The problem of bounding this distance is one we can solve using Siegel's theorem.
+

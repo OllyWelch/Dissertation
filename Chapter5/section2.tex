@@ -1,1 +1,155 @@
-\section{The Prime Number Theorem}
+\section{Siegel's Theorem}
+In this section, our aim is to find a lower bound for $L(1, \chi)$ in terms of the modulus $q$, for real characters $\chi$. In doing this, we immediately get a lower bound for the distance of any real zero away from $s = 1$ by the mean value theorem. Siegel's theorem is stated as follows.
+\begin{theorem}
+For any $\varepsilon > 0$, there exists $C_{1}(\varepsilon)$ such that for real primitive characters $\chi$ of modulus $q$,
+\begin{equation}
+    L(1, \chi) > C_{1}(\varepsilon) q^{-\varepsilon}. \nonumber
+\end{equation}
+\end{theorem}
+We follow the proof in \cite{Estermann}, and consider the function
+\begin{equation}
+    F(s) = \zeta(s) L(s, \chi_{1}) L(s, \chi_2) L(s, \chi_1 \chi_2),
+\end{equation}
+where $\chi_1$ and $\chi_2$ are real primitive characters of modulus $q_1$ and $q_2$ respectively. We shall assume that $q_1$ and $q_2$ are different throughout the proof. Furthermore, $\chi_1\chi_2$ is the real character modulo $q_1q_2$ formed by the product of $\chi_1$ and $\chi_2$. It is not necessarily a primitive character, however is certainly real and non-trivial. If it were trivial, this would imply that $\chi_1$ and $\chi_2$ induce the same character modulo $q_1q_2$, which contradicts the fact that their periodicities are by definition different. We know by the argument in Dirichlet's theorem that the three L-functions are non-zero at $s = 1$, thus $F(s)$ is analytic everywhere except $s = 1$, where it has a residue of 
+\begin{equation}
+    \rho = L(1, \chi_1) L(1, \chi_2) L(1, \chi_1 \chi_2). \nonumber
+\end{equation}
+Key to the proof of the theorem is the following lemma.
+\begin{lemma}
+There exists a positive constant $c$ such that
+\begin{equation}
+    F(s) > \frac12 - \frac{c \rho}{1 - s} (q_1 q_2)^{8(1-s)}
+\end{equation}
+for real $7/8 < s < 1$. 
+\end{lemma}
+\begin{proof}
+Multiplying the Euler products of the constituent factors of $F(s)$ gives
+\begin{align}
+    &\sum_{n=1}^{\infty} a_n n^{-s} = F(s) = \prod_{p} g(s, p), \nonumber \\
+    g(s, p) = \{(1 - p^{-s})&(1 - \chi_1(p)p^{-s})(1 - \chi_2(p)p^{-s})(1 - \chi_1 \chi_2 (p) p^{-s}) \}^{-1}. \nonumber
+\end{align}
+First note that $a_1 = 1$. Now, differentiating the geometric series formula gives 
+\begin{align}
+    (1 - x)^{-1} &= \sum_{k=0}^{\infty} x^{k}, \nonumber \\
+    (1 - x)^{-2} &= \sum_{k=0}^{\infty} (k + 1) x^{k}, \nonumber \\
+    (1 - x)^{-4} &= \frac16\sum_{k=0}^{\infty} (k+1)(k+2)(k+3) x^{k}, \quad (\abs{x} < 1). \nonumber
+\end{align}
+Thus, for $\chi_1 = \chi_2 = 1$, we have $g(s, p) = (1 - p^{-s})^{-4} = \frac16 \sum_{k=0}^{\infty} (k+1)(k+2)(k+3) p^{-ks}.$ If $\chi_1(p) = -1$ and $\chi_2(p) = \pm 1$ or vice versa, we have $g(s, p) = (1 - p^{-2s})^{-2} = \sum_{k=0}^{\infty}(k+1) p^{-2ks}$. If one of the $\chi_i$ is zero, and the other is $1, -1,$ or $0$, we may write $g(s, p)$ in a similar way involving derivatives of the geometric series, all with positive terms. Thus in all cases, $g(s, p) = \sum_{k=0}^{\infty} h(k, p) p^{-ms}$ where $h(k, p) \geq 0$. It follows that $a_n \geq 0$ for all $n$. Since $F(s)$ is analytic on $\sigma > 1$, we may use an identical argument to that in the proof of $L(1, \chi) \neq 0$ to write $F(s) = \sum_{m=0}^{\infty} b_m (2 - s)^{m}$ for $\abs{s - 2} < 1$, with all $b_m \geq 0$. Moreover, $b_0 = F(2) \geq a_0 = 1$. Also, we have
+\begin{equation}
+    \frac{\rho}{s - 1} = \frac{\rho}{1 - (2 - s)} = \rho \sum_{m=0}^{\infty}(2 - s)^{m}, \quad \abs{2 - s} < 1. \nonumber
+\end{equation}
+It therefore follows that
+\begin{equation}
+    F(s) - \frac{\rho}{s - 1} = \sum_{m=0}^{\infty} (b_m - \rho)(2 - s)^{m}, \quad \abs{2 - s} < 1. \nonumber
+\end{equation}
+Since the left hand side effectively removes the pole of $F(s)$ at $s = 1$ of residue $\rho$, the left hand side is therefore analytic on the larger region $\sigma > 0$, so the above formula is also valid for $\abs{2 - s} < 2$. Now consider the circle $\abs{2 - s} = 3/2$. Firstly, $\zeta(s)$ is bounded for these values, and from the continuation of $L(s, \chi)$ to the right half-plane, we have
+\begin{equation}
+    \abs{L(s, \chi)} \leq q\abs{s} \int_{1}^{\infty} x^{-\sigma - 1} < 2 q \abs{s}, \quad (\sigma > 0).\nonumber
+\end{equation}
+So, we have the bounds
+\begin{equation}
+    \abs{L(s, \chi_1)} < c_1 q_1, \quad \abs{L(s, \chi_2)} < c_1 q_2, \quad \abs{L(s, \chi_1 \chi_2)} < c_1 q_1 q_2. \nonumber
+\end{equation}
+For an absolute constant $c_1$. It follows that
+\begin{equation}
+    \abs{F(s)} < c_2 q_{1}^{2} q_{2}^{2}, \quad \quad \abs{2 - s} = \frac32. \nonumber
+\end{equation}
+The ratio $\rho/(s - 1)$ also satisfies this upper bound (assuming a good choice of $c_2$), since $\rho$ is the product of three L-functions satisfying the upper bounds above, while $1/(s - 1)$ is bounded on the circle $\abs{s - 2} = 3/2$. Now, we estimate Cauchy's form for the Taylor coefficients $(b_m - \rho)$, giving
+\begin{equation}
+    \abs{b_m - \rho} = \abs{\frac{1}{2 \pi i} \oint_{\gamma} \frac{F(s) - \rho/(s - 1)}{(s - 2)^{m+1}} \mathrm{d} s} \leq \left(\frac{3}{2}\right)^{-m-1} \sup_{\gamma} \abs{F(s) - \frac{\rho}{s - 1}} < 2c_2 q_{1}^{2} q_{2}^{2} \left(\frac23\right)^{m}, \nonumber
+\end{equation}
+where $\gamma$ denotes the circle $\abs{2 - s} = 3/2$. Thus, for $7/8 < s < 1$, we have
+\begin{align}
+    \sum_{m=M}^{\infty} \abs{b_m - \rho} (2 - s)^{m} &\leq \sum_{m=M}^{\infty} 2c_2 q_{1}^{2}q_{2}^{2} \left[\frac23 (2 - s) \right]^{m}\nonumber \\ 
+    &\leq 2c_2 q_{1}^{2} q_{2}^{2} \sum_{m=M}^{\infty} \left(\frac34 \right)^{m} 
+    < c_3 q_{1}^{2} q_{2}^{2} \left(\frac34 \right)^{M} < c_3 q_{1}^{2} q_{2}^{2} e^{-M/4}, \nonumber
+\end{align}
+using the fact that $e^{-1/4} \approx 0.77 > 3/4$. By the fact that $b_0 \geq 1$ and $b_m \geq 1$, we get
+\begin{align}
+    F(s) - \frac{\rho}{s - 1} > 1 - \rho \sum_{m=0}^{M-1} (2 - s)^{m} - c_3 q_{1}^{2} q_{2}^{2} e^{-M/4} = 1 - \rho \frac{(2 - s)^{M} - 1}{1 - s} - c_3 q_{1}^{2} q_{2}^{2} e^{-M/4}. \nonumber
+\end{align}
+We choose $M$ to satisfy $\frac12 e^{-1/4} < c_3 q_{1}^{2} q_{2}^{2} e^{-M/4} < \frac12$. The upper bound implies that 
+\begin{equation}
+    F(s) > \frac12 - \frac{\rho}{1 - s} (2 - s)^{M}, \nonumber
+\end{equation}
+while taking the logarithm of the lower bound gives
+\begin{equation}
+    M < 8\log q_1 q_2 + c_4. \nonumber
+\end{equation}
+Therefore,
+\begin{equation}
+    (2 - s)^{M} = \exp[M \log(1 + 1 - s)] < \exp[M(1 - s)] < c_{5} (q_1 q_2)^{8(1-s)}, \nonumber
+\end{equation}
+and it follows that there exists a constant $c$ such that
+\begin{equation}
+    F(s) > \frac12 - \frac{c \rho}{1 - s} (q_1 q_2)^{8(1-s)}. \nonumber
+\end{equation}
+\end{proof}
+Siegel's theorem will now follow quickly from this lemma. For a given $\varepsilon > 0$, we split into two cases: the first is that there exists a real primitive character $\chi$ such that $L(s, \chi)$ has a real zero $\beta_1$ in the open interval $(\frac{\varepsilon}{16}, 1)$; the second is that no such character exists. If the former holds, we choose $\chi_1$ to be such a character, and it follows that $F(\beta_1) = 0$ since $F(s)$ is analytic in the given open interval. If the latter holds, we choose $\chi_1$ to be any real primitive character, and $\beta_1$ any value in $(\frac{\varepsilon}{16}, 1)$. We claim that $F(\beta_1) < 0$ in this case. Indeed, from the continuation of $\zeta(s)$ to the right half-plane in (\ref{ZetaRightPlaneContinuation}), we have that $\zeta(\beta_1) < 0$. The three L-functions are positive for values greater than $1$ by the product formula, and are non-zero at $s = 1$ by the argument in Dirichlet's theorem. Moreover, they do not vanish in the interval $(\frac{\varepsilon}{16}, 1)$ by assumption, so must be positive in this interval. Thus, $F(\beta_1) < 0$ as claimed. In either case, $F(\beta_1) \leq 0$, so the lemma implies that (for $\varepsilon < 1/2$)
+\begin{equation}
+\label{ResidueLowerBound}
+    c \rho > \frac{1}{2}(1 - \beta_1) (q_1 q_2)^{-8(1 - \beta_1)}. \nonumber
+\end{equation}
+The quantity $\rho$ can be bounded above using a useful upper bound for $L(s, \chi)$ for real values $1 - \frac{1}{\log q} \leq s \leq 1$. There is an analogous bound for $L'(s, \chi)$ which we use later, and they are given by
+\begin{align}
+    \label{LUpperBound}
+    \abs{L(s, \chi)} \leq c_6\log q,  \\
+    \label{LPrimeUpperBound}
+    \abs{L'(s, \chi)} \leq c_7\log^{2}q, 
+\end{align}
+where $\chi$ is a real primitive character modulo $q \geq 3$. We prove the latter first. Since $L'(s, \chi)$ is analytic on $\sigma > 0$, we start from the formula
+\begin{equation}
+    L'(s, \chi) = -\sum_{n=1}^{\infty} \chi(n) (\log n) n^{-s}, \quad (\sigma > 0). \nonumber 
+\end{equation}
+Note that when $1 - \frac{1}{\log q} \leq s \leq 1$, and $n \leq q$, we have
+\begin{equation}
+    n^{-s} = e^{-s \log n} \leq e^{-(1 - 1/\log q)\log n} \leq e^{1 - \log n} = e n^{-1}, \nonumber
+\end{equation}
+so that
+\begin{equation}
+    \abs{\sum_{n=1}^{q} \chi(n) (\log n) n^{-s}} \leq e \sum_{n=1}^{q} (\log n) n^{-1} \leq c_7\log q \int_{1}^{q} \frac{\mathrm{d}t}{t} \leq c_7\log^{2}q. \nonumber
+\end{equation}
+When $n > q$, $(\log n) n^{-s}$ is a decreasing function in $n$, so
+\begin{equation}
+    \abs{\sum_{n=q + 1}^{\infty} \chi(n) (\log n) n^{-s}} \leq (\log q) q^{-s} \max_{N} \abs{\sum_{n=q+1}^{N} \chi(n)} \leq (\log q) e q^{-1} q \leq c_7\log q, \nonumber
+\end{equation}
+where the penultimate step here uses that any sum over $\chi(n)$ is at most $q$, since a sum over every residue modulo $q$ is zero. Thus, the conclusion follows that
+\begin{equation}
+    \abs{L'(s, \chi)} \leq c_7\log^{2} q. \nonumber
+\end{equation}
+For the bound on $L(s, \chi)$, the argument is identical, except the original summation formula is without the factor of $\log n$, which in turn removes a factor of $\log q$ in the upper bound. Now, (\ref{LUpperBound}) implies
+\begin{equation}
+\label{ResidueUpperBound}
+    \rho < (c_6 \log q_1) L(1, \chi_2) (c_6 \log q_1 q_2).
+\end{equation}
+We now take $q_1$ and $\chi_1$ to be fixed, so that terms involving $q_1$ may be absorbed into any constants - adding a dependency upon the choice of $\chi_1$. We let $\chi_2$ be any real primitive character of modulus $q_2 > q_1$. Thus, inserting (\ref{ResidueUpperBound}) into (\ref{ResidueLowerBound}), we have
+\begin{equation}
+    L(1, \chi_2) > C q_2^{-8(1 - \beta_1)} (\log q_2)^{-1}, \nonumber
+\end{equation}
+where $C$ is a constant depending only on the choice of $\chi_1$, and hence only on $\varepsilon$ - essentially, if $\varepsilon$ is small enough, we are forced into picking $\chi_1$ to be a real primitive character whose L-function has a zero in $(\frac{\varepsilon}{16}, 1)$. Since $8(1 - \beta_1) < \frac{\varepsilon}{2}$, we have
+\begin{equation}
+    L(1, \chi_2) > C(\varepsilon) q_2^{-\varepsilon/2} (\log q_2)^{-1} > C(\varepsilon) q_2^{-\varepsilon}, \nonumber
+\end{equation}
+provided $q_2$ is large enough, as we may suppose. This gives Siegel's theorem. An important corollary for our uses is the following.
+\begin{corollary}
+Let $\chi$ be a real primitive character modulo $q$. Then for any $\varepsilon > 0$, there exists a positive $C(\varepsilon)$ such that any real zero $\beta_1$ of $L(s, \chi)$ satisfies 
+\begin{equation}
+    \beta_1 < 1 - C(\varepsilon) q^{-\varepsilon}. \nonumber
+\end{equation}
+\end{corollary}
+\begin{proof}
+Let $\varepsilon > 0$ and $\chi$ a real primitive character modulo $q$ be given. We assume for a contradiction that there exists a real zero $\beta > 1 - C(\varepsilon)q^{-\varepsilon}$, where $C(\varepsilon)$ is an absolute constant. The bound for $L'(s, \chi)$ in (\ref{LPrimeUpperBound}) gives
+\begin{equation}
+    \abs{L'(s, \chi)} < c_7 \log^{2} q. \nonumber
+\end{equation}
+The mean value theorem implies there exists an $\alpha \in (\beta, 1)$ such that
+\begin{equation}
+    (1 - \beta)L'(\alpha, \chi) = L(1, \chi) - L(\beta, \chi), \nonumber
+\end{equation}
+so 
+\begin{equation}
+    L(1, \chi) = L(1, \chi) - L(\beta, \chi) = (1 - \beta) L'(\alpha, \chi) \leq C'(\varepsilon) (\log^{2} q) q^{-\varepsilon}. \nonumber
+\end{equation}
+Repeating this argument with $\varepsilon/2$, say, makes the contribution of $\log^{2} q$ negligible, and contradicts Siegel's theorem.
+\end{proof}
+Thus, we have now a bound in terms of $q$ of any real zero away from $s = 1$, and hence a complete zero-free region for L-functions. We may now use a modified argument as in the prime number theorem, and prove a similar result for arithmetic progressions.

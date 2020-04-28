@@ -13,51 +13,11 @@ where $C$ is some absolute constant. Moreover, integration by parts gives the ke
 \label{GammaRelation}
     s\Gamma(s) = \Gamma(s + 1).
 \end{equation}
-Since $\Gamma(1) = 1$ (just by computing the integral), it follows by induction that $\Gamma(n) = (n - 1)!$ for positive integers $n$. In this way, the Gamma function is a generalisation of the factorial function. We may also use this relation repeatedly to give the analytic continuation of $\Gamma(s)$. Suppose $\mathfrak{R}(s) \leq 0$, and $s$ is not a non-positive integer. Then there exists $n$ such that $\mathfrak{R}(s + n) > 0$, and by induction of (\ref{GammaRelation}) we have
+Since $\Gamma(1) = 1$ (just by computing the integral), it follows by induction that $\Gamma(n) = (n - 1)!$ for positive integers $n$. In this way, the Gamma function is a generalisation of the factorial function. We may also use this relation repeatedly to give the analytic continuation of $\Gamma(s)$. Suppose $\mathfrak{R}(s) \leq 0$, and $s$ is not an integer. Then there exists $n$ such that $\mathfrak{R}(s + n) > 0$, and by induction of (\ref{GammaRelation}) we have
 \begin{equation}
     \Gamma(s) = \frac{\Gamma(s + n)}{s(s + 1)\dots (s + n - 1)}. \nonumber
 \end{equation}
-Since $s$ is not a non-positive integer, the right hand side is analytic, thus so is the left side. By (\ref{GammaRelation}), we have that Gamma has a simple pole of residue $1$ at $s=0$, and it follows that it also has poles at all negative integers $n$, each with residue $(-1)^{n}/n!$. We now state some useful formulae involving the Gamma function, following \cite{andrews_askey_roy_1999}, and provide sketches of the proofs for brevity.
-\begin{definition}
-The Beta function is defined for two complex variables $s, s'$ as 
-\begin{equation}
-B(s, s') = \int_{0}^{1} x^{s-1} (1-x)^{s'-1} \mathrm{d} x. \nonumber
-\end{equation}
-\end{definition}
-
-\begin{lemma}
-\label{BetaGamma}
-\begin{equation}
-\Gamma(s + s')B(s, s') = \Gamma(s)\Gamma(s'). \nonumber
-\end{equation}
-\end{lemma}
-\begin{proof}
-First, note that
-\begin{align}
-\Gamma(s)\Gamma(s') = \int_{0}^{\infty}\int_{0}^{\infty} x^{s-1}y^{s'-1}e^{-(x+y)} \mathrm{d}x \mathrm{d}y. \nonumber
-\end{align}
-Make the change of variables $(x, y) = (uz, (1-u)z)$ and the result should follow.
-\end{proof}
-\begin{theorem}
-\label{DuplicationFormula}
-(The Duplication Formula)
-\begin{equation}
-\Gamma(2s) = \pi^{-1/2} 2^{2s-1} \Gamma(s) \Gamma(s + 1/2). \nonumber
-\end{equation}
-\end{theorem}
-\begin{proof}
-Change of variables gives that
-\begin{align}
-B(s, s) = 2^{1-2s}B(1/2, s). \nonumber
-\end{align}
-Then two uses of Lemma~\ref{BetaGamma} gives
-\begin{align}
-\Gamma(2s) = \frac{\Gamma(s)^2}{B(s, s)}
-= 2^{2s-1}\frac{\Gamma(s)^2}{B(1/2, s)}
-&= 2^{2s-1}\frac{\Gamma(s)\Gamma(s + 1/2)}{\Gamma(1/2)}\nonumber \\
-&= \pi^{-1/2} 2^{2s-1} \Gamma(s) \Gamma(s + 1/2). \nonumber
-\end{align}
-\end{proof}
+Since $s$ is not a non-positive integer, the right hand side is analytic, thus so is the left side. By (\ref{GammaRelation}), we have that Gamma has a simple pole of residue $1$ at $s=0$, and it follows that it also has poles at all negative integers $n$, each with residue $(-1)^{n}/n!$. We now state a useful formula involving the Gamma function, and provide a sketch of the proof for brevity.
 \begin{theorem}
 \label{ReflectionFormula}
 (The Reflection Formula) For $s \in \mathbb{C}\setminus\mathbb{Z}$, 
@@ -66,7 +26,7 @@ Then two uses of Lemma~\ref{BetaGamma} gives
 \end{equation} 
 \end{theorem}
 \begin{proof}
-There is an equivalent definition of $\Gamma(s)$ introduced by Weierstrass. We have
+There is an equivalent definition of $\Gamma(s)$ introduced by Weierstrass \cite[Theorem~1.1.2]{andrews_askey_roy_1999}. We have
 \begin{equation}
 \label{WeierstrassProduct}
     \Gamma(s) = s^{-1} e^{-\gamma s} \prod_{n=1}^{\infty}(1 + s/n)^{-1}e^{s/n},
@@ -92,21 +52,7 @@ Thus,
     \Gamma(s) \Gamma(1 - s) = -s \Gamma(s)\Gamma(-s) = \frac{\pi}{\sin(\pi s)}. \nonumber
 \end{equation}
 \end{proof}
-It follows from this formula that $\Gamma(s)$ is never zero. The right hand side is never zero, so any zero of $\Gamma(s)$ must coincide with a pole of $\Gamma(1-s)$. However, any such pole would be at a non-positive integer, which implies any zero would also have to be an integer. $\Gamma$ is non-zero at the integers, so is therefore non-zero everywhere. The duplication and reflection formulas may be combined to give 
-\begin{equation}
-    \frac{\Gamma(s/2)}{\Gamma((1-s)/2)} = \pi^{-1/2} 2^{1-s} \cos\frac{\pi s}{2} \Gamma(s). \nonumber 
-\end{equation}
-Combining this relation with the functional equations for $\zeta(s)$ and $L(s, \chi)$ gives the so-called asymmetric forms of the functional equations, namely
-\begin{equation}
-\label{asymmetricZeta}
-    \zeta(1-s) = 2^{1-s}\pi^{-s}\cos\frac{\pi s}{2}\Gamma(s)\zeta(s),
-\end{equation}
-and
-\begin{equation}
-\label{asymmetricL}
-    L(1-s, \chi) = \varepsilon(\chi) 2^{1 - s} \pi^{-s} q^{s - 1/2} \cos \frac{\pi(s - a)}{2} \Gamma(s) L(s, \overline{\chi}),
-\end{equation}
-where $\abs{\varepsilon(\chi)} = 1$. Finally, we have Stirling's approximation to the Gamma function, as given in \cite{davenport}.
+It follows from this formula that $\Gamma(s)$ is never zero. The right hand side is never zero, so any zero of $\Gamma(s)$ must coincide with a pole of $\Gamma(1-s)$. However, any such pole would be at a non-positive integer, which implies any zero would also have to be an integer. $\Gamma$ is non-zero at the integers, so is therefore non-zero everywhere. Finally, we have Stirling's approximation to the Gamma function, as given in \cite[Chapter~10]{davenport}.
 \begin{theorem}
 \label{StirlingFormula}
 (Stirling's Formula) The formula

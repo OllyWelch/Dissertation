@@ -28,7 +28,7 @@ Since $\rho(s) \rightarrow 1$ as $s \rightarrow 1$, its logarithm goes to zero. 
 \begin{align}
     \lim_{s \rightarrow 1^{+}}\frac{\sum_{p}p^{-s}}{\log(s - 1)^{-1}} = \lim_{s \rightarrow 1^{+}}\frac{\log\zeta(s)}{\log(s-1)^{-1}} = 1.
 \end{align}
-Thus the Dirichlet density of all the primes with the exception of finitely many is 1. In summary, the Dirichlet density is a number between 0 and 1 which measures (in a sense) the ``proportion" of primes which lie in a set. We may now use this to state Dirichlet's theorem.
+Thus, the Dirichlet density of all the primes with the exception of finitely many is 1. In summary, the Dirichlet density is a number between 0 and 1 which measures (in a sense) the ``proportion" of primes which lie in a set. We may now use this to state Dirichlet's theorem.
 \begin{theorem}
 (Dirichlet's Theorem) Suppose $a$ and $q$ are coprime integers. Let $\mathcal{P}(a; q)$ denote the set of all primes $p$ such that $p \equiv a \ (q)$. Then
 \begin{equation}
@@ -40,14 +40,14 @@ This may be proved in a similar manner to proving the Dirichlet density of the s
 \begin{equation}
     G(s, \chi) = \sum_{p}\sum_{k=1}^{\infty} k^{-1}\chi(p^{k})p^{-ks}. \nonumber
 \end{equation}
-Notice that this is similar to the infinite series definining $\log\zeta(s)$. Also, since the absolute value of each term of $G$ is bounded by $p^{-ks}$, $G$ is bounded by $\zeta(s)$ which is uniformly convergent on $s > 1$, so the same is true for $G$. Moreover, taking the exponential map, we see that
+Notice that this is similar to the infinite series definining $\log\zeta(s)$. Also, since the absolute value of each term of $G$ is bounded by $p^{-ks}$, $G$ is bounded by $\zeta(s)$ which is uniformly convergent for real $s > 1$, so the same is true for $G$. Moreover, taking the exponential map, we see that
 \begin{align}
     \exp(G(s, \chi)) &= \prod_{p} \exp\left(\sum_{k=1}^{\infty}k^{-1}(\chi(p)p^{-s})^{k}\right) \nonumber \\
     &= \prod_{p} (1 - \chi(p)p^{-s})^{-1} = L(s, \chi), \nonumber
 \end{align}
-where the last step comes from the Taylor series of $\log(1 - \chi(p)p^{-s})$, justified since $\abs{\chi(p)p^{-s}} < 1$. Thus, the infinite series $G$ gives a definition of $\log L(s, \chi)$ without the need to worry about branch cuts until later. We therefore proceed working directly with $G$. In a similar manner to before, we have that 
+where the penultimate step comes from the Taylor series of $\log(1 - \chi(p)p^{-s})$, justified since $\abs{\chi(p)p^{-s}} < 1$. Thus, the infinite series $G$ gives a definition of $\log L(s, \chi)$ without the need to worry about branch cuts until later. We therefore proceed working directly with $G$. In a similar manner to before, we have that 
 \begin{equation}
-    G(s, \chi) = \sum_{p}\chi(p)p^{-s} + \sum_{k=2}^{\infty} k^{-1}\chi(p^{k})p^{-ks}. \nonumber
+    G(s, \chi) = \sum_{p}\chi(p)p^{-s} + \sum_{p} \sum_{k=2}^{\infty} k^{-1}\chi(p^{k})p^{-ks}. \nonumber
 \end{equation}
 Since $\abs{\chi(p^{k})} \leq 1$, we may bound the second term in the same way as for $\log\zeta(s)$ by a function $R_{\chi}$ which remains bounded as $s \rightarrow 1$. Also note that $\chi(p) = 0$ when $p$ is a prime dividing $q$. Therefore
 \begin{equation}
@@ -70,14 +70,14 @@ where $R_{\chi, a}$ is again a function which is bounded as $s \rightarrow 1^{+}
 If $\chi_0$ denotes the trivial character, then
 \begin{align}
     \lim_{s \rightarrow 1^{+}}\frac{G(s, \chi)}{\log(s - 1)^{-1}} = \left\{\begin{array}{lr}
-        1, &  \textrm{if} \ \chi = \chi_{0} \\
-        0, &  \textrm{if} \ \chi \neq \chi_{0} \\
+        1 &  \textrm{if} \ \chi = \chi_{0}, \\
+        0 &  \textrm{if} \ \chi \neq \chi_{0}. \\
         \end{array}\right\} \nonumber
 \end{align}
 \end{proposition}
-The first case in this proposition is clear from (\ref{LZetaRelation}) - $\zeta(s)$ has a pole of identical residue at $s=1$ to $L(s, \chi_0)$, so this is equivalent to the Dirichlet density of all primes being 1. The latter statement is not so clear, and is equivalent to the fact that $L(s, \chi)$ is non-zero at $s=1$ for non-trivial characters $\chi$ - let us assume this for now, as we will prove a stronger result later. \\
+The first case in this proposition is clear from (\ref{LZetaRelation}) - $\zeta(s)$ has a pole of identical residue at $s=1$ to $L(s, \chi_0)$, so this is equivalent to the Dirichlet density of all primes being 1. The latter statement is not so clear, and is equivalent to the fact that $L(1, \chi)$ is non-zero and analytic for non-trivial characters $\chi$ - let us assume this for now, as we will come back to this in more detail later. \\
 
-If $L(1, \chi) \neq 0$ for non-trivial characters $\chi$, we may define $\log L(s, \chi)$ on a small interval $(1, 1 + \delta)$. Note that $G(s, \chi)$ and $\log L(s, \chi)$ are both mapped by $\exp$ to $L(s, \chi)$, so that $G(s, \chi) = \log L(s, \chi) + 2k\pi i $. Since as $s \rightarrow 1^{+}$, $\log L(s, \chi)$ tends to a limit, $G(s, \chi)$ must remain bounded. Hence the proposition is proved. Thus, we divide both sides of (\ref{GEquation3}) by $\log (s - 1)^{-1}$ and take the limit as $s \rightarrow 1^{+}$. The limit on the left hand side is $1$ (the only term in the sum without limit zero is the one for the trivial character). On the right hand side, the first term approaches $\phi(q) d\left(\mathcal{P}(a; q)\right)$, while the second term goes to zero since the function $R_{\chi, a}$ remains bounded as $s \rightarrow 1^{+}$. We therefore divide both sides by $\phi(q)$, which gives Dirichlet's Theorem: 
+If $L(1, \chi) \neq 0$ for non-trivial characters $\chi$, we may define $\log L(s, \chi)$ on a small interval $(1, 1 + \delta)$. Note that $G(s, \chi)$ and $\log L(s, \chi)$ are both mapped by $\exp$ to $L(s, \chi)$, so that $G(s, \chi) = \log L(s, \chi) + 2k\pi i $. Since $\log L(s, \chi)$ tends to a limit as $s \rightarrow 1^{+}$, $G(s, \chi)$ must remain bounded. Hence the second part of the proposition is proved. Thus, we divide both sides of (\ref{GEquation3}) by $\log (s - 1)^{-1}$ and take the limit as $s \rightarrow 1^{+}$. The limit on the left hand side is $1$ (the only term in the sum without limit zero is the one for the trivial character). On the right hand side, the first term approaches $\phi(q) d\left(\mathcal{P}(a; q)\right)$, while the second term goes to zero since the function $R_{\chi, a}$ remains bounded as $s \rightarrow 1^{+}$. We therefore divide both sides by $\phi(q)$, which gives Dirichlet's Theorem: 
 \begin{equation}
     d\left(\mathcal{P}(a; q)\right) = 1/\phi(q). \nonumber
 \end{equation}

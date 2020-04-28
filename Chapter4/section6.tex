@@ -1,5 +1,5 @@
 \section{The Numbers \texorpdfstring{$N(T)$}{Lg} and \texorpdfstring{$N(T, \chi)$}{Lg}}
-We now turn our attention to formulas of the type stated by Riemann and proved by von Mangoldt. These concern the number of zeros of L-functions below a given height in the critical strip - essentially estimating how frequently the non-trivial zeros occur. We first study the function $N(T, \chi)$, defined as the number of zeros of $L(s, \chi)$ in the rectangle $0 < \sigma < 1$, $\abs{t} < T$. It suffices to study the case of $\chi$ primitive and for now we shall assume $q > 1$. We proceed by the principle of argument on the function $\xi(s, \chi)$, over the rectangle $R$ with vertices at 
+We now turn our attention to formulas of the type stated by Riemann and proved by von Mangoldt. These concern the number of zeros of L-functions below a given height in the critical strip, estimating how frequently the non-trivial zeros occur. We first study the function $N(T, \chi)$, defined as the number of zeros of $L(s, \chi)$ in the rectangle $0 < \sigma < 1$, $\abs{t} < T$. It suffices to study the case of $\chi$ primitive and for now we shall assume $q > 1$. We proceed by the principle of argument on the function $\xi(s, \chi)$, over the rectangle $R$ with vertices at 
 \begin{equation}
     5/2 - iT, \quad 5/2 + iT, \quad -3/2 + iT, \quad -3/2 - iT, \nonumber
 \end{equation}
@@ -35,7 +35,7 @@ Setting $z = \alpha/2$ into this expression, we have
     \Delta_{L}\arg \Gamma(s/2 + a/2) &= \mathfrak{I}\left[ (\alpha - 1) \log \frac{\alpha}{2} - \alpha + \log 2\pi \right] + O(1) \nonumber \\
     &= T \log \frac{T}{2} - T + O(1).
 \end{align}
-It therefore remains to estimate $\Delta_{L}\arg L(s, \chi)$ and we aim to prove that it is $O(\log q T)$. It suffices to consider $\arg L(\frac12 + iT, \chi)$. To do this, we will make use of the following useful lemma. 
+It therefore remains to estimate $\Delta_{L}\arg L(s, \chi)$ and we aim to prove that it is $O(\log q T)$. To do this, we will make use of the following lemma. 
 \begin{lemma}
 If $\rho = \beta + i\gamma$ are the non-trivial zeros of $L(s, \chi)$ where $\chi$ is primitive, then for all real $t$, we have
 \begin{equation}
@@ -116,4 +116,4 @@ so can be ignored, as it is lower order than the error term in (\ref{vonMangoldt
 \begin{equation}
     N(T) = \frac{T}{2\pi} \log \frac{T}{2 \pi} - \frac{T}{2 \pi} + O(\log T), \nonumber
 \end{equation}
-for $T \geq 2$. Note that the factor of $1/2$ in the more general formula above is for ease of comparison with this well-established formula for $\zeta(s)$. We now have sufficient information with regard to the non-trivial zeros of L-functions (and in particular $\zeta(s)$) in order to proceed, and prove at least one landmark result regarding the distribution of primes. We now prove formulae such as (\ref{ExpicitPsiFormula}), which expose the key relation of these zeros to the distribution of prime numbers. 
+for $T \geq 2$. Note that the factor of $1/2$ in the more general formula above is for ease of comparison with this well-established formula for $\zeta(s)$. We now have sufficient information with regard to the non-trivial zeros of L-functions (and in particular $\zeta(s)$) in order to proceed, and prove at least one landmark result regarding the distribution of primes. Our aim is now to expose the connection of these non-trivial zeros and the primes, studying the method behind formulas such as (\ref{ExpicitPsiFormula}).

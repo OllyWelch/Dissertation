@@ -1,5 +1,5 @@
 \section{The Hadamard Product Formula}
-Our strategy in this chapter follows that of \cite{davenport}: first, we aim to write $\xi(s)$ and $\xi(s, \chi)$ as infinite products in terms of their zeros. Then, we make conclusions with regard to the distribution of these zeros, and ultimately the distribution of primes. We begin by introducing a special class of function (the conditions for which the $\xi$ functions satisfy!).
+Now, we aim to write $\xi(s)$ and $\xi(s, \chi)$ as \textit{infinite products} in terms of their zeros. Analysing the properties of the $\xi$ functions, we use this to make conclusions with regard to the distribution of these zeros, and ultimately the distribution of primes. We begin by introducing a special class of function (the conditions for which the $\xi$ functions satisfy!).
 \begin{definition}
 An entire function $f(z)$ is of \textit{finite order} if it satisfies
 \begin{equation}
@@ -12,15 +12,15 @@ Note that $\alpha > 0$ for all non-constant functions, so we can define the orde
 
 \begin{proposition}
 \label{no_zeros}
-If $f(z)$ is an entire function of finite order, and $f(z) \neq 0$ for all $z \in \mathbb{C}$, then $f$ is necessarily of the form $e^{g(z)}$, where $g(z)$ is a polynomial. The order of $f$ is thus the degree of $g$.
+If $f(z)$ is an entire function of finite order, and $f(z) \neq 0$ for all $z \in \mathbb{C}$, then $f$ is necessarily of the form $e^{g(z)}$, where $g(z)$ is a polynomial. The order of $f$ is therefore the degree of $g$. \normalfont{\cite[p.~74]{davenport}}
 \end{proposition}
 
 \begin{proof}
-We begin by defining $g(z) = \log f(z)$, and noting that $g(z)$ is also an entire function since $f$ is non-zero. On any large enough circle $\abs{z} = R$, we have the bound
+We begin by defining $g(z) = \log f(z)$ so as to be single valued, and noting that $g(z)$ is also holomorphic away from some branch cut since $f$ is non-zero. On any large enough circle $\abs{z} = R$, we have the bound
 \begin{equation}
 \mathfrak{R}g(z) = \log \abs{f(z)} < 2R^{\alpha}, \nonumber
 \end{equation}
-where $\alpha$ is the order of the integral function $f$, using the property that $f(z) = O(e^{\abs{z}^{\alpha}})$. Away from the branch cut, $g(z)$ can be defined by a power series, written
+where $\alpha$ is the order of the entire function $f$, using the property that $f(z) = O(e^{\abs{z}^{\alpha}})$. Away from the branch cut, $g(z)$ can be defined by a power series, written
 \begin{equation}
 g(z) = \sum_{n=0}^{\infty} (a_n + i b_n)z^n.  \nonumber
 \end{equation}
@@ -47,12 +47,12 @@ We now consider the case where an entire function $f(z)$ has zeros at $z_1, z_2,
 \label{Jensen}
 (Jensen's Formula) If $f$ is an entire function with $f(0) \neq 0$ and zeros at $z_1, z_2, \dots$, none of which are on $\abs{z} = R$, then
 \begin{equation}
-\frac{1}{2\pi} \int_{0}^{2\pi} \log\abs{f(Re^{i\theta})}\mathrm{d}\theta = \int_{0}^{R} r^{-1} n(r) \mathrm{d} r, \nonumber
+\frac{1}{2\pi} \int_{0}^{2\pi} \log\abs{f(Re^{i\theta})}\mathrm{d}\theta = \int_{0}^{R} r^{-1} n(r) \mathrm{d} r + \log \abs{f(0)}, \nonumber
 \end{equation}
 where $n(r)$ is the number of zeros of $f$ with radius less than $r$. 
 \end{proposition}
 \begin{proof}
-We flesh out the proof in \cite{ivic_2003}. Firstly, using the assumption that $f(0) \neq 0$,
+We flesh out the proof in \cite[p.~13]{ivic_2003}. Firstly, using the assumption that $f(0) \neq 0$,
 \begin{align}
 \frac{1}{2\pi} \int_{0}^{2\pi} \log\abs{f(Re^{i\theta})}\mathrm{d}\theta - \log \abs{f(0)} &= \frac{1}{2\pi} \int_{0}^{2\pi} \mathfrak{R}\log f(Re^{i\theta})\mathrm{d}\theta - \log \abs{f(0)} \nonumber \\
 &= \frac{1}{2\pi} \int_{0}^{2\pi} \left(\mathfrak{R}\int_{0}^{R}\frac{\mathrm{d}}{\mathrm{d}r}\log f(re^{i\theta}) \mathrm{d} r \right)\mathrm{d}\theta \nonumber \\
@@ -69,7 +69,7 @@ where $n(r)$ represents the number of zeros of $f$ inside the ball of radius $r$
 \frac{1}{2\pi} \int_{0}^{2\pi} \log\abs{f(Re^{i\theta})}\mathrm{d}\theta - \log \abs{f(0)}= \int_{0}^{R} r^{-1} n(r) \mathrm{d}r \nonumber
 \end{equation}
 \end{proof}
-We now put this formula to immediate use. Suppose as before that $f$ is an entire function of order $\rho$ with $f(0) \neq 0$. By the bound in the proof of Proposition~\ref{no_zeros}, we have $\log\abs{ f(Re^{i\theta})} < R^{\alpha}$ on some large enough $R$ for any $\alpha > \rho$. Invoking Jensen's formula gives
+We now put this formula to immediate use, following the remainder of the argument in \cite[Chapter~11]{davenport}. Suppose as before that $f$ is an entire function of order $\rho$ with $f(0) \neq 0$. By the bound in the proof of Proposition~\ref{no_zeros}, we have $\log\abs{ f(Re^{i\theta})} < R^{\alpha}$ on some large enough $R$ for any $\alpha > \rho$. Invoking Jensen's formula gives
 \begin{align}
 \int_{0}^{R} r^{-1} n(r) \mathrm{d}r \ll \frac{1}{2\pi} \int_{0}^{2\pi} \log\abs{f(Re^{i\theta})}\mathrm{d}\theta
 &< 2R^{\alpha}. \nonumber
@@ -95,4 +95,4 @@ The number of terms in each of the sums is $O(2^{\alpha k })$ by (\ref{zeros_bou
 \begin{equation}
 \sum_{n=1}^{\infty} r_{n}^{-\beta} \ll \sum_{k=0}^{\infty} 2^{k(\alpha - \beta)} < \infty, \nonumber
 \end{equation}
-since we assumed $\beta > \alpha$. This therefore holds for any $\beta > \rho$, since $\alpha$ can be made arbitrarily close to $\rho$. 
+since we assumed $\beta > \alpha$. This therefore holds for any $\beta > \rho$, since $\alpha$ can be made arbitrarily close to $\rho$.

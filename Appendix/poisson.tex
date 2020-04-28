@@ -1,5 +1,4 @@
 \section{The Poisson Summation Formula}
-This section follows results and proofs in \cite{HarmonicAnalysis}. 
 \begin{definition}
 A smooth function is \textit{Schwartz} if for every $c \in \mathbb{R}$, $n \in \mathbb{N}\cup\{0\}$:
 \begin{equation}
@@ -7,6 +6,7 @@ A smooth function is \textit{Schwartz} if for every $c \in \mathbb{R}$, $n \in \
 \end{equation} 
 where $f^{(n)}$ denotes the nth derivative of $f$. In other words, every derivative of the function essentially decays exponentially.
 \end{definition}
+We now have the following \cite[Theorem~8.37]{HarmonicAnalysis}.
 \begin{theorem}
 (Poisson Summation Formula) Let $f : \mathbb{R} \rightarrow \mathbb{C}$ be a Schwartz function, and let $\hat{f}$ be its Fourier transform:
 \begin{equation}
@@ -36,7 +36,7 @@ Now note that $F(0) = \sum_{m \in \mathbb{Z}} f(m)$ by definition. Therefore
 \sum_{m \in \mathbb{Z}} f(m) = F(0) = \sum_{n \in \mathbb{Z}} \hat{f}(n). \nonumber
 \end{equation}
 \end{proof}
-This theorem may be applied to $f(n) = e^{-(n + \alpha)^{2} \pi/x}$ as in \cite{davenport}. Indeed, each derivative is dominated by an exponentially decaying function, so is clearly Schwartz. We have
+This theorem may be applied to $f(n) = e^{-(n + \alpha)^{2} \pi/x}$ as in \cite[p.~63-64]{davenport}. Each derivative is dominated by an exponentially decaying function, so is clearly Schwartz. Thus,
 \begin{align}
     \hat{f}(n) &= \int_{-\infty}^{\infty} e^{2\pi i n t} f(t) \mathrm{d} t \nonumber \\
     &= \int_{-\infty}^{\infty} e^{2\pi i n t - (t + \alpha)^{2} \frac{\pi}{x}} \mathrm{d} t \nonumber \\

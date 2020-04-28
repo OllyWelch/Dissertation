@@ -12,9 +12,9 @@ Since the right hand side is uniformly convergent on $\sigma > 1$, differentiati
 where $\Lambda(n)$ is the von Mangoldt function defined in chapter 2. Therefore
 \begin{equation}
 \label{RealZetaOverZeta}
-    -\mathfrak{R}\frac{\zeta'(s)}{\zeta(s)} =  \sum_{n=1}^{\infty}\Lambda(n) n^{-\sigma} \cos(t \log n) \quad (\sigma > 1).
+    -\mathfrak{R}\frac{\zeta'(s)}{\zeta(s)} =  \sum_{n=1}^{\infty}\Lambda(n) n^{-\sigma} \cos(t \log n), \quad (\sigma > 1).
 \end{equation}
-Now, consider the inequality, valid for all $\theta$,
+Now, consider the inequality, valid for all real $\theta$,
 \begin{equation}
     0 \leq 2(1 + \cos\theta)^{2} = 3 + 4\cos\theta + \cos 2\theta. \nonumber
 \end{equation}
@@ -25,6 +25,7 @@ Applied to (\ref{RealZetaOverZeta}), it implies that for all $t$,
 \end{equation}
 We now wish to bound each term by above in terms of the non-trivial zeros. Firstly, since $\zeta(s)$ has a simple pole at $s=1$ of residue 1, it follows that for $1 < \sigma \leq 2$:
 \begin{equation}
+\label{ZetaOverZetaEstimate}
     -\frac{\zeta'(\sigma)}{\zeta(\sigma)} < \frac{1}{\sigma - 1} + A_1, \nonumber
 \end{equation}
 for some positive constant $A_1$. For complex $s$ with $1 < \sigma \leq 2$, $t \geq 2$, we refer back to the equality (\ref{ZetaPartialFraction}). Since Stirling's formula implies $\log\Gamma(s) \sim s\log s$, we have
@@ -56,12 +57,13 @@ where $A$ is a positive constant. Let $\sigma = 1 + \delta / \log t$. Then, spar
 \begin{equation}
    \beta < 1 - \frac{\delta(1 - A\delta)}{(3 + A \delta) \log t}, \nonumber
 \end{equation}
-which, upon choosing $\delta$ small enough in relation to $A$, gives an absolute constant $c$ such that
+which, upon choosing $\delta$ small enough in relation to $A$, gives $c > 0$ such that
 \begin{equation}
     \beta < 1 - \frac{c}{\log t}. \nonumber
 \end{equation}
 Since $\beta + i \gamma$ was an arbitrary zero, we may therefore find a $c$ for any $t \geq 2$ such that any zero satisfies this property. It follows from the functional equation that if $\rho$ is a non-trivial zero of $\zeta(s)$, then so is $\overline{\rho}$. Therefore the above region holds upon replacing $t$ by $\abs{t}$. Hence, we have found an explicit zero free region for $\zeta(s)$, and proved the following.
 \begin{theorem}
+\label{ZetaZeroFreeRegion}
 For all $s=\sigma + it$ satisfying
 \begin{equation}
     \sigma \geq 1 - \frac{c}{\log \abs{t}}, \quad \abs{t} \geq 2, \nonumber
@@ -79,5 +81,5 @@ so that exponentiation implies
 \end{equation}
 all of this when $\sigma > 1$. Suppose $\zeta(1 + it) = 0$. As $\sigma \rightarrow 1$, $\zeta(\sigma) \sim (\sigma - 1)^{-1}$, while $\zeta(\sigma + it) \sim (\sigma - 1)$ (by assumption), so that the left hand side of  (\ref{ZetaPowerRelation}) goes to zero. This clearly contradicts (\ref{ZetaPowerRelation}), so we conclude that $\zeta(1 + it)$ is non-zero. Thus, we may extend the zero free region to all $s$ satisfying
 \begin{equation}
-    \sigma > 1 - \frac{c}{\log(\abs{t} + 2)}. \nonumber
+    \sigma \geq 1 - \frac{c}{\log(\abs{t} + 2)}. \nonumber
 \end{equation}

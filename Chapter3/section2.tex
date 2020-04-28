@@ -1,84 +1,32 @@
-\section{Gauss Sums and the Poisson Summation Formula}
-The functional equation for L-functions involves a special type of function, known as the Gauss sum. Consider a character $\chi$ to modulus $q$. The \textit{Gauss sum} of $\chi$ is then defined as \begin{equation}
-\label{GaussSum}
-    \tau(\chi) \coloneqq \sum_{m=1}^{q} \chi(m) e^{2\pi i m/q}. 
-\end{equation}
-The following Lemma is an important property of Gauss sums. 
-\begin{lemma}
-For all $n \in \mathbb{N}$ and for all \textbf{primitive} characters $\chi$,
+\section{The Key Step in Dirichlet's Theorem}
+Having continued L-functions of trivial and non-trivial characters to the right half plane, we now have the tools required to complete the proof of Dirichlet's theorem. We may now study with greater ease the behaviour of L-functions of non-trivial character near $s = 1$, safe in the knowledge that they are analytic here; it therefore suffices to show that they are non-zero at $s = 1$. We follow the argument in \cite{ireland_rosen_1990}. Consider the function
 \begin{equation}
-\label{GaussRelation}
-    \chi(n) \tau(\overline{\chi}) = \sum_{h = 1}^{q} \overline{\chi}(h)e^{2\pi i n h / q} 
+    F(s) = \prod_{\chi} L(s, \chi), \nonumber
 \end{equation}
-\end{lemma}
-\begin{proof}
-For $n$ coprime to $q$, this property is clear:
-\begin{align}
-    \chi(n) \tau(\overline{\chi}) = \sum_{m=1}^{q} \overline{\chi}(m)\chi(n)e^{2 \pi i m / q}
-    &= \sum_{m=1}^{q} \overline{\chi}(m n^{-1}) e^{2 \pi i m / q} = \sum_{h=1}^{q} \overline{\chi}(h) e^{2\pi i n h / q}, \nonumber 
-\end{align}
-where the last step sets $h = m n^{-1}$. If $n$ and $q$ are not coprime, the proof of this fact is rather more delicate, as the left hand side will be zero. It also requires $\chi$ to be primitive. However, proving that the right hand side is zero is not particularly enlightening, so the reader is referred to the appendix for details. 
-\end{proof}
-This Lemma has a useful Corollary. Multiplying both sides of (\ref{GaussRelation}) by their conjugates gives
-\begin{align}
-    \abs{\chi(n)}^{2}\abs{\tau(\overline{\chi})}^{2} &= \left(\sum_{h_1=1}^{q} \overline{\chi}(h_1) e^{2\pi i n h_1 / q} \right)\overline{\left(\sum_{h_2=1}^{q}\overline{\chi}(h_2) e^{2\pi i n h_2 / q} \right)} \nonumber \\
-    &= \sum_{h_1=1}^{q}\sum_{h_2=1}^{q}\overline{\chi}(h_1)\chi(h_2) e^{2\pi i n (h_1 - h_2) / q}. \nonumber
-\end{align}
-Now sum over all residues modulo $q$. $\abs{\chi(n)}^{2}$ takes the value 1 at precisely $\phi(q)$ values, and is otherwise zero. Meanwhile, the sum of $e^{2\pi i n(h_1 - h_2)/q}$ over all $n$ is zero by symmetry, unless $h_1 \equiv h_2 \ (q)$, in which case it always takes the value 1. Thus, 
+where the product is over all Dirichlet characters modulo $q$. We claim that $F(s) \geq 1$ for all real $s > 1$. Recall that 
 \begin{equation}
-    \phi(q) \ \abs{\tau(\overline{\chi})}^{2} = q\sum_{h} \abs{\chi(h)}^{2} = q \ \phi(q), \nonumber
+    G(s, \chi) = \sum_{p} \sum_{k=1}^{\infty} k^{-1} \chi(p^{k}) p^{-ks}, \quad (\sigma > 1). \nonumber
 \end{equation}
-which implies $\abs{\tau(\chi)} = q^{1/2}$ for all primitive characters $\chi$, upon swapping $\chi$ and $\overline{\chi}$. The importance of this result will be apparent later. \\
+It follows from the orthogonality relations of characters that
+\begin{equation}
+    \sum_{\chi} G(s, \chi) = \phi(q) \sum_{\substack{k \geq 1 \\ p^{k} \equiv 1 \ (q)}} k^{-1} p^{-ks} \quad (\sigma > 1), \nonumber
+\end{equation}
+so that $\sum_{\chi}G(s, \chi) \geq 0$ for real $s > 1$ since each term is positive. By taking the exponential map, we have the claim that $F(s) \geq 1$ for all real $s > 1$. Now, consider the behaviour of $F(s)$ as $s \rightarrow 1$. If an L-function of complex character had $L(1, \chi) = 0$, it would follow that $L(1, \overline{\chi}) = \overline{L(1, \chi)} = 0$, so two terms of $F(s)$ are zero. Then, since the only term in the product with a pole at $s = 1$ is the trivial character, and this pole is simple, it follows that $F(1) = 0$. This clearly contradicts $F(s) \geq 1$. Thus $L(1, \chi) \neq 0$ for all complex characters $\chi$. We must use a different approach for real characters as they coincide with their conjugate characters. We assume for a contradiction that $\chi$ is a real character modulo $q$ with $L(1, \chi) = 0$, and consider
+\begin{equation}
+    \Tilde{F}(s) = \frac{L(s, \chi) L(s, \chi_0)}{L(2s, \chi_0)}, \nonumber
+\end{equation}
+where $\chi_0$ is the trivial character modulo $q$ as usual. Since the zero of $L(s, \chi)$ cancels the pole of $L(s, \chi_0)$ at $s=1$, the numerator is analytic on $\sigma > 0$, while the denominator is analytic when $\sigma > 1/2$. It follows that $F(s)$ is analytic on $\sigma > 1/2$, and $F(s) \rightarrow 0$ as $s \rightarrow 1$, by virtue of the pole of the denominator. By the Euler products,
+\begin{equation}
+    \Tilde{F}(s) = \prod_{p} \frac{(1 - \chi_{0}(p)p^{-2s})}{(1 - \chi(p)p^{-s})(1 - \chi_{0}(p)p^{-s})}. \nonumber
+\end{equation}
+We have $\chi(p) = \pm 1$ if $(p, q) = 1$ since $\chi$ is real, and if $\chi(p) = -1$, the numerator will coincide with the denominator. Moreover, if $\chi(p) = 0$, then $p$ and $q$ are not coprime and each term is $1$. Thus
+\begin{equation}
+    \Tilde{F}(s) = \prod_{\substack{\chi(p) = 1}} \frac{1 + p^{-s}}{1 - p^{-s}}, \quad (\sigma > 1). \nonumber
+\end{equation}
+Since
+\begin{equation}
+    \frac{1 + p^{-s}}{1 - p^{-s}} = (1 + p^{-s})\left( \sum_{k=0}^{\infty} p^{-ks} \right) = 1 + 2p^{-s} + 2p^{-2s} + \dots, \nonumber
+\end{equation}
+we may write $\Tilde{F}(s)$ as a series of the form $\sum_{n \geq 1} a_n n^{-s}$, where $a_n \geq 0$, convergent for $\sigma > 1$. Note that $a_1 = 1$. Since $\Tilde{F}(s)$ is analytic for $\sigma > 1/2$, we may expand it as a power series around $s = 2$ with radius of convergence at least $3/2$, say $\Tilde{F}(s) = \sum_{m=1}^{\infty} b_m (s - 2)^{m}$. Each $b_m$ is given by $b_m = \Tilde{F}^{(m)}/m!$, and by its representation as an infinite series we have $\Tilde{F}^{(m)}(2) = \sum_{n=1}^{\infty} a_n (-\log n)^{m} n^{-2} = (-1)^{m} c_m$, with $c_m \geq 0$. Therefore we have $\Tilde{F}(s) = \sum_{m=0}^{\infty}d_m (2 - s)^{m}$ with $d_m \geq 0$ and $d_0 = \Tilde{F}(2) = \sum_{n \geq 1} a_n n^{-2} \geq a_1 = 1$. It follows that for real values $1/2 < s < 2$, we have $\Tilde{F}(s) \geq d_0 = 1$, which contradicts $\Tilde{F}(s) \rightarrow 0$ as $s \rightarrow 1/2$. In conclusion, L-functions of any character are non-zero at $s = 1$, which completes the proof of Dirichlet's theorem. \\
 
-A second requirement in the study of the functional equation is the Poisson Summation Formula. We first define a class of functions on which the formula is valid. 
-\begin{definition}
-A smooth function is \textit{Schwartz} if for every $c \in \mathbb{R}$, $n \in \mathbb{N}\cup\{0\}$:
-\begin{equation}
-\abs{f^{(n)}(x)} = o(\abs{x}^{c}), \nonumber
-\end{equation} 
-where $f^{(n)}$ denotes the nth derivative of $f$. In other words, every derivative of the function decays quickly enough to dominate the growth rate of polynomials.
-\end{definition}
-We now state the theorem.
-\begin{theorem}
-(Poisson Summation Formula) Let $f : \mathbb{R} \rightarrow \mathbb{C}$ be a Schwartz function, and let $\hat{f}$ be its Fourier transform:
-\begin{equation}
-\hat{f}(y) = \int_{-\infty}^{\infty} e^{2 \pi i x y} f(x) \mathrm{d} y. \nonumber
-\end{equation}
-Then
-\begin{equation}
-\sum_{m \in \mathbb{Z}} f(m) = \sum_{n \in \mathbb{Z}} \hat{f}(n), \nonumber 
-\end{equation}
-with the sums converging absolutely.
-\end{theorem}
-\begin{proof}
-Define $F(x) = \sum_{m \in \mathbb{Z}} f(x + m)$, and note that since $f$ is Schwartz, we have uniform convergence of the sum to a continuous function. To see this, we can bound each term by some arbitrarily large reciprocal power of $\abs{m}$ multiplied by some large constant, since $f(x+m) = o(\abs{x+m}^c)$ for all real numbers $c$. F is 1-periodic, so consider the Fourier coefficients of $F$:
-\begin{align}
-\int_{0}^{1} e^{-2 \pi i n x} F(x) \mathrm{d} x &= \int_{0}^{1} e^{-2 \pi i n x} \left( \sum_{m \in \mathbb{Z}} f(x + m) \right) \mathrm{d} x \nonumber \\
-&= \sum_{m \in \mathbb{Z}} \int_{0}^{1} e^{-2 \pi i n x} f(x + m) \mathrm{d} x \hspace{1cm} \textrm{(By uniform convergence)} \nonumber \\
-&= \sum_{m \in \mathbb{Z}} \int_{m}^{m+1} e^{-2\pi i n(y - m)}f(y) \mathrm{d} y \hspace{1cm} \textrm{(Substitute $x = y - m$)} \nonumber\\
-&= \sum_{m \in \mathbb{Z}} \int_{m}^{m+1} e^{-2\pi i ny}f(y) \mathrm{d} y \hspace{1cm} \textrm{($e^{-2 \pi i n(y-m)} = e^{-2 \pi i ny}$)} \nonumber \\
-&= \int_{-\infty}^{\infty} e^{-2 \pi i n y} f(y) \mathrm{d} y = \hat{f}(n).  \nonumber
-\end{align}
-So we have
-\begin{equation}
-F(x) = \sum_{n \in \mathbb{Z}} \hat{f}(n) e^{i n x}. \nonumber
-\end{equation}
-Now note that $F(0) = \sum_{m \in \mathbb{Z}} f(m)$ by definition. Therefore
-\begin{equation}
-\sum_{m \in \mathbb{Z}} f(m) = F(0) = \sum_{n \in \mathbb{Z}} \hat{f}(n). \nonumber
-\end{equation}
-\end{proof}
-This theorem may be applied to $f(n) = e^{-(n + \alpha)^{2} \pi/x}$. Indeed, each derivative is dominated by an exponentially decaying function, so is clearly Schwartz. Thus, we find the Fourier transform: 
-\begin{align}
-    \hat{f}(n) &= \int_{-\infty}^{\infty} e^{2\pi i n t} f(t) \mathrm{d} t \nonumber \\
-    &= \int_{-\infty}^{\infty} e^{2\pi i n t - (t + \alpha)^{2} \frac{\pi}{x}} \mathrm{d} t \nonumber \\
-    &= e^{-n^{2} \pi x - 2 \pi i n \alpha} \int_{-\infty}^{\infty} e^{-\frac{\pi}{x}(t - i n x + \alpha)^2} \mathrm{d} t \nonumber \\
-    &= \left(\frac{x}{\pi} \right)^{1/2} e^{-n^{2} \pi x - 2\pi i n \alpha}  \int_{-\infty}^{\infty} e^{-v^{2}} \mathrm{d} v \quad \left(\textrm{sub.} \ v = (x / \pi)^{1/2} (t - inx + \alpha) \ \right) \nonumber \\
-    &= x^{1/2} e^{-n^{2} \pi x - 2\pi i n \alpha} \nonumber
-\end{align}
-By the Poisson summation formula, we therefore have the relation
-\begin{equation}
-\label{ModularRelation}
-    \sum_{n=-\infty}^{\infty} e^{-(n + \alpha)^{2} \pi/x} = x^{1/2} \sum_{n=-\infty}^{\infty} e^{-n^{2} \pi x + 2\pi i n \alpha}.  
-\end{equation}
-We now have what we require to prove the functional equation for L-functions and the Riemann Zeta-function.
+Having studied analytic continuation of L-functions to the right half plane and putting this into use, we now turn to analytic continuation on the whole of $\mathbb{C}$, which is done through relating $L(s, \chi)$ to $L(1-s, \overline{\chi})$. The idea is that since $L(s, \chi)$ is analytic on the right half-plane, this relation gives the value of $L(s, \overline{\chi})$ on the left half-plane. Such a relation is known as the functional equation, which we now derive.

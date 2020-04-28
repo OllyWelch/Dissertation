@@ -1,5 +1,5 @@
 \section{Introduction to the Prime Number Theorem}
-In this section we refer to results in \cite{davenport, heath-brown_2005}. We turn our attention to the \textit{growth} of the prime numbers, and in particular the prime counting function, defined as
+We now turn our attention to the \textit{growth} of the prime numbers, and in particular the prime counting function, defined as
 \begin{equation}
     \pi(x) \coloneqq \# \{p \leq x \ : \ p \ \textrm{prime}\}. \nonumber
 \end{equation}
@@ -9,7 +9,8 @@ The aim of the Prime Number Theorem is to find the \textit{asymptotic distributi
 \end{equation}
 where $\Lambda(n)$ is the von Mangoldt function, defined as $\log p$ whenever $n$ is a power of a prime $p$, and zero otherwise. These two functions are related by the following lemma.
 \begin{lemma}
-For $x \geq 2$, 
+\label{PsiPiRelationLemma}
+\normalfont{\cite[Lemma~3]{heath-brown_2005}} For $x \geq 2$, 
 \begin{equation}
 \pi(x) = \frac{\psi(x)}{\log x} + \int_{2}^{x} \frac{\psi(t)}{t \log^{2} t} \mathrm{d} t + O(x^{1/2})
 \end{equation}
@@ -35,11 +36,11 @@ Now consider the relationship between $\theta$ and $\psi$. We have that
 \begin{equation}
 \psi(x) = \theta(x) + \sum_{k \geq 2}\sum_{p^{k} \leq x} \log p. \nonumber
 \end{equation}
-In the double sum, the primes are at most $x^{1/2}$, so there are at most $x^{1/2}$ such terms, since the exponent is at least 2. Furthermore, having $p^{k} \leq x$ implies $k \leq \frac{\log x}{\log p}$. Therefore
+In the double sum, the primes are at most $x^{1/2}$ since the exponent $k$ is at least 2, so there are at most $x^{1/2}$ such terms. Furthermore, having $p^{k} \leq x$ implies $k \leq \frac{\log x}{\log p}$. Therefore
 \begin{align}
 \psi(x) &\leq \theta(x) + \frac{\log x}{\log p} \sum_{p^{k} \leq x} \log p \leq \theta(x) + x^{1/2} \log x. \nonumber
 \end{align}
-So
+So,
 \begin{equation}
 \psi(x) = \theta(x) + O\left(x^{1/2} \log x \right). \nonumber
 \end{equation}
@@ -53,19 +54,20 @@ as well as a corresponding $\psi$ function,
 \begin{equation}
     \psi(x; q, a) \coloneqq \sum_{\substack{n \leq x \\ n \equiv a (q)}} \Lambda(n). \nonumber
 \end{equation}
-Lemma~{\ref{piThetaRelation}} also holds for $\pi(x; q, a)$ and $\psi(x; q, a)$, simply by restricting the sums to the relevant residue class. Remarkably, $\psi(x)$ and $\psi(x; q, a)$ are intimately connected with the Riemann zeta-function and Dirichlet L-functions respectively - in particular their zeros. Instead of studying these functions on a restricted region where they converge, we will use analytic continuation to study them on the whole of $\mathbb{C}$. In the case of $\psi(x)$, we shall see that it can be written explicitly for any $T \geq x \geq 1$ as
+Lemma~{\ref{piThetaRelation}} also holds for $\pi(x; q, a)$ and $\psi(x; q, a)$, simply by restricting the sums to the relevant residue class. Remarkably, $\psi(x)$ and $\psi(x; q, a)$ are intimately connected with the Riemann zeta-function and Dirichlet L-functions respectively - in particular their zeros in the complex plane. Instead of studying these functions on a restricted region where they converge, we will use analytic continuation to study them on the whole of $\mathbb{C}$. In the case of $\psi(x)$, it turns out that it can be written explicitly for any $T \geq x \geq 1$ as
 \begin{equation}
 \label{ExpicitPsiFormula}
     \psi(x) = x - \sum_{\rho: \abs{\gamma} < T} \frac{x^{\rho}}{\rho} + O(\frac{x\log^{2}x}{T}),
 \end{equation}
-where the $\rho$ represent the (infinitely many) so-called non-trivial zeros of the analytically continued zeta-function. Standard notation for the $\rho$ is $\beta + i\gamma$, which we will use throughout. We shall see in the next section that these all lie in the  \textit{critical strip}, $0 \leq \sigma \leq 1$. The problem of estimating $\psi(x)$ and hence $\pi(x)$ is then essentially a question of estimating the contribution to this formula of the zeros as well as possible. A similar formula holds for the function
+where the $\rho$ represent the (infinitely many) so-called non-trivial zeros of the analytically continued zeta-function \cite[Theorem~18]{heath-brown_2005}. Standard notation for the $\rho$ is $\beta + i\gamma$, which we will use throughout. We shall see in the next section that these all lie in the  \textit{critical strip}, $0 \leq \sigma \leq 1$. The problem of estimating $\psi(x)$ and hence $\pi(x)$ is then essentially a question of estimating the contribution to this formula of the zeros as well as possible. A similar formula holds for the function
 \begin{equation}
   \psi(x, \chi) \coloneqq \sum_{n \leq x}\chi(n)\Lambda(n),
 \end{equation}
 but this time over the non-trivial zeros of L-functions, which also lie in the critical strip. For $a$ coprime to $q$ we have
 \begin{equation}
-    \frac{1}{\phi(q)}\sum_{\chi} \overline{\chi}(a) \psi(x, \chi) = \frac{1}{\phi(q)}\sum_{n \leq x} \Lambda(n) \left(\sum_{\chi}\overline{\chi}(a) \chi(n) \right) = \sum_{\substack{n \leq x \\ n \equiv a (q)}} \Lambda(n) = \psi(x; q, a). \nonumber
+\label{PsiSumRelation}
+    \frac{1}{\phi(q)}\sum_{\chi} \overline{\chi}(a) \psi(x, \chi) = \frac{1}{\phi(q)}\sum_{n \leq x} \Lambda(n) \left(\sum_{\chi}\overline{\chi}(a) \chi(n) \right) = \sum_{\substack{n \leq x \\ n \equiv a (q)}} \Lambda(n) = \psi(x; q, a). 
 \end{equation}
-So, the analogous explicit formula for $\psi(x, \chi)$ reveals the relationship of the zeros of L-functions to $\psi(x; q, a)$, and hence the growth of primes in different residue classes. We will study the derivation and consequences of these formulae. \\
+So, the analogous explicit formula for $\psi(x, \chi)$ reveals the relationship of the zeros of L-functions to $\psi(x; q, a)$, and hence $\pi(x; q, a)$ - the growth of primes in different residue classes. The purpose of mentioning these formulas is merely demonstrative: to show how the zeros of L-functions influence the distribution of primes. We shall not prove them in their entirety, and instead use a more refined method. However, ultimately we still require essentially the same knowledge about the non-trivial zeros, so this should serve as the motivation behind the following two chapters. \\
 
-To proceed, we first study the analytic continuation of L-functions and the zeta-function to $\mathbb{C}$. Using this, we study both the frequency of these (analytically continued) functions' zeros and their position in the critical strip, which will lead to asymptotic distributions for the prime counting functions.
+In order to say anything about the non-trivial zeros of L-functions and in particular $\zeta(s)$, we must study their analytic continuation to the whole complex plane. The analytic continuation of $\zeta(s)$ was Riemann's key insight in his 1859 memoir, and provides much of the foundation for big results in analytic number theory. We therefore study this in the next chapter, before studying the zeros of the analytically continued functions and ultimately proving very important results about the distribution of primes. 

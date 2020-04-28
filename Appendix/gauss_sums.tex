@@ -1,10 +1,11 @@
 \section{Gauss Sums}
-We follow \cite{davenport}. Consider a character $\chi$ to modulus $q$. The \textit{Gauss sum} of $\chi$ is then defined as \begin{equation}
+We follow \cite[Chapter~9]{davenport}. Consider a character $\chi$ to modulus $q$. The \textit{Gauss sum} of $\chi$ is then defined as \begin{equation}
 \label{GaussSum}
     \tau(\chi) \coloneqq \sum_{m=1}^{q} \chi(m) e^{2\pi i m/q}. 
 \end{equation}
 The following Lemma is an important property of Gauss sums. 
 \begin{lemma}
+\label{GaussSumLemma}
 For all $n \in \mathbb{N}$ and for all \textbf{primitive} characters $\chi$,
 \begin{equation}
 \label{GaussRelation}
@@ -17,7 +18,7 @@ For $n$ coprime to $q$, this property is clear:
     \chi(n) \tau(\overline{\chi}) = \sum_{m=1}^{q} \overline{\chi}(m)\chi(n)e^{2 \pi i m / q}
     &= \sum_{m=1}^{q} \overline{\chi}(m n^{-1}) e^{2 \pi i m / q} = \sum_{h=1}^{q} \overline{\chi}(h) e^{2\pi i n h / q}, \nonumber 
 \end{align}
-where the last step sets $h = m n^{-1}$. If $n$ and $q$ are not coprime, the proof of this fact is rather more delicate, as the left hand side will be zero. It also requires $\chi$ to be primitive. However, proving that the right hand side is zero is not particularly enlightening, so the reader is referred to \cite{davenport}, chapter 9 for details. 
+where the last step sets $h = m n^{-1}$. If $n$ and $q$ are not coprime, the proof of this fact is rather more delicate, as the left hand side will be zero. It also requires $\chi$ to be primitive. However, proving that the right hand side is zero is not particularly enlightening, so the reader is referred to \cite{davenport} for details. 
 \end{proof}
 This Lemma has a useful Corollary. Multiplying both sides of (\ref{GaussRelation}) by their conjugates gives
 \begin{align}
@@ -30,6 +31,7 @@ Now sum over all residues modulo $q$. $\abs{\chi(n)}^{2}$ takes the value 1 at p
 \end{equation}
 which implies 
 \begin{equation}
+\label{AbsoluteTau}
     \abs{\tau(\chi)} = q^{1/2}
 \end{equation}
 for all primitive characters $\chi$, upon swapping $\chi$ and $\overline{\chi}$.

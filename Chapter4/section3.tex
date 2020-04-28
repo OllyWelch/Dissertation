@@ -1,8 +1,9 @@
 \section{Infinite Product Representation of \texorpdfstring{$\xi(s)$}{Lg} and \texorpdfstring{$\xi(s, \chi)$}{Lg}}
 
-The formula (\ref{hadamard}) turns out to be very useful indeed. It allows us to write the $\xi$ functions, and hence L-functions, in terms of their zeros. This is key to studying their distribution, and hence vital in proof of the prime number theorem. Owing to the pole of $\zeta(s)$ at $s=1$, we must treat $\xi(s)$ and $\xi(s, \chi)$ separately. It is convenient in this section to define $\xi(s)$ as
+The formula (\ref{hadamard}) turns out to be very useful indeed. It allows us to write the $\xi$ functions, and hence L-functions, in terms of their zeros. This is key to studying their distribution, and hence vital in proof of the prime number theorem. Owing to the pole of $\zeta(s)$ at $s=1$, we must treat $\xi(s)$ and $\xi(s, \chi)$ separately as in \cite[Chapter~12]{davenport}. It is convenient in this section to define $\xi(s)$ as
 \begin{equation}
-    \xi(s) = \frac12 s(s-1) \pi^{-s/2} \Gamma(s/2) \zeta(s), \nonumber
+\label{BasicXiDefinition}
+    \xi(s) = \frac12 s(s-1) \pi^{-s/2} \Gamma(s/2) \zeta(s),
 \end{equation}
 so that $\xi(s)$ is entire. Note that the relation $\xi(s) = \xi(1-s)$ holds as before. Therefore,
 \begin{equation}
@@ -12,7 +13,7 @@ Furthermore, the trivial zeros of $\zeta(s)$ are cancelled by the poles of $\Gam
 \begin{equation}
     \xi(s) = O(\exp{(\abs{s}\log\abs{s})}). \nonumber
 \end{equation}
-This implies that $\xi(s)$ is of order at most 1, with zeros at the non-trivial zeros of the Zeta-function. Applying (\ref{hadamard}), we have
+This implies that $\xi(s)$ is of order at most 1, with zeros at the non-trivial zeros of the zeta-function. Applying Theorem~\ref{HadamardTheorem}, we have
 \begin{equation}
     \xi(s) = e^{A + B z} \prod_{\rho}(1 - s/\rho) e^{s/\rho}, \nonumber
 \end{equation}
@@ -24,7 +25,7 @@ We already proved in generality that the logarithm of the infinite product repre
 \begin{equation}
     \frac{\xi'(s)}{\xi(s)} = B + \sum_{\rho} \left( \frac{1}{s-\rho} + \frac{1}{\rho} \right). \nonumber
 \end{equation}
-On the other hand, logarithmic differentiation from the definition of $\xi(s)$ gives
+On the other hand, logarithmic differentiation from the definition of $\xi(s)$ in (\ref{BasicXiDefinition}) gives
 \begin{align}
     \frac{\xi'(s)}{\xi(s)} &= \frac{\mathrm{d}}{\mathrm{d}s} \left( - \frac{s}{2}\log \pi + \log (s-1) + \log \Gamma(s/2 + 1) + \log \zeta(s) \right) \nonumber \\
     &= -\frac12 \log \pi + \frac{1}{s-1} + \frac12 \frac{\Gamma'(s/2 + 1)}{\Gamma(s/2 + 1)} + \frac{\zeta'(s)}{\zeta(s)}, \nonumber
